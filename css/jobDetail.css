@@ -1,0 +1,136 @@
+/*g_container*/
+.g_container{
+  position: absolute;
+  top: 2.4rem;
+  left: 0;
+  right: 0;
+  bottom: 3.2rem;
+  overflow: auto;
+  -webkit-overflow-scrolling:touch;
+  background-color: #f5f5f5;
+}
+/*job_info*/
+.job_info{
+  padding-bottom: .53rem;
+  background-color: #fff;
+}
+.job_title{
+  height: 2.93rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .53rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e6e6e6;
+  font-weight: 600;
+  margin-bottom: .53rem;
+}
+.job_name{
+  font-size: .9rem;
+}
+.job_logo{
+  flex: 0 0 1.86rem;
+  height: 1.86rem;
+}
+.job_logo img{
+  width: 100%;
+  height: 100%;
+}
+.job_info_item{
+  height: 1.86rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .53rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: .8rem;
+}
+.job_info_label{
+  color:#666;
+}
+.job_info_item:last-child{
+  border-bottom: 0;
+}
+/*see_info*/
+.see_info{
+  height: 2.67rem;
+  display: flex;
+  padding: 0 .53rem;
+  background-color: #fff;
+}
+.see_info_title{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#048adf;
+  font-size: .9rem;
+  padding-left: .5rem;
+}
+.see_info_title i{
+  margin-right: .53rem;
+}
+.see_info_btn{
+  display: flex;
+  align-items: center;
+  color:#81c4ef;
+}
+.see_info_btn i:first-child{
+  color:#048adf;
+  margin-right: -.35rem;
+}
+/*job_desc*/
+.job_desc{
+  background-color: #fff;
+  padding-bottom: .55rem;
+}
+.job_desc_title{
+  line-height: 2.4rem;
+  padding: 0 .53rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.job_desc_item{
+  padding: .8rem .53rem 0;
+  color:#4c4c4c;
+  font-size: .75rem;
+}
+.footer{
+  position: absolute;
+  bottom:0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 .53rem;
+  height: 3.2rem;
+  box-sizing: border-box;
+  border-top: 1px solid #e6e6e6;
+  background-color: #fff;
+}
+.job_btn{
+  flex: 1;
+  margin-left: 1.06rem;
+  margin-right: .8rem;
+  color:#808080;
+  font-size: .9rem;
+  line-height: 2.4rem;
+  text-align: center;
+  border-radius: .2rem;
+  background-color: #ccc;
+}
+.job_collect{
+  flex: 0 0 4.8rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#ff8955;
+  font-size: .75rem;
+  box-sizing: border-box;
+  border: 1px solid #ff8955;
+  border-radius: .2rem;
+}

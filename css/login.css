@@ -1,0 +1,140 @@
+body{
+  background-color: #f5f5f5;
+}
+/*top*/
+.top{
+  height: 10.9rem;
+  padding-top: 3.06rem;
+  background-color: #048adf;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+}
+.logo{
+  width: 3.33rem;
+  margin: 0 auto;
+}
+.logo img{
+  width: 100%;
+}
+.top_name{
+  font-size: .85rem;
+  margin-top: .6rem;
+  margin-bottom: .3rem;
+}
+.top_title{
+  font-size: .75rem;
+}
+/*g_container*/
+.g_container{
+  padding: 1.6rem 1.6rem 0;
+  background-color: #f5f5f5;
+}
+/*ipt_cont*/
+.ipt_item{
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.2rem;
+  background-color: #fff;
+  border-radius: .2rem;
+  border: 1px solid transparent;
+  font-size: .8rem;
+  margin-bottom: .8rem;
+}
+.ipt_item.code{
+  padding: 0 0 0 1.2rem;
+}
+.ipt_item i{
+  margin-right: .8rem;
+  color:#999;
+}
+.ipt_item input{
+  flex: 1;
+  width: 100%;
+  border: 0;
+  outline: none;
+}
+.code_btn{
+  flex: 0 0 4.8rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  box-sizing: border-box;
+  border:1px solid #048adf;
+  color:#048adf;
+  text-align: center;
+  margin-left: .5rem;
+  border-radius: .1rem;
+}
+/*submit_btn*/
+.submit_btn{
+  height: 2.4rem;
+  line-height: 2.4rem;
+  margin: 1.33rem 0 0;
+  text-align: center;
+  border-radius: .2rem;
+  font-size: .9rem;
+}
+.logo_btn{
+  color:#fff;
+  background-color: #b3b3b3;
+}
+.regist_btn{
+  color:#fff;
+  background-color: #048adf;
+}
+/*other_btn*/
+.other_btn{
+  display: flex;
+  justify-content: space-between;
+  font-size: .75rem;
+  margin: 1.06rem 0 2rem;
+}
+.regist,.forget{
+  color:#666;
+}
+/*division*/
+.division{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.division i{
+  flex: 0 0 6.4rem;
+  border-top: 1px solid #ccc;
+}
+.division span{
+  color:#666;
+  font-size: .7rem;
+}
+/*logo_way*/
+.logo_way{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+.weixin{
+  flex: 0 0 2.26rem;
+  width: 2.26rem;
+  height: 2.26rem;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weixin i{
+  font-size: 1.8rem;
+  color:#048adf;
+}
+/*protocol*/
+.protocol{
+  text-align: center;
+  font-size: .58rem;
+  color: #666;
+  margin-top: 1.33rem;
+}
+.protocol a{
+  color: #666;
+}

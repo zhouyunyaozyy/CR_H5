@@ -1,0 +1,77 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+ul,li,ol{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color:#333;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body{
+  font: 20px/1.5 "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑, STHeiti, MingLiu;
+  color:#333;
+}
+i,em{
+  font-style: normal
+}
+.clear_both{
+  clear:both
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.wrap{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.split{
+  height: .533rem;
+  background-color: #f5f5f5;
+}
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #808080;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #808080;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #808080;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #808080;
+}
+/*header*/
+.header{
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  box-sizing: border-box;
+  padding: 0 .53rem;
+}
+.back{
+  flex: 0 0 2.8rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: .9rem;
+  color:#4c4c4c;
+}
+.back i{
+  padding-top: .1rem;
+  padding-right: .1rem;
+}
+.title{
+  flex: 1;
+  font-size: 1.06rem;
+  text-align: center;
+  margin-right: 2.8rem;
+}
