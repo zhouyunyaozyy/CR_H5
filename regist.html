@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_3oix00sd5gn9udi.css"/>
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/login.css"/>
+  <script src="js/aes/crypto-js.js"></script>
+  <script src="js/aes/jsencrypt.js"></script>
+  <script src="js/aes/guid.js"></script>
   <script src="js/common.js"></script>
   <title></title>
 </head>
@@ -24,25 +27,26 @@
     <div class="ipt_cont">
       <div class="ipt_item">
         <i class="iconfont icon-gerenzhongxin"></i>
-        <input type="text" placeholder="请输入用户名"/>
+        <input class="js_phone" maxlength="13" type="text" placeholder="请输入手机号"/>
       </div>
+      <div class="alert_cont"></div>
       <div class="ipt_item code">
         <i class="iconfont icon-securityCode-b"></i>
-        <input type="text" placeholder="请输入验证码"/>
+        <input class="js_code" maxlength="4" type="text" placeholder="请输入验证码"/>
         <span class="code_btn">获取验证码</span>
       </div>
+      <div class="alert_cont"></div>
       <div class="ipt_item">
         <i class="iconfont icon-iconmima"></i>
-        <input type="password" placeholder="请输入密码"/>
+        <input class="js_pwd" maxlength="12" minlength="6" type="password" placeholder="请输入密码"/>
       </div>
-      <div class="ipt_item">
-        <i class="iconfont icon-iconmima"></i>
-        <input type="password" placeholder="请再次输入密码"/>
-      </div>
+      <div class="alert_cont"></div>
     </div>
-    <div class="submit_btn regist_btn">确认注册</div>
+    <div class="submit_btn js_regist">确认注册</div>
+    <a href="login.html" class="q_login">已有账号，去登录</a>
     <div class="protocol">注册即同意<a href="">《超人招聘服务协议》</a></div>
   </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/regist.js"></script>
 </body>
 </html>

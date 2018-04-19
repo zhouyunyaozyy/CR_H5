@@ -1,3 +1,61 @@
+var win = this;
+getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
+init();
+function initFuc(res){
+  if(res.code == 10002){
+    window.location.href = "login.html"
+  }else if(res.code == 1){
+    var html = '<i></i><div class="head_job_item" data-rtid="">全部</div>';
+    for(var i = 0;i<res.data.length;i++){
+      html += '<div class="head_job_item" data-rtid="' +
+      res.data[i].rtid +
+      '">' +
+      res.data[i].name +
+      '</div>'
+    }
+    $(".head_job_cont").html(html)
+  }
+  console.log(res)
+}
+function init(){
+  var postData = {
+    rtid: $(".head_job_name span").attr("data-rtid")
+  }
+  getCallBack(postData,'/dabai-chaorenjob/job/queryIndexJobList',initList)
+}
+function initList(res){
+  if(res.code == 1){
+    var dataList = res.data.data;
+    var html = '';
+    for(var i = 0;i<dataList.length;i++){
+      html += '<div class="job_item"><div class="job_title">' +
+      dataList[i].name +
+      '</div><div class="job_label"><span class="label_address"><i class="iconfont icon-dizhi"></i>' +
+      address(dataList[i].address+"",2) +
+      '</span><span class="label_exp"><i class="iconfont icon-gongzuojingyan"></i>' +
+      dataList[i].work_experience +
+      '</span><span class="label_money"><i class="iconfont icon-icon-test1"></i>' +
+      dataList[i].wages +
+      '</span></div><div class="job_company"><div class="company_info"><div class="company_logo"><img src="' +
+      dataList[i].logoUrl +
+      '" alt=""/></div><div class="company_name wrap">' +
+      dataList[i].name_full +
+      '</div><div class="company_state"><i class="iconfont icon-v"></i>已授权</div></div><div class="job_time">' +
+      dataList[i].issue_time +
+      '</div></div></div>'
+    }
+    $(".job_list").html(html)
+  }
+  console.log(res)
+}
 $(".job_list").on("click",".job_item",function(){
   window.location.href = "jobDetail.html"
+})
+$(".head_job_name").click(function(){
+  $(".head_job_cont").toggleClass("is_show")
+})
+$(".head_job_cont").on("click",".head_job_item",function(){
+  $(".head_job_name span").text($(this).text()).attr("data-rtid",$(this).attr("data-rtid"))
+  $(".head_job_cont").removeClass("is_show")
+  init();
 })

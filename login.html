@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_3oix00sd5gn9udi.css"/>
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/login.css"/>
+  <script src="js/aes/crypto-js.js"></script>
+  <script src="js/aes/jsencrypt.js"></script>
+  <script src="js/aes/guid.js"></script>
   <script src="js/common.js"></script>
   <title></title>
 </head>
@@ -24,14 +27,16 @@
     <div class="ipt_cont">
       <div class="ipt_item">
         <i class="iconfont icon-gerenzhongxin"></i>
-        <input type="text" placeholder="请输入用户名"/>
+        <input class="js_phone" type="text" placeholder="请输入用户名"/>
       </div>
+      <div class="alert_cont"></div>
       <div class="ipt_item">
         <i class="iconfont icon-iconmima"></i>
-        <input type="password" placeholder="请输入密码"/>
+        <input class="js_pwd" type="password" placeholder="请输入密码"/>
       </div>
+      <div class="alert_cont"></div>
     </div>
-    <div class="submit_btn logo_btn">登录</div>
+    <div class="submit_btn js_login">登录</div>
     <div class="other_btn">
       <a href="regist.html" class="regist">注册</a>
       <a href="forgetPwd.html" class="forget">忘记密码?</a>
@@ -45,6 +50,7 @@
       <span class="weixin"><i class="iconfont icon-gongzhonghao"></i></span>
     </div>
   </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/login.js"></script>
 </body>
 </html>

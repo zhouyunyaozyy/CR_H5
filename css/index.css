@@ -1,3 +1,6 @@
+body{
+    background-color: #f5f5f5;
+}
 .g_header{
     height: 2.4rem;
     box-sizing: border-box;
@@ -75,6 +78,10 @@
     width: 5rem;
     border-radius: .2rem;
     z-index: 1000;
+    display: none;
+}
+.head_job_cont.is_show{
+    display: block;
 }
 .head_job_cont i{
     position: absolute;
@@ -117,6 +124,8 @@
 /*job_item*/
 .job_item{
     padding: .66rem .53rem;
+    background-color: #fff;
+    margin-bottom: .53rem;
 }
 .job_title{
     font-size: .9rem;
@@ -133,9 +142,6 @@
 .job_label i{
     font-size: .8rem;
     margin-right: .2rem;
-}
-.label_address{
-
 }
 .label_exp{
     margin: 0 1.5rem;

@@ -40,7 +40,7 @@ body{
   border-radius: .2rem;
   border: 1px solid transparent;
   font-size: .8rem;
-  margin-bottom: .8rem;
+  margin: .4rem 0;
 }
 .ipt_item.code{
   padding: 0 0 0 1.2rem;
@@ -66,6 +66,16 @@ body{
   margin-left: .5rem;
   border-radius: .1rem;
 }
+.alert_cont{
+  height: .1rem;
+}
+.alert_cont.is_active{
+  height: .8rem;
+  line-height: .8rem;
+  color:red;
+  text-align: right;
+  font-size: .65rem;
+}
 /*submit_btn*/
 .submit_btn{
   height: 2.4rem;
@@ -74,13 +84,10 @@ body{
   text-align: center;
   border-radius: .2rem;
   font-size: .9rem;
-}
-.logo_btn{
   color:#fff;
   background-color: #b3b3b3;
 }
-.regist_btn{
-  color:#fff;
+.submit_btn.is_active{
   background-color: #048adf;
 }
 /*other_btn*/
@@ -137,4 +144,12 @@ body{
 }
 .protocol a{
   color: #666;
+}
+.q_login{
+  display: block;
+  text-align: center;
+  margin: 1.5rem auto 0;
+  font-size: .8rem;
+  text-decoration: underline;
+  color:#048adf;
 }
