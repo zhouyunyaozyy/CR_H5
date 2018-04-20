@@ -33,6 +33,7 @@ body{
   border-bottom: 1px solid #e6e6e6;
   font-weight: 600;
   margin-bottom: .53rem;
+  overflow: hidden;
 }
 .job_info_name{
   font-size: .9rem;
@@ -40,6 +41,7 @@ body{
 .job_info_logo{
   flex: 0 0 1.86rem;
   height: 1.86rem;
+  margin-left: .53rem;
 }
 .job_info_logo img{
   width: 100%;
@@ -56,6 +58,7 @@ body{
   font-size: .8rem;
 }
 .job_info_label{
+  flex: 0 0 4rem;
   color:#666;
 }
 .job_info_item:last-child{

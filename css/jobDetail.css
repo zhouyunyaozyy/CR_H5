@@ -31,6 +31,7 @@
 .job_logo{
   flex: 0 0 1.86rem;
   height: 1.86rem;
+  margin-left: .53rem;
 }
 .job_logo img{
   width: 100%;
