@@ -349,12 +349,12 @@ function jieMi (msg) { // 解密
 }
 //获取area Json
 var areaList = [];
-$.getJSON("./../data/area.json",function(data){
+$.getJSON("/data/area.json",function(data){
   areaList = data.area;
 })
 //获取default Json
 var formData = [];
-$.getJSON("./../data/default.json",function(data){
+$.getJSON("/data/default.json",function(data){
   formData = data;
 })
 function address (code,type){
