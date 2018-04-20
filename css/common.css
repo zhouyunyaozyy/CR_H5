@@ -58,7 +58,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   padding: 0 .53rem;
 }
 .back{
-  flex: 0 0 2.8rem;
+  flex: 0 0 3.2rem;
   display: flex;
   align-items: center;
   height: 100%;
@@ -73,5 +73,5 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   flex: 1;
   font-size: 1.06rem;
   text-align: center;
-  margin-right: 2.8rem;
+  margin-right: 3.2rem;
 }

@@ -25,10 +25,6 @@ function url_analysis(url){
     return {}
   }
 }
-function record_time(date){
-  var time = new Date(date*1000);
-  return time.getFullYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
-}
 //解析
 function parsing(val){
   var str=val;
@@ -359,28 +355,42 @@ $.getJSON("./../data/area.json",function(data){
 //获取default Json
 var formData = [];
 $.getJSON("./../data/default.json",function(data){
-  window.formData = data;
+  formData = data;
 })
 function address (code,type){
-  console.log(code,type)
+  //console.log(code,type)
   var province,city,area;
   for(var a = 0;a<areaList.length;a++){
     if(areaList[a].code == code.slice(0,2)+"0000"){
       province = areaList[a].name;
+      //console.log(areaList[a])
       if(type == 1){
         return province;
       }
       for(var b = 0;b<areaList[a].children.length;b++){
-        if(areaList[a].code == code.slice(0,4)+"00"){
+        if(areaList[a].children[b].code == code.slice(0,4)+"00"){
+          console.log(areaList[a].children[b])
           city = areaList[a].children[b].name;
           if(type == 2){
             return city;
           }
         }
       }
-      return city;
     }
   }
-  //return city;
 }
-console.log(address("110000",1),3)
+function formatDate(time,type){
+  var date = new Date(parseInt(time));
+  switch (type){
+    case 1:
+      return date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate()
+  }
+}
+function formatData(code,type){
+  var dataList = formData[type];
+  for(var i = 0;i<dataList.length;i++){
+    if(dataList[i].code == code){
+      return dataList[i].name;
+    }
+  }
+}

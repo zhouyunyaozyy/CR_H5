@@ -1,3 +1,6 @@
+body{
+  background-color: #f5f5f5;
+}
 .g_container{
   position: absolute;
   top: 2.4rem;
@@ -66,6 +69,7 @@
   padding: .8rem .53rem;
   word-wrap:break-word;
   word-break:break-all;
+  background-color: #fff;
 }
 /*hot_recruit*/
 .hot_recruit{
@@ -75,6 +79,7 @@
   align-items: center;
   font-size: .9rem;
   font-weight: 600;
+  background-color: #fff;
 }
 .hot_recruit i{
   color: #e72424;
@@ -82,6 +87,8 @@
 /*job_item*/
 .job_item{
   padding: .66rem .53rem;
+  background-color: #fff;
+  margin-bottom: .53rem;
 }
 .job_title{
   font-size: .9rem;
