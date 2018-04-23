@@ -347,18 +347,9 @@ function jieMi (msg) { // 解密
   window.sessionStorage.setItem('ticket', decrypted.toString(CryptoJS.enc.Utf8).split('.')[0])
   window.sessionStorage.setItem('ticketsSalt', decrypted.toString(CryptoJS.enc.Utf8).split('.')[1])
 }
-//获取area Json
-var areaList = [];
-$.getJSON("data/area.json",function(data){
-  areaList = data.area;
-})
-//获取default Json
-var formData = [];
-$.getJSON("data/default.json",function(data){
-  formData = data;
-})
 function address (code,type){
   //console.log(code,type)
+  var code = code+""
   var province,city,area;
   for(var a = 0;a<areaList.length;a++){
     if(areaList[a].code == code.slice(0,2)+"0000"){
@@ -369,14 +360,24 @@ function address (code,type){
       }
       for(var b = 0;b<areaList[a].children.length;b++){
         if(areaList[a].children[b].code == code.slice(0,4)+"00"){
-          console.log(areaList[a].children[b])
           city = areaList[a].children[b].name;
           if(type == 2){
             return city;
           }
+          for(var c = 0; c < areaList[a].children[b].children.length;c++){
+            if(areaList[a].children[b].children[c].code == code){
+              area = areaList[a].children[b].children[c].name;
+              if(type == 3){
+                return area;
+              }
+            }
+          }
         }
       }
     }
+  }
+  if(type == 4){
+    return province + " " + city + " " + area
   }
 }
 function formatDate(time,type){

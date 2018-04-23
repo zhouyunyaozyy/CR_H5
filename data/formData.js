@@ -1,4 +1,4 @@
-{
+var formData ={
 	"version":[{
 		"code":"version","name":"201712111618"
 	}],

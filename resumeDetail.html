@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>超人招聘--</title>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_3oix00sd5gn9udi.css"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/resumeFill.css"/>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/aes/crypto-js.js"></script>
+  <script src="js/aes/jsencrypt.js"></script>
+  <script src="js/aes/guid.js"></script>
+  <script src="js/common.js"></script>
+  <title></title>
+</head>
+<body>
+  <div class="header">
+    <a href="my.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
+    <span class="title">简历完成度<b>(100%)</b></span>
+    <span class="edit"><i class="iconfont icon-xiugaiziliao"></i></span>
+  </div>
+  <div class="g_container">
+    <div class="resume_top_box">
+      <div class="resume_state_box blue">
+        <div class="state_img">
+          <img src="img/audit.png" alt=""/>
+        </div>
+        <div class="state_name">审核中</div>
+      </div>
+      <!--<div class="audit_alert">简历审核中，工作人员将在24小时内审核完毕，请耐心等待。</div>-->
+      <div class="audit_err_alert">
+        <div class="audit_err_title">拒绝原因</div>
+        <div class="audit_err_txt">简历可信度太低</div>
+      </div>
+    </div>
+    <div class="intention_box">
+      <div class="resume_title">求职意向</div>
+      <div class="resume_item">
+        <span class="resume_text left">乘务员</span>
+      </div>
+    </div>
+    <div class="info_box">
+      <div class="resume_title">基本信息</div>
+      <div class="resume_item">
+        <span class="resume_label">民族</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">籍贯</span>
+        <span class="resume_text">四川成都</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">婚姻状况</span>
+        <span class="resume_text">未婚</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">政治面貌</span>
+        <span class="resume_text">大大</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">身高</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">体重</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">裸眼视力(左眼)</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">裸眼视力(右眼)</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">普通话水平</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">英语水平</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">熟练小语种</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">最高学历</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">工作经验</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">任职状态</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">联系电话</span>
+        <span class="resume_text">汉族</span>
+      </div>
+    </div>
+    <div class="id_photo_box">
+      <div class="resume_title">标准照</div>
+      <div class="id_photo_cont">
+        <img src="img/avatar2.png" alt=""/>
+      </div>
+    </div>
+    <div class="img_box">
+      <div class="resume_title">图片形象</div>
+      <div class="id_photo_cont">
+        <img src="img/avatar2.png" alt=""/>
+        <img src="img/avatar2.png" alt=""/>
+        <img src="img/avatar2.png" alt=""/>
+        <img src="img/avatar2.png" alt=""/>
+        <img src="img/avatar2.png" alt=""/>
+        <img src="img/avatar2.png" alt=""/>
+      </div>
+    </div>
+    <div class="video_box">
+      <div class="resume_title">视频形象</div>
+      <div class="video_cont">
+        <video controls="controls" src="http://img.chaorenjob.com/FiCjAwg-8bC0W-EeZ-ikdJmRCNOU?e=1524209248&token=ZmGrWm-CluEpn53M5lQE0uQI2EnHsyJoDRVSo-3m:aKdv8hvtUqjSnZ0v0MPqstpxisA=">您的浏览器不支持 video 标签。</video>
+      </div>
+    </div>
+    <div class="education_box">
+      <div class="resume_title">教育经历</div>
+      <div class="resume_item">
+        <span class="resume_label">学校名称</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">所学专业</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">在校时间</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">学历</span>
+        <span class="resume_text">汉族</span>
+      </div>
+    </div>
+    <div class="disc_box">
+      <div class="resume_title">自我描述</div>
+      <div class="resume_item">
+        <span class="resume_text left">发打发手动阀士大夫阿斯蒂芬阿斯蒂芬啊手动阀手动阀阿斯顿发生</span>
+      </div>
+    </div>
+    <div class="exp_box">
+      <div class="resume_title">工作经历</div>
+      <div class="resume_item">
+        <span class="resume_label">工作时间</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">公司</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">职位</span>
+        <span class="resume_text">汉族</span>
+      </div>
+      <div class="resume_item">
+        <span class="resume_label">工作内容</span>
+        <span class="resume_text left">汉族</span>
+      </div>
+    </div>
+    <div class="cert_box">
+      <div class="resume_title">证书</div>
+      <div class="cert_list">
+        <div class="cert_item">
+          <div class="cert_img">
+            <img src="img/avatar2.png" alt=""/>
+          </div>
+          <div class="cert_name">特技证书</div>
+        </div>
+        <div class="cert_item">
+          <div class="cert_img">
+            <img src="img/avatar2.png" alt=""/>
+          </div>
+          <div class="cert_name">特技证书</div>
+        </div>
+        <div class="cert_item">
+          <div class="cert_img">
+            <img src="img/avatar2.png" alt=""/>
+          </div>
+          <div class="cert_name">发生范德萨发士大夫爱的色放爱的色放十大</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

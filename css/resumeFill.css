@@ -74,6 +74,7 @@
   font-size: .8rem;
 }
 .step_item_txt{
+  height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -92,7 +93,6 @@
 }
 /*oneStep*/
 .one_job_cont{
-  margin-bottom: 6rem;
 }
 .one_job_item{
   background-color: #fff;
@@ -114,7 +114,7 @@
   justify-content: center;
   align-items: center;
 }
-.one_radio.is_checked{
+.is_checked .one_radio{
   border-color: #048adf;
   color:#048adf;
 }
@@ -127,9 +127,21 @@
 .three_img_cont{
   width: 4.26rem;
   height: 4.26rem;
+  position: relative;
+  overflow: hidden;
 }
 .three_img_add{
   padding-bottom: .53rem;
+}
+.btn_file{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
 }
 .three_img_item{
   padding-bottom: .53rem;
@@ -141,6 +153,8 @@
   color:#048adf;
   margin-left: 3.2rem;
   margin-right: 2.13rem;
+  position: relative;
+  overflow: hidden;
 }
 .three_edit i{
   font-size: 1.3rem;
@@ -176,6 +190,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+.four_video_show video{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
 }
 .four_video_show i{
   font-size: 1.2rem;
@@ -196,11 +220,19 @@
 }
 .four_video_btn{
   padding-right: 1rem;
-  display: flex;
+  display: none;
   justify-content: flex-end;
   align-items: center;
   height: 2rem;
   margin-bottom: 1.5rem;
+}
+
+.yourself{
+  color:#048adf;
+  font-size: .8rem;
+  padding-top: 1.2rem;
+  padding-right: 1.8rem;
+  text-align: right;
 }
 /*fiveStep*/
 .five_add_btn{
@@ -262,4 +294,149 @@
   border:0;
   outline: none;
   font-size: .75rem;
+}
+/*resumeDetail*/
+.title b{
+  font-weight: 300;
+  color:#ff8955;
+  margin-left: .3rem;
+}
+.edit{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2.4rem;
+  align-items: center;
+  padding-right: .53rem;
+  color:#048adf;
+}
+.edit i{
+  font-size: 1.55rem;
+}
+.edit.is_hide{
+  display: none;
+}
+/*resume_state_box*/
+.resume_state_box{
+  color:#333;
+}
+.resume_state_box.blue{
+  color:#048adf;
+}
+.resume_state_box.red{
+  color:#ff8955;
+}
+.state_img{
+  height: 2.77rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.06rem;
+}
+.state_img img{
+  height: 100%;
+}
+.state_img i{
+  font-size: 2.77rem;
+}
+.state_name{
+  text-align: center;
+  padding: 0 .53rem;
+  font-size: .9rem;
+  line-height: 2.77rem;
+}
+.audit_alert{
+  padding: 0 1.7rem 1.2rem;
+  color:#4c4c4c;
+  text-align: center;
+  font-size: .8rem;
+}
+.audit_err_alert{
+
+}
+.audit_err_title{
+  font-weight: 600;
+  font-size: .9rem;
+  text-align: center;
+}
+.audit_err_txt{
+  padding: 1.2rem 1.7rem;
+  color:#4c4c4c;
+  text-align: center;
+  font-size: .8rem;
+}
+/**/
+.resume_title{
+  border-top: 1px solid #e6e6e6;
+  line-height: 2.72rem;
+  padding: 0 .53rem;
+  font-size: .9rem;
+  font-weight: 600;
+}
+.resume_item{
+  padding: 0 .53rem;
+  height: 1.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .8rem;
+}
+.resume_label{
+  min-width: 4rem;
+  padding-right: .53rem;
+  color:#666;
+}
+.resume_text{
+  flex: 1;
+  text-align: right;
+}
+.resume_text.left{
+  text-align: left;
+}
+/*id_photo_cont*/
+.id_photo_cont{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 .215rem;
+}
+.id_photo_cont img{
+  flex: 0 0 4.26rem;
+  width: 4.26rem;
+  height: 4.26rem;
+  border-radius: .2rem;
+  margin:0 .315rem .75rem;
+}
+/*video_box*/
+.video_cont{
+  padding: 0 .53rem .53rem;
+  height: 12rem;
+  overflow: hidden;
+}
+.video_cont video{
+  background-color: #333;
+  width: 100%;
+  height: 100%;
+}
+/*cert_box*/
+.cert_item{
+  display: flex;
+  align-items: center;
+  padding: 0 .53rem .53rem;
+  overflow: hidden;
+}
+.cert_img{
+  flex: 0 0 4.26rem;
+  height: 4.26rem;
+  border-radius: .2rem;
+  margin-right: 1.2rem;
+}
+.cert_img img{
+  width: 100%;
+  height: 100%;
+}
+.cert_name{
+  flex: 1;
+  color:#4c4c4c;
+  font-size: .8rem;
 }
