@@ -48,21 +48,21 @@ function blurTest(){
   }
   return true;
 }
-$(".js_phone").blur(function(){
+$(".js_phone").keyup(function(){
   if(blurTest()){
     $(".submit_btn").addClass("is_active")
   }else{
     $(".submit_btn").removeClass("is_active")
   }
 })
-$(".js_pwd").blur(function(){
+$(".js_pwd").keyup(function(){
   if(blurTest()){
     $(".submit_btn").addClass("is_active")
   }else{
     $(".submit_btn").removeClass("is_active")
   }
 })
-$(".js_code").blur(function(){
+$(".js_code").keyup(function(){
   if(blurTest()){
     $(".submit_btn").addClass("is_active")
   }else{

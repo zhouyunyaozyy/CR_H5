@@ -1,31 +1,17 @@
-var win = this;
-getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
-init();
-function initFuc(res){
-  if(res.code == 10002){
-    window.location.href = "login.html"
-  }else if(res.code == 1){
-    var html = '<i></i><div class="head_job_item" data-rtid="">全部</div>';
-    for(var i = 0;i<res.data.length;i++){
-      html += '<div class="head_job_item" data-rtid="' +
-      res.data[i].rtid +
-      '">' +
-      res.data[i].name +
-      '</div>'
-    }
-    $(".head_job_cont").html(html)
-  }
-  console.log(res)
-}
-function init(){
-  var postData = {
-    rtid: $(".head_job_name span").attr("data-rtid")
-  }
-  getCallBack(postData,'/dabai-chaorenjob/job/queryIndexJobList',initList)
-}
-function initList(res){
+var search =  url_analysis(window.location.search);
+getCallBack({cid:search.cid},"/dabai-chaorenjob/company/getCompanyInfoAndJobs",init)
+function init(res){
   if(res.code == 1){
-    var dataList = res.data.data;
+    $(".job_info_name").text(res.data.name_full)
+    $(".job_info_logo img").attr("src",res.data.logoUrl)
+    $(".js_abbr").text(res.data.name_short)
+    $(".js_nature").text(formatData(res.data.character,"character"))
+    $(".js_scale").text(formatData(res.data.fleet_size,"fleet_size"))
+    $(".js_web").text(res.data.website)
+    $(".js_address").text(res.data.address)
+    $(".js_phone").text(res.data.tel)
+    $(".company_introduce").text(res.data.profile)
+    var dataList = res.data.jobs.data;
     var html = '';
     for(var i = 0;i<dataList.length;i++){
       html += '<div class="job_item" data-jid="' +
@@ -39,9 +25,9 @@ function initList(res){
       '</span><span class="label_money"><i class="iconfont icon-icon-test1"></i>' +
       formatData(dataList[i].wages,"wages") +
       '</span></div><div class="job_company"><div class="company_info"><div class="company_logo"><img src="' +
-      dataList[i].logoUrl +
+      res.data.logoUrl +
       '" alt=""/></div><div class="company_name wrap">' +
-      dataList[i].name_full +
+      res.data.name_full +
       '</div><div class="company_state"><i class="iconfont icon-v"></i>已授权</div></div><div class="job_time">' +
       formatDate(dataList[i].issue_time,1) +
       '</div></div></div>'
@@ -52,12 +38,4 @@ function initList(res){
 }
 $(".job_list").on("click",".job_item",function(){
   window.location.href = "jobDetail.html?jid="+$(this).attr("data-jid")
-})
-$(".head_job_name").click(function(){
-  $(".head_job_cont").toggleClass("is_show")
-})
-$(".head_job_cont").on("click",".head_job_item",function(){
-  $(".head_job_name span").text($(this).text()).attr("data-rtid",$(this).attr("data-rtid"))
-  $(".head_job_cont").removeClass("is_show")
-  init();
 })

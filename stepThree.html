@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_3oix00sd5gn9udi.css"/>
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/resumeFill.css"/>
+  <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/aes/crypto-js.js"></script>
   <script src="js/aes/jsencrypt.js"></script>
   <script src="js/aes/guid.js"></script>
@@ -17,7 +18,7 @@
 </head>
 <body class="gray">
   <div class="header">
-    <a href="twoStep.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
+    <a href="stepTwo.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
     <span class="title">撰写简历(3/6)</span>
   </div>
   <div class="g_container">
@@ -27,6 +28,7 @@
         <div class="three_img_add">
           <div class="three_img_cont">
             <img src="img/add_img.png" alt=""/>
+            <input class="btn_file js_z_photo" accept="image/png, image/jpeg" type="file"/>
           </div>
         </div>
       </div>
@@ -37,23 +39,24 @@
         <div class="upload_notes_item">3.头发不可遮盖眉，眼睛和脸颊。</div>
       </div>
     </div>
-    <div class="step_title optional">图片形象<span>(选填)</span></div>
+    <div class="step_title photo_title optional">图片形象<span></span></div>
     <div class="three_photo_img">
       <div class="three_img_list">
-        <div class="three_img_item">
-          <div class="three_img_cont">
-            <img src="img/avatar2.png" alt=""/>
-          </div>
-          <span class="three_edit">
-            <i class="iconfont icon-bianji"></i>
-          </span>
-          <span class="three_delete">
-            <i class="iconfont icon-shanchu"></i>
-          </span>
-        </div>
+        <!--<div class="three_img_item">-->
+          <!--<div class="three_img_cont">-->
+            <!--<img src="img/avatar2.png" alt=""/>-->
+          <!--</div>-->
+          <!--<span class="three_edit">-->
+            <!--<i class="iconfont icon-bianji"></i>-->
+          <!--</span>-->
+          <!--<span class="three_delete">-->
+            <!--<i class="iconfont icon-shanchu"></i>-->
+          <!--</span>-->
+        <!--</div>-->
         <div class="three_img_add">
           <div class="three_img_cont">
             <img src="img/add_img.png" alt=""/>
+            <input class="btn_file js_img_photo" accept="image/png, image/jpeg, image/jpg" type="file"/>
           </div>
         </div>
       </div>
@@ -65,8 +68,8 @@
         <div class="upload_notes_item">4.头发不可遮盖眉，眼睛和脸颊。</div>
       </div>
     </div>
-    <a href="fourStep.html" class="next_step">下一步</a>
+    <div class="next_step js_three">下一步</div>
   </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/stepThree.js"></script>
 </body>
 </html>

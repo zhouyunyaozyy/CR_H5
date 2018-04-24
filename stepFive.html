@@ -9,15 +9,17 @@
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_3oix00sd5gn9udi.css"/>
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/resumeFill.css"/>
+  <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/aes/crypto-js.js"></script>
   <script src="js/aes/jsencrypt.js"></script>
   <script src="js/aes/guid.js"></script>
+  <script src="js/picker.min.js"></script>
   <script src="js/common.js"></script>
   <title></title>
 </head>
 <body class="gray">
   <div class="header">
-    <a href="fourStep.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
+    <a href="stepFour.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
     <span class="title">撰写简历(5/6)</span>
   </div>
   <div class="g_container">
@@ -25,7 +27,7 @@
     <div class="step_cont">
       <div class="step_item">
         <span class="step_item_name">学校名称</span>
-        <span class="step_item_txt">
+        <span class="step_item_txt picker">
           <input type="text" placeholder="请填写"/>
           <i class=""></i>
         </span>
@@ -99,8 +101,8 @@
       </div>
     </div>
     <div class="five_add_btn"><i class="iconfont icon-tianjia"></i>添加更多工作经历</div>
-    <a href="sixStep.html" class="next_step">下一步</a>
+    <div href="stepSix.html" class="next_step js_five">下一步</div>
   </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/stepFive.js"></script>
 </body>
 </html>

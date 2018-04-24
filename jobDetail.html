@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_3oix00sd5gn9udi.css"/>
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/jobDetail.css"/>
+  <script src="data/area.js"></script>
+  <script src="data/formData.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/aes/crypto-js.js"></script>
   <script src="js/aes/jsencrypt.js"></script>
   <script src="js/aes/guid.js"></script>
@@ -23,30 +26,30 @@
   <div class="g_container">
     <div class="job_info">
       <div class="job_title">
-        <span class="job_name">南航2011秋季空姐招聘</span>
+        <span class="job_name wrap"></span>
         <span class="job_logo">
-          <img src="img/company_logo.png" alt=""/>
+          <img src="" alt=""/>
         </span>
       </div>
       <div class="job_info_item">
         <span class="job_info_label">工作地点</span>
-        <span class="job_info_text">上海</span>
+        <span class="job_info_text js_area"></span>
       </div>
       <div class="job_info_item">
         <span class="job_info_label">薪资范围</span>
-        <span class="job_info_text">10-20K</span>
+        <span class="job_info_text js_wages"></span>
       </div>
       <div class="job_info_item">
         <span class="job_info_label">经验要求</span>
-        <span class="job_info_text">无需经验</span>
+        <span class="job_info_text js_exp"></span>
       </div>
       <div class="job_info_item">
         <span class="job_info_label">学历要求</span>
-        <span class="job_info_text">本科</span>
+        <span class="job_info_text js_education"></span>
       </div>
       <div class="job_info_item">
         <span class="job_info_label">招聘人数</span>
-        <span class="job_info_text">50人</span>
+        <span class="job_info_text js_num"></span>
       </div>
     </div>
     <div class="split"></div>
@@ -64,15 +67,10 @@
     <div class="job_desc">
       <div class="job_desc_title">职位描述</div>
       <div class="job_desc_item">
-        <div class="job_desc_item_title">(一)年龄</div>
-        <div class="item_desc">1、机长(机长教员)：年龄50周岁(含)以下。</div>
-        <div class="item_desc">2、副驾驶：年龄30周岁(含)以下。</div>
-        <div class="item_desc">3、飞行学员：年龄 25周岁(含)以下。</div>
-      </div>
-      <div class="job_desc_item">
-        <div class="job_desc_item_title">(二)学历</div>
-        <div class="item_desc">1、机长(机长教员)：持有国家教育部认证的大专(含)以上
-          学历或部队院校学历。</div>
+        <!--<div class="job_desc_item_title">(一)年龄</div>-->
+        <!--<div class="item_desc">1、机长(机长教员)：年龄50周岁(含)以下。</div>-->
+        <!--<div class="item_desc">2、副驾驶：年龄30周岁(含)以下。</div>-->
+        <div class="item_desc"></div>
       </div>
     </div>
   </div>
@@ -80,7 +78,6 @@
     <span class="job_btn">已投递</span>
     <span class="job_collect"><i class="iconfont icon-shoucang"></i>已收藏</span>
   </div>
-  <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jobDetail.js"></script>
 </body>
 </html>
