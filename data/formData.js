@@ -265,5 +265,8 @@ var formData ={
 		{"code":"49","name":"京族"},{"code":"50","name":"塔塔尔族"},{"code":"51","name":"独龙族"},
 		{"code":"52","name":"鄂伦春族"},{"code":"53","name":"赫哲族"},{"code":"54","name":"门巴族"},
 		{"code":"55","name":"珞巴族"},{"code":"56","name":"基诺族"}
+	],
+	"year":[
+		{"code":}
 	]
 }

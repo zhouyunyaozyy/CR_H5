@@ -13,6 +13,7 @@ function initToken(res){
 function initResume(res){
   if(res.code == 1){
     target = res.data.target;
+    getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
     if(res.data.headerUrl){
       var headerHtml = ""
       headerHtml +='<div class="three_img_item"><div class="three_img_cont"><img data-key="' +
@@ -38,17 +39,23 @@ function initResume(res){
       }
       $(".three_photo_img .three_img_add").before(imagesHtml)
     }
-    getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
   }
   console.log(res)
 }
 function initFuc(res){
   if(res.code == 1){
     for(var i = 0;i < res.data.length;i++){
-      if(res.data[i].rtid == target){
-        znConfig = JSON.parse(res.data[i].config)
-        return;
+      switch (res.data[i].rtid){
+        case target:
+          znConfig = JSON.parse(res.data[i].config)
+          if(znConfig.images){
+            $(".photo_title").removeClass("optional").find("span").text("(蹇呭～)")
+          }else{
+            $(".photo_title").addClass("optional").find("span").text("(閫夊～)")
+          }
+        break;
       }
+      console.log(target,res.data[i].rtid,target == res.data[i].rtid)
     }
   }
 }
@@ -59,7 +66,7 @@ function update (ipt,cType){
     ipt.select();
     var obj = ipt.files[0];
   } else {
-    alert("请选择正确格式的图片")
+    alert("璇烽�夋嫨jpg鎴杙ng鏍煎紡鍥剧墖")
   }
   formData.append('token', imgToken);
   formData.append('file', obj);

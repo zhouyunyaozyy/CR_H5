@@ -13,13 +13,14 @@ function videoInfo(res){
   if(res.code == 1){
     var obj = JSON.parse(res.data)
     $(".four_video_item").text(obj.rule);
-    $(".yourself_cont").text(obj.howIntroduce);
+    //$(".yourself_cont").text(obj.howIntroduce);
   }
   console.log(res)
 }
 function initResume(res){
   if(res.code == 1){
     target = res.data.target;
+    getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
     if(res.data.video){
       videoKey = res.data.video;
       var html = '<video src="' +
@@ -29,7 +30,6 @@ function initResume(res){
       $(".three_edit .icon-bianji").after('<input type="file" accept="video/mp4" class="btn_file"/>')
       $(".four_video_btn").css("display","flex")
     }
-    getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
   }
   console.log(res)
 }
@@ -38,6 +38,12 @@ function initFuc(res){
     for(var i = 0;i < res.data.length;i++){
       if(res.data[i].rtid == target){
         znConfig = JSON.parse(res.data[i].config)
+        console.log(znConfig)
+        if(znConfig.video){
+          $(".video_title").removeClass("optional").find("span").text("(å¿…å¡«)")
+        }else{
+          $(".video_title").addClass("optional").find("span").text("(é€‰å¡«)")
+        }
         return;
       }
     }
@@ -58,7 +64,7 @@ $('.four_video_cont').on("change",".btn_file",function(){
     //};
     //fr.readAsDataURL(obj);
   } else {
-    alert("ÇëÑ¡Ôñmp4¸ñÊ½µÄÊÓÆµ")
+    alert("è¯·é€‰æ‹©mp4æ ¼å¼è§†é¢‘æ–‡ä»¶")
   }
   formData.append('token', imgToken);
   formData.append('file', obj);
@@ -93,5 +99,18 @@ $(".js_delete").click(function(){
   $(".four_video_btn").css("display","none")
 })
 $(".js_four").click(function(){
-  
+  console.log(znConfig)
+  if(znConfig.video && !videoKey){
+    return;
+  }else if(!videoKey){
+    window.location.href = "stepFive.html"
+  }else{
+    postCallBack({video:videoKey},"/dabai-chaorenjob/resume/updateVideoResume",videoUpdate)
+  }
 })
+function videoUpdate(res){
+  if(res.code == 1){
+    window.location.href = "stepFive.html"
+  }
+  console.log(res)
+}
