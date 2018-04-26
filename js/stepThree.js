@@ -1,3 +1,4 @@
+var search = url_analysis(window.location.search)
 getCallBack({},"/dabai-chaorenjob/common/qiniu/token",initToken)
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
 var target,znConfig;
@@ -12,9 +13,37 @@ function initToken(res){
 }
 function initResume(res){
   if(res.code == 1){
+    if(search.type != 1 && search.type != 2){
+      switch (res.data.steps){
+        case 100:
+          alert("请先填写第一步")
+          return;
+        case 200:
+          alert("请先填写第二步")
+          return;
+        case 300:
+          alert("请先填写第三步")
+          return;
+        case 400:
+          alert("请先填写第四步")
+          return;
+        case 500:
+          alert("请先填写第五步")
+          return;
+        case 600:
+          alert("请先填写第六步")
+          return;
+        case 700:
+          alert("请修改原简历，不能新增简历")
+          return;
+        default:
+          alert("请先创建简历")
+          return;
+      }
+    }
     target = res.data.target;
     getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
-    if(res.data.headerUrl){
+    if(search.type != 2 && res.data.headerUrl){
       var headerHtml = ""
       headerHtml +='<div class="three_img_item"><div class="three_img_cont"><img data-key="' +
       res.data.header +
@@ -25,7 +54,7 @@ function initResume(res){
       '<span class="three_delete js_delete"><i class="iconfont icon-shanchu"></i></span></div>'
       $(".three_standard_img .three_img_list").html(headerHtml)
     }
-    if(res.data.imagesUrl.length > 0){
+    if(search.type != 1 && res.data.imagesUrl.length > 0){
       var imgArr = res.data.images.split(",")
       var imagesHtml = ""
       for(var i = 0;i < res.data.imagesUrl.length;i++){
@@ -38,6 +67,19 @@ function initResume(res){
         '<span class="three_delete js_delete"><i class="iconfont icon-shanchu"></i></span></div>'
       }
       $(".three_photo_img .three_img_add").before(imagesHtml)
+    }
+    if(search.type == 1){
+      $(".photo_title").remove();
+      $(".three_photo_img").remove();
+      $(".back").attr("href","modifyResume.html")
+      $(".title").text("标准照")
+      $(".js_three").text("确认")
+    }else if(search.type == 2){
+      $(".header_title").remove();
+      $(".three_standard_img").remove();
+      $(".back").attr("href","modifyResume.html")
+      $(".title").text("图片形象")
+      $(".js_three").text("确认")
     }
   }
   console.log(res)
@@ -140,33 +182,50 @@ $(".js_three").click(function(){
   var imgUrl = $(".three_standard_img .three_img_cont img").attr("data-key")
   var imgArr = [];
   var imgNum = $(".three_photo_img .three_img_cont img");
-  console.log(imgNum)
   for(var i = 0 ;i<imgNum.length;i++){
     imgArr.push($(imgNum[i]).attr("data-key"))
   }
-  if(!imgUrl){
+  if(!imgUrl && search.type != 2){
     return;
-  }else if(znConfig.images && imgArr.length < 1){
+  }else if(znConfig.images && imgArr.length < 1 && search.type != 1){
     return;
   }
-  postCallBack({header:imgUrl},"/dabai-chaorenjob/resume/updateHeaderResume",headerInit)
-  postCallBack({images:imgArr.join(",")},"/dabai-chaorenjob/resume/updateImagesResume",imgInit)
+  if(search.type != 1){
+    postCallBack({images:imgArr.join(",")},"/dabai-chaorenjob/resume/updateImagesResume",imgInit)
+  }
+  if(search.type != 2){
+    postCallBack({header:imgUrl},"/dabai-chaorenjob/resume/updateHeaderResume",headerInit)
+  }
 })
 function headerInit(res){
   if(res.code == 1){
-    threeStep = threeStep + 1
-    if(threeStep == 2){
-      window.location.href = "stepFour.html"
+    if(search.type == 1){
+      window.location.href = "modifyResume.html"
+    }else{
+      updateSuc();
     }
   }
   console.log(res)
 }
 function imgInit(res){
   if(res.code == 1){
-    threeStep = threeStep + 1
-    if(threeStep == 2){
-      window.location.href = "stepFour.html"
+    if(search.type == 2){
+      window.location.href = "modifyResume.html"
+    }else{
+      updateSuc();
     }
+  }
+  console.log(res)
+}
+function updateSuc(){
+  threeStep = threeStep + 1
+  if(threeStep == 2){
+postCallBack({steps:400},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
+}
+}
+function updateSteps(res){
+  if(res.code == 1){
+    window.location.href = "stepFour.html"
   }
   console.log(res)
 }

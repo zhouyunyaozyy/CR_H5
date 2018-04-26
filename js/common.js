@@ -264,7 +264,6 @@ function jiami ( msg) {
       data.client = 'Firefox'
       data.clientVersion = ver
     } else if (explorer.indexOf('chrome') >= 0) { // Chrome
-      console.log(32131)
       var ver = explorer.match(/chrome\/([\d.]+)/)[1]
       data.client = 'Chrome'
       data.clientVersion = ver
@@ -388,7 +387,13 @@ function formatDate(time,type){
   }
 }
 function formatData(code,type){
+  if(code == ""){
+    return ""
+  }
   var dataList = formData[type];
+  if(!dataList){
+    return "";
+  }
   for(var i = 0;i<dataList.length;i++){
     if(dataList[i].code == code){
       return dataList[i].name;

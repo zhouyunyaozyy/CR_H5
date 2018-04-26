@@ -1,7 +1,40 @@
+var search = url_analysis(window.location.search)
 var target;
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
 function initResume(res){
   if(res.code == 1){
+    if(search.type != 1){
+      switch (res.data.steps){
+        case 100:
+          alert("请先填写第一步")
+          return;
+        case 200:
+          alert("请先填写第二步")
+          return;
+        case 300:
+          alert("请先填写第三步")
+          return;
+        case 400:
+          alert("请先填写第四步")
+          return;
+        case 500:
+          alert("请先填写第五步")
+          return;
+        case 600:
+          alert("请先填写第六步")
+          return;
+        case 700:
+          alert("请修改原简历，不能新增简历")
+          return;
+        default:
+          alert("请先创建简历")
+          return;
+      }
+    }else{
+      $(".back").attr("href","modifyResume.html")
+      $(".title").text("求职意向")
+      $(".js_one").text("确认")
+    }
     target = res.data.target
     getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc,res.data.target)
   }
@@ -41,7 +74,11 @@ $(".js_one").click(function(){
 })
 function updateTarget(res){
   if(res.code == 1){
-    postCallBack({steps:200},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
+    if(search.type == 1){
+      window.location.href = "modifyResume.html"
+    }else{
+      postCallBack({steps:200},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
+    }
   }
   console.log(res)
 }

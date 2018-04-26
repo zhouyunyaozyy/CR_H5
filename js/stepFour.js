@@ -1,3 +1,4 @@
+var search = url_analysis(window.location.search)
 getCallBack({},"/dabai-chaorenjob/common/qiniu/token",initToken)
 getCallBack({},"/dabai-chaorenjob/resume/getVideoProfile",videoInfo)
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
@@ -19,6 +20,38 @@ function videoInfo(res){
 }
 function initResume(res){
   if(res.code == 1){
+    if(search.type != 1){
+      switch (res.data.steps){
+        case 100:
+          alert("请先填写第一步")
+          return;
+        case 200:
+          alert("请先填写第二步")
+          return;
+        case 300:
+          alert("请先填写第三步")
+          return;
+        case 400:
+          alert("请先填写第四步")
+          return;
+        case 500:
+          alert("请先填写第五步")
+          return;
+        case 600:
+          alert("请先填写第六步")
+          return;
+        case 700:
+          alert("请修改原简历，不能新增简历")
+          return;
+        default:
+          alert("请先创建简历")
+          return;
+      }
+    }else{
+      $(".back").attr("href","modifyResume.html")
+      $(".title").text("视频形象")
+      $(".js_four").text("确认")
+    }
     target = res.data.target;
     getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
     if(res.data.video){
@@ -109,6 +142,16 @@ $(".js_four").click(function(){
   }
 })
 function videoUpdate(res){
+  if(res.code == 1){
+    if(search.type == 1){
+      window.location.href = "modifyResume.html"
+    }else{
+      postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
+    }
+  }
+  console.log(res)
+}
+function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepFive.html"
   }

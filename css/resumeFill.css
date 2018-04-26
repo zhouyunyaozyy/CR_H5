@@ -235,6 +235,57 @@
   text-align: right;
 }
 /*fiveStep*/
+/*.five_education_title{*/
+  /*background-color: #808080;*/
+  /*border-bottom: 1px solid #e6e6e6;*/
+  /*display: block;*/
+  /*height: 2.66rem;*/
+  /*box-sizing: border-box;*/
+  /*line-height: 2.66rem;*/
+/*}*/
+/*.five_education_item.is_active .five_education_title{*/
+  /*display: none;*/
+/*}*/
+/*.five_education_item .step_cont{*/
+  /*height: 0px;*/
+  /*overflow: hidden;*/
+/*}*/
+/*.five_education_item.is_active .step_cont{*/
+  /*height: 13.3rem;*/
+/*}*/
+.delete_btn{
+  line-height: 2rem;
+  text-align: center;
+  font-size: .7rem;
+  color:red;
+  border-bottom: 1.3rem solid #f5f5f5;
+}
+.g_container .step_cont:last-child .delete_btn{
+  display: none;
+}
+.area_title{
+  padding: .8rem .53rem .53rem;
+  font-size: .8rem;
+}
+.textarea_cont textarea{
+  color: #4c4c4c;
+}
+.textarea_cont textarea::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #808080;
+}
+.textarea_cont textarea:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #808080;
+}
+.textarea_cont textarea::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #808080;
+}
+.textarea_cont textarea:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #808080;
+}
 .five_add_btn{
   color:#048adf;
   font-size: .9rem;
@@ -248,12 +299,16 @@
 .textarea_cont{
   background-color: #fff;
   position: relative;
+  border-bottom: 1px solid #e6e6e6;
+}
+.textarea_cont.profile_cont{
+  padding-top: .53rem;
 }
 .textarea_cont textarea{
   width: 100%;
   border:0;
   outline: none;
-  padding: .6rem  .53rem .8rem;
+  padding: 0  .53rem .8rem;
   box-sizing: border-box;
   font-size: .8rem;
   line-height: 1rem;
@@ -268,6 +323,15 @@
   font-size: .7rem;
   color:#999;
   padding-right: .53rem;
+}
+.six_cert_item:first-child .delete_btn{
+  display: none;
+}
+.six_cert_item .three_edit,.six_cert_item .three_delete{
+  display: block;
+}
+.six_cert_item.is_hide .three_edit,.six_cert_item.is_hide .three_delete{
+  display: none;
 }
 .six_certificate{
   background-color: #fff;
@@ -381,6 +445,10 @@
   justify-content: space-between;
   font-size: .8rem;
 }
+.resume_profile{
+  padding: 0 .53rem .53rem;
+  font-size: .8rem;
+}
 .resume_label{
   min-width: 4rem;
   padding-right: .53rem;
@@ -417,6 +485,18 @@
   background-color: #333;
   width: 100%;
   height: 100%;
+}
+/*exp_box*/
+.resume_exp_label{
+  padding-left: .53rem;
+  font-size: .8rem;
+  line-height: 1.5rem;
+  color:#666;
+}
+.resume_exp_text{
+  padding: 0 .53rem .53rem 1rem;
+  font-size: .8rem;
+  color:#808080;
 }
 /*cert_box*/
 .cert_item{
