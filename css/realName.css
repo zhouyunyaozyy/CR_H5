@@ -1,0 +1,145 @@
+.fail_cont{
+  background-color: #f5f5f5;
+}
+/*fail_cont_top*/
+.fail_cont_top{
+  background: #fff;
+  padding: 1px 0;
+}
+.fail_title{
+  font-size: .9rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e6e6e6;
+  font-weight: 600;
+}
+.refuse_title{
+  text-align: center;
+  font-size: .9rem;
+  padding-top: 1rem;
+}
+.refuse_info{
+  font-size: .8rem;
+  color: #4c4c4c;
+  text-align: center;
+  padding: .5rem 2.66rem 1.5rem;
+}
+/*real_name*/
+.real_title{
+  font-size: .9rem;
+  color:#333;
+  padding: 0 .53rem;
+  line-height: 2.66rem;
+}
+.real_cont{
+  background-color: #fff;
+}
+.real_item{
+  height: 2.66rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 0 .53rem;
+  display: flex;
+  align-items: center;
+  font-size: .8rem;
+}
+.real_label{
+  flex: 0 0 6rem;
+}
+.real_item input{
+  flex: 1;
+  border: 0;
+  outline: none;
+  font-size: .8rem;
+}
+.cart_cont{
+  background-color: #fff;
+  padding: 1.2rem .53rem;
+  display: flex;
+  justify-content: space-between;
+}
+.cart_item{
+  flex: 0 0 9.06rem;
+  height: 12.2rem;
+  position: relative;
+  border-radius: .3rem;
+  overflow: hidden;
+}
+.positive{
+  background: url(./../img/positive.png) no-repeat center;
+  background-size: 100%;
+}
+.opposite{
+  background: url(./../img/opposite.png) no-repeat center;
+  background-size: 100%;
+}
+.cart_item img{
+  width: 100%;
+  height: 100%;
+}
+.cart_item img:not([src = ""]){
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 1px solid #e6e6e6;
+  border-radius: .3rem;
+}
+.photo_file{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+.submit_btn{
+  margin: 2rem .53rem;
+  text-align: center;
+  line-height: 2.66rem;
+  background-color: #048adf;
+  color:#fff;
+  font-size: .9rem;
+  border-radius: .2rem;
+}
+/*suc_cont*/
+.state_img{
+  height: 2.77rem;
+  width: 2.77rem;
+  margin: 1.2rem auto .6rem;
+}
+.state_img img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.state_name{
+  font-size: .9rem;
+  color: #ff8955;
+  text-align: center;
+}
+.auth_name,.auth_card_id{
+  font-size: .9rem;
+  text-align: center;
+}
+.auth_photo{
+  display: flex;
+  padding: .5rem 5.86rem 0;
+  align-items: center;
+  justify-content: space-between;
+}
+.auth_item{
+  flex: 0 0 3.73rem;
+  height: 5.06rem;
+  border: 1px solid #e6e6e6;
+}
+.auth_item img{
+  width: 100%;
+  height: 100%;
+  border-radius: .3rem;
+}
+.state_info{
+  font-size: .8rem;
+  color: #4c4c4c;
+  padding: 0 2.66rem;
+  text-align: center;
+  margin-top: 1.33rem;
+}

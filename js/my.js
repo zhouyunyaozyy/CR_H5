@@ -5,7 +5,7 @@ function initMy(res){
     if(res.data.headerUrl){
       $(".top_avatar img").attr("src",res.data.headerUrl)
     }
-    $(".user_phone").text(res.data.mobile)
+    $(".user_phone").text(res.data.mobile).before('<div class="user_name">' + res.data.name + '</div>')
     getCallBack({uid:res.data.uid},"/dabai-chaorenjob/certification/queryCheckStatus",userState)
   }
   console.log(res)
@@ -13,14 +13,12 @@ function initMy(res){
 function userState(res){
   if(res.code == 1){
     var html = '';
-    if(!res.data || !res.data.status || res.data.status != 4){
-      html = '<div class="auth_state">未认证</div>'
-    }else if(res.data.status == 4){
-      html = '<div class="auth_state auth_ok"><i class="iconfont icon-v"></i>认证</div><div class="user_name">' +
-      res.data.name +
-      '</div>'
+    if(!res.data || res.data != 4){
+      html = '<a href="realName.html" class="auth_state">未认证</a>'
+    }else if(res.data == 4){
+      html = '<a href="realName.html" class="auth_state auth_ok"><i class="iconfont icon-v"></i>认证</a>'
     }
-    $(".user_phone").before(html)
+    $(".top_avatar").after(html)
   }
   console.log(res)
 }
