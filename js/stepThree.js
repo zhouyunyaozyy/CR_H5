@@ -21,23 +21,8 @@ function initResume(res){
         case 200:
           alert("请先填写第二步")
           return;
-        case 300:
-          alert("请先填写第三步")
-          return;
-        case 400:
-          alert("请先填写第四步")
-          return;
-        case 500:
-          alert("请先填写第五步")
-          return;
-        case 600:
-          alert("请先填写第六步")
-          return;
         case 700:
           alert("请修改原简历，不能新增简历")
-          return;
-        default:
-          alert("请先创建简历")
           return;
       }
     }

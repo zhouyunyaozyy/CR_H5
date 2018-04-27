@@ -41,7 +41,7 @@ function initList(res){
       '</span></div><div class="job_company"><div class="company_info"><div class="company_logo"><img src="' +
       dataList[i].logoUrl +
       '" alt=""/></div><div class="company_name wrap">' +
-      dataList[i].name_full +
+      dataList[i].name_short +
       '</div><div class="company_state"><i class="iconfont icon-v"></i>已授权</div></div><div class="job_time">' +
       formatDate(dataList[i].issue_time,1) +
       '</div></div></div>'

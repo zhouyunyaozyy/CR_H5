@@ -1,4 +1,5 @@
 var search =  url_analysis(window.location.search);
+$(".back").attr("href","jobDetail.html?jid="+window.sessionStorage.getItem("jid"))
 getCallBack({cid:search.cid},"/dabai-chaorenjob/company/getCompanyInfoAndJobs",init)
 function init(res){
   if(res.code == 1){

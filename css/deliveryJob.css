@@ -15,6 +15,7 @@ body{
 .job_item{
   padding: .66rem 0;
   background-color: #fff;
+  margin-bottom: .53rem;
 }
 .job_title{
   display: flex;

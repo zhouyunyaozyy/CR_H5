@@ -27,6 +27,7 @@ function init(res){
   console.log(res)
 }
 $(".see_info").click(function(){
+  window.sessionStorage.setItem("jid",search.jid)
   window.location.href = "companyInfo.html?cid="+$(this).attr("data-cid")
 })
 $('.js_collect').click(function(){

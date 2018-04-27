@@ -5,29 +5,8 @@ function initResume(res){
   if(res.code == 1){
     if(search.type != 1){
       switch (res.data.steps){
-        case 100:
-          alert("请先填写第一步")
-          return;
-        case 200:
-          alert("请先填写第二步")
-          return;
-        case 300:
-          alert("请先填写第三步")
-          return;
-        case 400:
-          alert("请先填写第四步")
-          return;
-        case 500:
-          alert("请先填写第五步")
-          return;
-        case 600:
-          alert("请先填写第六步")
-          return;
         case 700:
           alert("请修改原简历，不能新增简历")
-          return;
-        default:
-          alert("请先创建简历")
           return;
       }
     }else{
