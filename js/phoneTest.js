@@ -35,6 +35,7 @@ $('.js_next').click(function(){
 })
 function nextStep(res){
   if(res.code == 1){
+    window.sessionStorage.setItem("mobileTickets",res.data)
     window.location.href = "phoneNew.html"
   }
   console.log(res)

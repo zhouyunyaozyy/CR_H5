@@ -1,0 +1,108 @@
+body{
+    background-color: #f5f5f5;
+}
+/*g_container*/
+.g_container{
+    position: absolute;
+    top:2.4rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling:touch
+}
+/*job_item*/
+.job_item{
+    padding: .66rem .53rem;
+    background-color: #fff;
+    margin-bottom: .53rem;
+}
+.job_title{
+    font-size: .9rem;
+    font-weight: 600;
+}
+.job_label{
+    color:#666;
+    font-size: .64rem;
+    display: flex;
+    align-items: center;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+.job_label i{
+    font-size: .8rem;
+    margin-right: .2rem;
+}
+.label_exp{
+    margin: 0 1.5rem;
+}
+.label_money{
+    color:#ff8955;
+}
+.job_company{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.company_info{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin-right: .5rem;
+}
+.company_logo{
+    flex: 0 0 1.33rem;
+    height: 1.33rem;
+    /*box-sizing: border-box;*/
+    /*border-radius: 1px;*/
+    /*border: 1px solid #e6e6e6;*/
+}
+.company_logo img{
+    width: 100%;
+    height: 100%;
+}
+.company_name{
+    font-size: .8rem;
+    color:#666;
+    margin-left: .53rem;
+    margin-right: .3rem;
+}
+.company_state{
+    flex: 0 0 3.2rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .53rem;
+    box-sizing: border-box;
+    border:1px solid #50af5b;
+    color:#50af5b;
+}
+.job_time{
+    color:#808080;
+    font-size: .64rem;
+}
+/*轮播*/
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}

@@ -18,25 +18,26 @@
 </head>
 <body>
   <div class="header">
-    <a href="set.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
+    <a href="phoneTest.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
     <span class="title">绑定手机号</span>
   </div>
   <div class="g_container">
     <div class="pwd_cont">
-      <div class="phone_show">当前手机号：13541377080<span></span></div>
+      <div class="phone_show">当前手机号：<span></span></div>
       <div class="pwd_item">
         <span><i class="iconfont icon-gerenziliao"></i></span>
-        <input type="password" placeholder="请输入常用手机号"/>
+        <input class="js_phone"  type="number" placeholder="请输入常用手机号"/>
       </div>
       <div class="code_item">
         <div class="pwd_item">
           <span><i class="iconfont icon-securityCode-b"></i></span>
-          <input type="password" placeholder="请输入验证码"/>
+          <input class="js_code" type="number" placeholder="请输入验证码"/>
         </div>
         <span class="code_btn">获取验证码</span>
       </div>
     </div>
-    <div class="pwd_submit">下一步</div>
+    <div class="pwd_submit js_submit">下一步</div>
   </div>
+  <script src="js/phoneNew.js"></script>
 </body>
 </html>

@@ -77,3 +77,7 @@ function loginTest(res){
   }
   console.log(res)
 }
+
+$(".weixin").click(function(){
+  window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3eb0c5e993c8e592&redirect_uri=http://h5-test.chaorenjob.com/completeInfo.html&response_type=code&scope=snsapi_userinfo&connect_redirect=1#wechat_redirect"
+})
