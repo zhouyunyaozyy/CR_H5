@@ -10,43 +10,46 @@ function initToken(res){
 }
 function initState(res){
   if(res.code == 1){
-    switch (res.data.status){
-      case 1:
-        $(".fail_cont").remove();
-        $(".state_name").remove();
-        $(".suc_cont .state_img img").attr("src","img/audit2.png")
-        $(".auth_item:first-child img").attr("src",res.data.front_url)
-        $(".auth_item:last-child img").attr("src",res.data.back_url)
-        $(".auth_name").text(res.data.name)
-        $(".auth_card_id").text(res.data.idno.slice(0,6) + "********" + res.data.idno.slice(-4))
-        break;
-      case 4:
-        $(".fail_cont").remove();
-        $(".state_info").remove();
-        $(".suc_cont .state_img img").attr("src","img/pass.png")
-        $(".auth_item:first-child img").attr("src",res.data.front_url)
-        $(".auth_item:last-child img").attr("src",res.data.back_url)
-        $(".auth_name").text(res.data.name)
-        $(".auth_card_id").text(res.data.idno.slice(0,6) + "********" + res.data.idno.slice(-4))
-        break;
-      case 8:
-        $(".suc_cont").remove();
-        $(".refuse_info").text(res.data.mark)
-        $(".js_card_id").val(res.data.idno)
-        $(".js_card_name").val(res.data.name)
-        $(".js_front_photo").attr({
-          "data-key":res.data.card_front_url,
-          "src":res.data.front_url
-        })
-        $(".js_back_photo").attr({
-          "data-key":res.data.card_back_url,
-          "src":res.data.back_url
-        })
-        break;
-      default:
-        $(".suc_cont").remove();
-        $(".fail_cont_top").remove();
-        break;
+    if(res.data.status){
+      switch (res.data.status){
+        case 1:
+          $(".fail_cont").remove();
+          $(".state_name").remove();
+          $(".suc_cont .state_img img").attr("src","img/audit2.png")
+          $(".auth_item:first-child img").attr("src",res.data.front_url)
+          $(".auth_item:last-child img").attr("src",res.data.back_url)
+          $(".auth_name").text(res.data.name)
+          $(".auth_card_id").text(res.data.idno.slice(0,6) + "********" + res.data.idno.slice(-4))
+          break;
+        case 4:
+          $(".fail_cont").remove();
+          $(".state_info").remove();
+          $(".suc_cont .state_img img").attr("src","img/pass.png")
+          $(".auth_item:first-child img").attr("src",res.data.front_url)
+          $(".auth_item:last-child img").attr("src",res.data.back_url)
+          $(".auth_name").text(res.data.name)
+          $(".auth_card_id").text(res.data.idno.slice(0,6) + "********" + res.data.idno.slice(-4))
+          break;
+        case 8:
+          $(".suc_cont").remove();
+          $(".refuse_info").text(res.data.mark)
+          $(".js_card_id").val(res.data.idno)
+          $(".js_card_name").val(res.data.name)
+          $(".js_front_photo").attr({
+            "data-key":res.data.card_front_url,
+            "src":res.data.front_url
+          })
+          $(".js_back_photo").attr({
+            "data-key":res.data.card_back_url,
+            "src":res.data.back_url
+          })
+          break;
+        default:
+          break;
+      }
+    }else{
+      $(".suc_cont").remove();
+      $(".fail_cont_top").remove();
     }
   }
   console.log(res)
