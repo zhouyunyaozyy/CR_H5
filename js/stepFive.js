@@ -4,6 +4,7 @@ var education_num = 1;
 var exp_num = 1;
 var stepName = 0;
 function initResume(res){
+  console.log(res)
   if(res.code == 1){
     if(search.type != 1 && search.type != 2){
       switch (res.data.steps){
@@ -25,7 +26,7 @@ function initResume(res){
       }
     }
     if(search.type != 2){
-      var education_item = JSON.parse(res.data.education_item);
+      var education_item = JSON.parse(res.data.education_item) || [];
       if(education_item.length > 0){
         education_num = education_item.length;
         var eduHtml = "";
@@ -62,7 +63,7 @@ function initResume(res){
       $(".js_five").text("确认")
     }
     if(search.type != 1){
-      var experience_item = JSON.parse(res.data.experience_item);
+      var experience_item = JSON.parse(res.data.experience_item) || [];
       if(experience_item.length > 0){
         exp_num = experience_item.length;
         var expText = "";
@@ -80,10 +81,11 @@ function initResume(res){
             var year2 = date2.getFullYear();
             var month2 = date2.getMonth() + 1;
             $(".five_exp_list .step_cont .js_endtime")
-              .val(year1 + "-" + month1)
-              .attr("data-val",year1-1970 + "-" + month1);
+              .val(year2 + "-" + month2)
+              .attr("data-val",year2-1970 + "-" + month2);
             $(".five_exp_list .step_cont .js_profile")
               .val(experience_item[i].profile)
+            $(".step_area .text_size").text(experience_item[i].profile.length + "/500")
           }else{
             expText += expHtml(experience_item[i])
           }
@@ -98,7 +100,6 @@ function initResume(res){
       $(".js_five").text("确认")
     }
   }
-  console.log(res)
 }
 var pickerNum;
 //学历
@@ -193,7 +194,8 @@ function htmlTxt (item){
     }
   }
   var html = '';
-  html += '<div class="step_cont"><div class="step_item"><span class="step_item_name">学校名称</span>' +
+  html += '<div class="step_cont"><div class="delete_btn">删除此条</div>' +
+  '<div class="step_item"><span class="step_item_name">学校名称</span>' +
   '<span class="step_item_txt"><input type="text" class="js_sname" value="' +
   item.sname +
   '" placeholder="请填写"/><i></i></span></div>' +
@@ -218,8 +220,7 @@ function htmlTxt (item){
   item.education +
   '" value="' +
   formatData(item.education,"education") +
-  '" readonly placeholder="请选择"/><i class="iconfont icon-tiaozhuan"></i></span></div>' +
-  '<div class="delete_btn">删除此条</div></div>'
+  '" readonly placeholder="请选择"/><i class="iconfont icon-tiaozhuan"></i></span></div></div>'
   return html;
 }
 $(".five_education_list .education_add").click(function(){
@@ -276,7 +277,9 @@ function expHtml (item){
   '<div class="step_area"><div class="area_title">工作内容</div>' +
   '<div class="textarea_cont"><textarea class="js_profile" value="' +
   item.profile +
-  '" placeholder="请描述工作内容" rows="5" maxlength="500"></textarea><span class="text_size">0/500</span></div></div>' +
+  '" placeholder="请描述工作内容" rows="5" maxlength="500"></textarea><span class="text_size">' +
+  item.profile.length +
+  '/500</span></div></div>' +
   '<div class="delete_btn">删除此条</div></div>'
   return html;
 }

@@ -5,7 +5,10 @@ function initMy(res){
     if(res.data.headerUrl){
       $(".top_avatar img").attr("src",res.data.headerUrl)
     }
-    $(".user_phone").text(res.data.mobile).before('<div class="user_name">' + res.data.name + '</div>')
+    $(".user_phone").text(res.data.mobile)
+    if(res.data.name){
+      $(".user_phone").before('<div class="user_name">' + res.data.name + '</div>')
+    }
     getCallBack({uid:res.data.uid},"/dabai-chaorenjob/certification/queryCheckStatus",userState)
   }
   console.log(res)

@@ -263,6 +263,9 @@
 .g_container .step_cont:last-child .delete_btn{
   display: none;
 }
+.five_education_list .step_cont:first-child .delete_btn{
+  display: none;
+}
 .area_title{
   padding: .8rem .53rem .53rem;
   font-size: .8rem;

@@ -3,6 +3,27 @@ $(".back").attr("href","jobDetail.html?jid="+window.sessionStorage.getItem("jid"
 getCallBack({cid:search.cid},"/dabai-chaorenjob/company/getCompanyInfoAndJobs",init)
 function init(res){
   if(res.code == 1){
+    if(res.data.imagesUrl.length > 0){
+      var img_html = "";
+      for(var i = 0; i<res.data.imagesUrl.length;i++){
+        img_html+= '<img src="' +
+        res.data.imagesUrl[i] +
+        '" alt="" class="swiper-slide"/>'
+      }
+      $(".swiper-wrapper").html(img_html)
+      var swiper = new Swiper('.swiper-container', {
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
+      });
+    }
     $(".job_info_name").text(res.data.name_full)
     $(".job_info_logo img").attr("src",res.data.logoUrl)
     $(".js_abbr").text(res.data.name_short)

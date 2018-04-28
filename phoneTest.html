@@ -8,7 +8,7 @@
   <title>超人招聘--</title>
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_41v4vjhx37qtzkt9.css"/>
   <link rel="stylesheet" href="css/common.css"/>
-  <link rel="stylesheet" href="css/resumeFill.css"/>
+  <link rel="stylesheet" href="css/set.css"/>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/aes/crypto-js.js"></script>
   <script src="js/aes/jsencrypt.js"></script>
@@ -18,19 +18,22 @@
 </head>
 <body>
   <div class="header">
-    <a href="my.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
-    <span class="title">撰写简历</span>
+    <a href="set.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
+    <span class="title">修改绑定</span>
   </div>
   <div class="g_container">
-    <div class="resume_icon">
-      <img src="img/resume_icon.png" alt=""/>
+    <div class="pwd_cont">
+      <div class="phone_show">当前手机号：13541377080<span></span></div>
+      <div class="code_item">
+        <div class="pwd_item">
+          <span><i class="iconfont icon-securityCode-b"></i></span>
+          <input type="password" placeholder="请输入验证码"/>
+        </div>
+        <span class="code_btn">获取验证码</span>
+      </div>
     </div>
-    <div class="resume_alert">
-      <div>航空公司要求您提供一份完善的简历</div>
-      <div>共需 6 步</div>
-    </div>
-    <a href="" class="resume_btn">去填写</a>
+    <a href="phoneNew.html" class="pwd_submit">下一步</a>
   </div>
-  <script src="js/resumeFill.js"></script>
+  <script src="js/phoneTest.js"></script>
 </body>
 </html>

@@ -131,6 +131,14 @@ var formData ={
 		{"code":"5","name":"待评审"},
 		{"code":"6","name":"所有"}
 	],
+	"userDeliveryState":[
+		{"code":"1","name":"已投递"},
+		{"code":"2","name":"已查看"},
+		{"code":"3","name":"邀请面试"},
+		{"code":"4","name":"不合适"},
+		{"code":"5","name":"待评审"},
+		{"code":"6","name":"所有"}
+	],
   "reservationState":[
     {"code":"0","name":"未确认"},
     {"code":"1","name":"已接受"},

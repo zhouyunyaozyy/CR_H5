@@ -73,9 +73,7 @@ function login(res){
 }
 function loginTest(res){
   if(res.code == 1){
-    setTimeout(function(){
-      window.location.href = "index.html"
-    },0)
+    window.location.href = "index.html"
   }
   console.log(res)
 }

@@ -60,8 +60,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .back{
   flex: 0 0 3.2rem;
   display: flex;
+  height: 2.4rem;
   align-items: center;
-  height: 100%;
   font-size: .9rem;
   color:#4c4c4c;
 }

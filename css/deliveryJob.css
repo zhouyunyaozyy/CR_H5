@@ -2,9 +2,33 @@
 body{
   background-color: #f5f5f5;
 }
+.tab{
+  height: 3.2rem;
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  box-sizing: border-box;
+  padding: 0 .25rem;
+  display: flex;
+  align-items: center;
+  font-size: .9rem;
+  justify-content: space-between;
+}
+.tab_item{
+  flex: 0 0 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-bottom: .2rem solid transparent;
+}
+.tab_item.is_active{
+  color:#048adf;
+  border-bottom-color: #048adf;
+}
 .g_container{
   position: absolute;
-  top:2.4rem;
+  top:5.6rem;
   left: 0;
   right: 0;
   bottom: 0;

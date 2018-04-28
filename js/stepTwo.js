@@ -19,10 +19,14 @@ function initResume(res){
       $(".js_two").text("确认")
     }
     //民族
-    $(".js_nation").val(formatData(res.data.ethnicity,"ethnicity")).attr("data-val",res.data.ethnicity)
+    if(res.data.ethnicity){
+      $(".js_nation").val(formatData(res.data.ethnicity,"ethnicity")).attr("data-val",res.data.ethnicity)
+    }
     //selectedIndex1 = [res.data.ethnicity-1]
     //籍贯
-    $(".js_native_place").val(address(res.data.birthplace,4)).attr("data-val",res.data.birthplace);
+    if(res.data.birthplace){
+      $(".js_native_place").val(address(res.data.birthplace,4)).attr("data-val",res.data.birthplace);
+    }
     //var code = res.data.birthplace.toString();
     //selectedIndex2 = []
     //for(var a = 0; a<areaList.length;a++){
@@ -43,40 +47,66 @@ function initResume(res){
     //  }
     //}
     //婚姻状况
-    $(".jc_marriage").val(formatData(res.data.wedding,"wedding")).attr("data-val",res.data.wedding);
+    if(res.data.wedding) {
+      $(".jc_marriage").val(formatData(res.data.wedding, "wedding")).attr("data-val", res.data.wedding);
+    }
     //selectedIndex3 = [res.data.wedding-1]
     //政治面貌
-    $(".js_politics").val(formatData(res.data.politics,"political")).attr("data-val",res.data.politics);
+    if(res.data.politics) {
+      $(".js_politics").val(formatData(res.data.politics,"political")).attr("data-val",res.data.politics);
+    }
     //selectedIndex4 = [res.data.politics-1]
     //身高
-    $(".js_height").val(res.data.height);
+    if(res.data.height){
+      $(".js_height").val(res.data.height);
+    }
     //体重
-    $(".js_weight").val(res.data.weight);
+    if(res.data.weight){
+      $(".js_weight").val(res.data.weight);
+    }
     //左眼视力
-    $(".js_left").val(formatData(res.data.vision_left,"vision")).attr("data-val",res.data.vision_left);
+    if(res.data.vision_left) {
+      $(".js_left").val(formatData(res.data.vision_left,"vision")).attr("data-val",res.data.vision_left);
+    }
     //selectedIndex5 = [res.data.vision_left-1]
     //右眼视力
-    $(".js_right").val(formatData(res.data.vision_right,"vision")).attr("data-val",res.data.vision_right);
+    if(res.data.vision_right) {
+      $(".js_right").val(formatData(res.data.vision_right,"vision")).attr("data-val",res.data.vision_right);
+    }
     //selectedIndex6 = [res.data.vision_right-1]
     //普通话
-    $(".js_ch").val(formatData(res.data.mandarin,"mandarin")).attr("data-val",res.data.mandarin);
+    if(res.data.mandarin) {
+      $(".js_ch").val(formatData(res.data.mandarin,"mandarin")).attr("data-val",res.data.mandarin);
+    }
     //selectedIndex7 = [(res.data.mandarin - 1 + "").slice(-1)]
     //英语
-    $(".js_en").val(formatData(res.data.english,"english")).attr("data-val",res.data.english);
+    if(res.data.english) {
+      $(".js_en").val(formatData(res.data.english,"english")).attr("data-val",res.data.english);
+    }
     //selectedIndex11 = [(res.data.english - 1 + "").slice(-1)]
     //小语种
-    $(".js_lang").val(res.data.language);
+    if(res.data.language) {
+      $(".js_lang").val(res.data.language);
+    }
     //最高学历
-    $(".js_education").val(formatData(res.data.education,"education")).attr("data-val",res.data.education);
+    if(res.data.education) {
+      $(".js_education").val(formatData(res.data.education,"education")).attr("data-val",res.data.education);
+    }
     //selectedIndex8 = [res.data.education-1]
     //工作经验
-    $(".js_exp").val(formatData(res.data.experience,"offerExperience")).attr("data-val",res.data.experience);
+    if(res.data.experience) {
+      $(".js_exp").val(formatData(res.data.experience,"offerExperience")).attr("data-val",res.data.experience);
+    }
     //selectedIndex9 = [res.data.experience-1]
     //任职状态
-    $(".js_offer_state").val(formatData(res.data.employ,"offerState")).attr("data-val",res.data.employ);
+    if(res.data.employ) {
+      $(".js_offer_state").val(formatData(res.data.employ,"offerState")).attr("data-val",res.data.employ);
+    }
     //selectedIndex10 = [res.data.employ-1]
     //电话
-    $(".js_tel").val(res.data.tel);
+    if(res.data.tel) {
+      $(".js_tel").val(res.data.tel);
+    }
   }
   initPicker();
   console.log(res)
@@ -336,7 +366,7 @@ $(".js_two").click(function(){
   //电话
   var tel = $(".js_tel").val();
   if(!ethnicity){
-    console.log("民族")
+    console.log("民族",ethnicity)
     return;
   }else if(!birthplace){
     console.log("籍贯")
@@ -365,7 +395,7 @@ $(".js_two").click(function(){
   }else if(!english){
     console.log("英语")
     return;
-  }else if(!language){
+  }else if(language.length > 20){
     console.log("小语种")
     return;
   }else if(!education){

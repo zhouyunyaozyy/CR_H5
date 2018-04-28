@@ -36,6 +36,7 @@ function initResume(res){
     }
     if(search.type != 2){
       $(".profile_cont textarea").val(res.data.profile);
+      $(".profile_cont .text_size").text(res.data.profile.length + "/200");
     }else{
       $(".disc_title").remove();
       $(".profile_cont").remove();
@@ -88,7 +89,7 @@ function certText(item){
   }
   html += '<span class="three_edit"><i class="iconfont icon-bianji"></i><input class="btn_file change_img_btn" accept="image/png, image/jpeg" type="file"/></span>' +
   '<span class="three_delete"><i class="iconfont icon-shanchu"></i></span></div>' +
-  '<div class="cert_item_name"><span>证书名称</span><input type="text" value="' +
+  '<div class="cert_item_name"><span>证书名称</span><input type="text" maxlength="20" value="' +
   item.name +
   '" placeholder="请输入20字以内证书名字"/></div>' +
   '<div class="delete_btn">删除此条</div></div>'

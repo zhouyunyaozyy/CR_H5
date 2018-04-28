@@ -1,5 +1,32 @@
 var win = this;
 getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
+getCallBack({},"/dabai-chaorenjob/banner/indexBanner",initBanner)
+function initBanner(res){
+  console.log(res)
+  if(res.code == 1){
+    if(res.data.length > 0){
+      var img_html = "";
+      for(var i = 0; i<res.data.length;i++){
+        img_html+= '<img src="' +
+        res.data[i].imagesUrl+
+        '" alt="" class="swiper-slide"/>'
+      }
+      $(".swiper-wrapper").html(img_html)
+      var swiper = new Swiper('.swiper-container', {
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
+      });
+    }
+  }
+}
 init();
 function initFuc(res){
   if(res.code == 10002){

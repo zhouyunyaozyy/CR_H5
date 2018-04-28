@@ -3,7 +3,7 @@ var isFavorites;
 getCallBack({jid:search.jid},"/dabai-chaorenjob/job/getJobEntityAndVoteAndFavoritesInfo",init)
 function init(res){
   if(res.code == 1){
-    $(".job_name").text(res.data.name_full)
+    $(".job_name").text(res.data.name)
     $(".job_logo img").attr("src",res.data.logoUrl)
     $(".js_area").text(address(res.data.address+"",2))
     $(".js_wages").text(formatData(res.data.wages,"wages"))

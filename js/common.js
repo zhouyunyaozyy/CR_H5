@@ -73,8 +73,8 @@ function token (){
   return resultData;
 }
 //接口公共url
-//var locationIp =  'http://192.168.1.115:5020';
-var locationIp =  'http://api-test.chaorenjob.com';
+var locationIp =  'http://192.168.1.115:5020';
+//var locationIp =  'http://api-test.chaorenjob.com';
 //ajax
 function getCallBack(data,url,success,isData){
   var resultData = token();
@@ -310,16 +310,15 @@ function jiami ( msg) {
     data.newMoblie = msg.phone
     data.postVersion = aesData.validationUid + '.' + aesData.oldVerification + '.' + aesData.newValidationUid + '.' + msg.verification
   } else if (aesData.pageStatus === 'newPwd') {
-    data.oldPassWord = msg.oldPwd
-    data.newPassWord = msg.pwd
+    data.oldPassWord = msg.oldPassword
+    data.newPassWord = msg.newPassWord
   }
   var resultData = {}
   // aes加密
   resultData.content = (function () {
     var key = CryptoJS.enc.Utf8.parse(beforeKey)
     var iv = CryptoJS.enc.Utf8.parse('16-Bytes--String')
-    var encrypted = CryptoJS.AES.encrypt(JSON.stringify(data), key,
-      {
+    var encrypted = CryptoJS.AES.encrypt(JSON.stringify(data), key, {
         iv: iv,
         mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.Pkcs7
@@ -349,6 +348,9 @@ function jieMi (msg) { // 解密
 }
 function address (code,type){
   //console.log(code,type)
+  if(!code || !type){
+    return "";
+  }
   var code = code+""
   var province,city,area;
   for(var a = 0;a<areaList.length;a++){
@@ -385,6 +387,8 @@ function formatDate(time,type){
   switch (type){
     case 1:
       return date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate()
+    case 2:
+      return date.getFullYear() + "年" + (date.getMonth()+1) + "月" + date.getDate() + "日 " + date.getHours() + ":" + date.getMinutes()
   }
 }
 function formatData(code,type){

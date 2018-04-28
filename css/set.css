@@ -1,0 +1,90 @@
+body{
+  background-color: #f5f5f5;
+}
+/*set_item*/
+.set_item{
+  background-color: #fff;
+  height: 3.2rem;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  align-items: center;
+  padding: 0 .53rem;
+  font-size: .8rem;
+  justify-content: space-between;
+}
+.set_label i{
+  font-size: 1rem;
+  margin-right: .53rem;
+}
+.set_tiaozhuan .icon-tongguo{
+  color:#50af5b;
+  margin-right: .3rem;
+}
+.logout_btn{
+  margin: 7.73rem .53rem 0;
+  background-color: #fff;
+  color:#048adf;
+  text-align: center;
+  line-height: 2.66rem;
+  font-size: .9rem;
+  border-radius: .2rem;
+}
+/*pwd_item*/
+.pwd_cont{
+  margin: 1.6rem;
+}
+.pwd_item{
+  margin: .8rem 0;
+  background-color: #fff;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 .53rem;
+}
+.pwd_item span{
+  flex: 0 0 2.3rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#999;
+  font-size: .8rem;
+}
+.pwd_item input{
+  flex: 1;
+  width: 100%;
+  font-size: .8rem;
+  outline: none;
+  border: 0;
+}
+.pwd_submit{
+  display: block;
+  margin: 0 1.6rem;
+  background-color: #048adf;
+  color:#fff;
+  font-size: .9rem;
+  line-height: 2.4rem;
+  text-align: center;
+}
+/*phoneTest*/
+.phone_show{
+  margin: 2.13rem 0;
+  font-size: .9rem;
+}
+.code_item{
+  display: flex;
+}
+.code_item .pwd_item{
+  margin: 0;
+  border: 1px solid #999;
+  border-right: 0;
+}
+.code_btn{
+  flex: 0 0 4.8rem;
+  font-size: .8rem;
+  color:#048adf;
+  border:1px solid #048adf;
+  background-color: #fff;
+  line-height: 2.4rem;
+  text-align: center;
+}

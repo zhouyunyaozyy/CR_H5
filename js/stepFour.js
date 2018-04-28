@@ -76,7 +76,6 @@ $('.four_video_cont').on("change",".btn_file",function(){
   if (val == '.mp4' || val== '.MP4') {
     this.select();
     var obj = this.files[0];
-    console.log(321)
     //file = obj;
     //var fr = new FileReader();
     //fr.onload = function () {
@@ -88,6 +87,7 @@ $('.four_video_cont').on("change",".btn_file",function(){
   }
   formData.append('token', imgToken);
   formData.append('file', obj);
+  formData.append('persistentOps', "vframe/jpg/offset/7/w/480/h/360");
   $.ajax({
     type: "POST",
     url:"http://upload-z2.qiniu.com",
@@ -109,9 +109,38 @@ function showImg(res,key){
     $(".four_video_show").html(html)
     $(".three_edit .icon-bianji").after('<input type="file" accept="video/mp4" class="btn_file"/>')
     $(".four_video_btn").css("display","flex")
+    //var video, output;
+    //video = $(".four_video_show video")[0];
+    //video.addEventListener('loadeddata',captureImage(video));
+    //poster="' +
+    //res.data +
+    //'?vframe/jpg/offset/0' +
+    //'"
   }
   console.log(res)
 }
+setTimeout(captureImage,5000)
+function captureImage () {
+  var video = $(".four_video_show video")[0];
+  var output = $(".g_container")[0]
+  console.log(video)
+  var scale = 0.8;
+  var imga = document.createElement("img");
+  var canvas = document.createElement("canvas");
+  canvas.width = video.videoWidth * scale;
+  canvas.height = video.videoHeight * scale;
+  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  // 设置动态添加的元素的样式
+  //imga.className='all';
+  imga.setAttribute('crossOrigin', 'anonymous');
+   //alert(canvas.toDataURL("image/png"));
+  imga.src = canvas.toDataURL("image/png");
+  console.log(canvas.toDataURL("image/png"))
+  video.poster=imga.src;
+  output.appendChild(imga);
+  output.appendChild(canvas);
+};
 $(".js_delete").click(function(){
   var html = '<i class="iconfont icon-tianjia1"></i><input type="file" accept="video/mp4" class="btn_file"/>'
   $(".four_video_show").html(html)
@@ -122,8 +151,8 @@ $(".js_four").click(function(){
   console.log(znConfig)
   if(znConfig.video && !videoKey){
     return;
-  }else if(!videoKey){
-    window.location.href = "stepFive.html"
+  }else if(!znConfig.video){
+    postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
   }else{
     postCallBack({video:videoKey},"/dabai-chaorenjob/resume/updateVideoResume",videoUpdate)
   }

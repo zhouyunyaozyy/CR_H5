@@ -14,7 +14,7 @@ function initState(res){
       case 1:
         $(".fail_cont").remove();
         $(".state_name").remove();
-        $(".suc_cont .state_img img").attr("src","img/audit.png")
+        $(".suc_cont .state_img img").attr("src","img/audit2.png")
         $(".auth_item:first-child img").attr("src",res.data.front_url)
         $(".auth_item:last-child img").attr("src",res.data.back_url)
         $(".auth_name").text(res.data.name)

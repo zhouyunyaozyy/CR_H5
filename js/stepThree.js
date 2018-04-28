@@ -2,6 +2,7 @@ var search = url_analysis(window.location.search)
 getCallBack({},"/dabai-chaorenjob/common/qiniu/token",initToken)
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
 var target,znConfig;
+var imgNum = 0;
 var imgToken;
 var threeStep = 0;
 var imgType;
@@ -40,6 +41,7 @@ function initResume(res){
       $(".three_standard_img .three_img_list").html(headerHtml)
     }
     if(search.type != 1 && res.data.imagesUrl.length > 0){
+      imgNum = res.data.imagesUrl.length
       var imgArr = res.data.images.split(",")
       var imagesHtml = ""
       for(var i = 0;i < res.data.imagesUrl.length;i++){
@@ -133,7 +135,12 @@ function showImg(res,key){
     if(imgType == 1){
       $(".three_standard_img .three_img_list").html(html)
     }else if(imgType == 2){
+      imgNum = imgNum + 1;
       $(".three_photo_img .three_img_add").before(html)
+      console.log(imgNum)
+      if(imgNum == 6){
+        $(".three_photo_img .three_img_add").css('display',"none")
+      }
     }
   }
   console.log(res)
@@ -143,8 +150,10 @@ $(".three_standard_img .three_img_list").on("change",".js_z_photo",function(){
   update(this)
 })
 $(".js_img_photo").change(function(){
-  imgType = 2;
-  update(this)
+  if(imgNum < 6){
+    imgType = 2;
+    update(this)
+  }
 })
 $(".three_standard_img").on("change",".js_edit",function(){
   imgType = 1;
@@ -161,6 +170,10 @@ $(".three_standard_img").on("click",".js_delete",function(){
   $(".three_standard_img .three_img_list").html(html)
 })
 $(".three_photo_img").on("click",".js_delete",function(){
+  imgNum = imgNum - 1;
+  if(imgNum < 6){
+    $(".three_photo_img .three_img_add").css('display',"block")
+  }
   $(this).parent().remove();
 })
 $(".js_three").click(function(){
