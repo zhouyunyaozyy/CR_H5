@@ -1,7 +1,12 @@
 var popupType;
 $(".code_btn").click(function(){
+  var phone = $(".js_phone").val();
+  if(!/^1[34578][0-9]{9}$/.test(phone)){
+    $(".js_phone").parents(".ipt_item").next(".alert_cont").text("*请输入正确手机号").addClass("is_active");
+    return false;
+  }
   var resultData = {};
-  resultData.mobile = $(".js_phone").val() // RSAkey
+  resultData.mobile =  phone;
   getCallBack(resultData,'/dabai-chaorenjob/seeker/registerVerificationCode',getCode)
 })
 function getCode(res){

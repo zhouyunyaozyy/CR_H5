@@ -30,6 +30,10 @@ function initResume(res){
           showPopup("请修改原简历，不能新增简历")
           return;
       }
+    }else{
+      $(".back").attr("href","modifyResume.html")
+      $(".title").text("基本信息")
+      $(".js_two").text("确认")
     }
     if(search.type != 2){
       var education_item = JSON.parse(res.data.education_item) || [];

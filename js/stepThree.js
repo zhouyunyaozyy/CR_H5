@@ -36,6 +36,10 @@ function initResume(res) {
           showPopup("请修改原简历，不能新增简历")
           return;
       }
+    }else{
+      $(".back").attr("href","modifyResume.html")
+      $(".title").text("基本信息")
+      $(".js_two").text("确认")
     }
     target = res.data.target;
     getCallBack({}, '/dabai-chaorenjob/resumeTarget/getActiveResumeTarget', initFuc)
