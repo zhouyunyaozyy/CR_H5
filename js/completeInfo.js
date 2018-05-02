@@ -29,7 +29,7 @@ function getOpenId(res){
       var nativeData = {
         username: res.data
       }
-      openid = res.data;
+      openid = JSON.parse(res.data);
       aesData.pageStatus = 'login';
       jiami(nativeData)
       //console.log(nativeData,win.aesData)
@@ -133,7 +133,7 @@ $(".js_regist").click(function(){
     verificationCode: $(".js_code").val(),
     externalPlatform:"WECHAT"
   }
-  postCallBack(postData,"dabai-chaorenjob/externalRegister/registerByExternal",setPwd)
+  postCallBack(postData,"/dabai-chaorenjob/externalRegister/registerByExternal",setPwd)
 })
 function setPwd(res){
   console.log(res)
