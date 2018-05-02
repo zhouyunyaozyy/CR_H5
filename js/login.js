@@ -63,13 +63,7 @@ $(".js_login").click(function(){
 function login(res){
   if(res.code == 1){
     jieMi(res.data)
-    setTimeout(function(){
-      var postData = {
-        ticket:window.sessionStorage.getItem("ticket"),
-        ticketsSalt:window.sessionStorage.getItem("ticketsSalt")
-      }
-      postCallBack(postData,'/dabai-chaorenjob/seeker/getUserInfoByTickets',loginTest)
-    },0)
+    postCallBack({},'/dabai-chaorenjob/seeker/getUserInfoByTickets',loginTest)
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

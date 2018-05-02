@@ -72,6 +72,7 @@ function token (){
     var base64Data = base.encode(JSON.stringify(base64DataBefore))
     resultData = base64Data+'.'+hmacData
   }
+  console.log(resultData)
   return resultData;
 }
 //接口公共url
@@ -98,6 +99,7 @@ function getCallBack(data,url,success,isData){
 function postCallBack(data,url,success,isData){
   var resultData = token();
   var all_url = locationIp + url;
+  console.log(resultData)
   $.ajax({
     type:'post',
     contentType: "application/json;charset=UTF-8",
@@ -346,6 +348,7 @@ function jieMi (msg) { // 解密
     })
   window.sessionStorage.setItem('ticket', decrypted.toString(CryptoJS.enc.Utf8).split('.')[0])
   window.sessionStorage.setItem('ticketsSalt', decrypted.toString(CryptoJS.enc.Utf8).split('.')[1])
+  ticketsSalt = window.sessionStorage.getItem('ticketsSalt');
 }
 function address (code,type){
   //console.log(code,type)
