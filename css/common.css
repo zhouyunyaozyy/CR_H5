@@ -75,3 +75,69 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   text-align: center;
   margin-right: 3.2rem;
 }
+/*alert_cont*/
+.popup_cont{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+.popup_cover{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.3);
+}
+.popup_body{
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  width: 16rem;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  height: 10.66rem;
+  border-radius: .3rem;
+  color:#fff;
+  box-sizing: border-box;
+  padding: 1.1rem;
+}
+.popup_text{
+  font-size: .9rem;
+  height: 6.46rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-bottom: 1.4rem;
+}
+.popup_txt{
+  text-align: center;
+}
+.popup_btn{
+  display: flex;
+  justify-content: space-between;
+  font-size: .8rem;
+}
+.popup_err,.popup_suc{
+  flex: 0 0 6.4rem;
+  height: 2rem;
+  text-align: center;
+  box-sizing: border-box;
+  line-height: 2rem;
+  border: 1px solid #fff;
+  border-radius: .1rem;
+}
+.popup_hide{
+  flex: 1;
+  height: 2rem;
+  text-align: center;
+  box-sizing: border-box;
+  line-height: 2rem;
+  border: 1px solid #fff;
+  border-radius: .1rem;
+}

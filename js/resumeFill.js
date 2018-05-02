@@ -1,3 +1,4 @@
+var popupType;
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
 function initResume(res){
   if(res.code == 1){
@@ -24,6 +25,12 @@ function initResume(res){
         $(".resume_btn").attr("href","stepOne.html")
         break;
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }

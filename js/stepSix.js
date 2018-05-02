@@ -1,12 +1,18 @@
 var search = url_analysis(window.location.search)
 getCallBack({},"/dabai-chaorenjob/common/qiniu/token",initToken)
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
-var imgToken;
+var imgToken,popupType;
 var sucNum = 0;
 var imgNum = 1;
 function initToken(res){
   if(res.code == 1){
     imgToken = res.data;
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -15,22 +21,28 @@ function initResume(res){
     if(search.type != 1 && search.type != 2){
       switch (res.data.steps){
         case 100:
-          alert("请先填写第一步")
+          popupType = 3;
+          showPopup("请先填写第一步")
           return;
         case 200:
-          alert("请先填写第二步")
+          popupType = 4;
+          showPopup("请先填写第二步")
           return;
         case 300:
-          alert("请先填写第三步")
+          popupType = 5;
+          showPopup("请先填写第三步")
           return;
         case 400:
-          alert("请先填写第四步")
+          popupType = 6;
+          showPopup("请先填写第四步")
           return;
         case 500:
-          alert("请先填写第五步")
+          popupType = 7;
+          showPopup("请先填写第五步")
           return;
         case 700:
-          alert("请修改原简历，不能新增简历")
+          popupType = 8;
+          showPopup("请修改原简历，不能新增简历")
           return;
       }
     }
@@ -60,6 +72,12 @@ function initResume(res){
       $(".title").text("自我描述")
       $(".js_six").text("确认")
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -102,7 +120,8 @@ function update (ipt,cType){
     ipt.select();
     var obj = ipt.files[0];
   } else {
-    alert("请选择jpg或png格式图片")
+    popupType = 1;
+    showPopup("请选择jpg或png格式图片")
   }
   formData.append('token', imgToken);
   formData.append('file', obj);
@@ -132,6 +151,12 @@ function showImg(res,obj){
         "data-key":obj.key
       })
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -201,6 +226,12 @@ function updateInfo (res){
     }else{
       updateSuc();
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res.code)
 }
@@ -211,6 +242,12 @@ function updateZs (res){
     }else{
       updateSuc();
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res.code)
 }
@@ -223,11 +260,63 @@ function updateSuc(){
 function updateSteps(res){
   if(res.code == 1){
     postCallBack({},"/dabai-chaorenjob/resumeAuditSnapshot/submitAudit",submitAudit)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 function submitAudit(res){
   if(res.code == 1){
     window.location.href = "resumeDetail.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+    case 3:
+      window.location.href = "stepOne.html"
+      break;
+    case 4:
+      window.location.href = "stepTwo.html"
+      break;
+    case 5:
+      window.location.href = "stepThree.html"
+      break;
+    case 6:
+      window.location.href = "stepFour.html"
+      break;
+    case 7:
+      window.location.href = "stepFive.html"
+      break;
+    case 8:
+      window.location.href = "resumeDetail.html"
+      break;
+    default :
+      hidePopup()
+      return;
+  }
+})
+$(".js_back").click(function(){
+  showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
+})
+$(".popup_suc").click(function(){
+  window.location.href = "stepFive.html"
+})
+$(".popup_err").click(function(){
+  hidePopup()
+})

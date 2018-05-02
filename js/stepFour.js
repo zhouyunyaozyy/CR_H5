@@ -2,11 +2,17 @@ var search = url_analysis(window.location.search)
 getCallBack({},"/dabai-chaorenjob/common/qiniu/token",initToken)
 getCallBack({},"/dabai-chaorenjob/resume/getVideoProfile",videoInfo)
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
-var target,znConfig;
+var target,znConfig,popupType;
 var imgToken,videoKey;
 function initToken(res){
   if(res.code == 1){
     imgToken = res.data;
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -15,6 +21,12 @@ function videoInfo(res){
     var obj = JSON.parse(res.data)
     $(".four_video_item").text(obj.rule);
     //$(".yourself_cont").text(obj.howIntroduce);
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -23,15 +35,20 @@ function initResume(res){
     if(search.type != 1){
       switch (res.data.steps){
         case 100:
-          alert("请先填写第一步")
+          popupType = 3;
+          showPopup("请先填写第一步")
           return;
         case 200:
-          alert("请先填写第二步")
+          popupType = 4;
+          showPopup("请先填写第二步")
           return;
         case 300:
-          alert("请先填写第三步")
+          popupType = 5;
+          showPopup("请先填写第三步")
           return;
-          alert("请修改原简历，不能新增简历")
+        default :
+          popupType = 8;
+          showPopup("请修改原简历，不能新增简历")
           return;
       }
     }else{
@@ -50,6 +67,12 @@ function initResume(res){
       $(".three_edit .icon-bianji").after('<input type="file" accept="video/mp4" class="btn_file"/>')
       $(".four_video_btn").css("display","flex")
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -67,6 +90,12 @@ function initFuc(res){
         return;
       }
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
 }
 $('.four_video_cont').on("change",".btn_file",function(){
@@ -83,7 +112,8 @@ $('.four_video_cont').on("change",".btn_file",function(){
     //};
     //fr.readAsDataURL(obj);
   } else {
-    alert("请选择mp4格式视频文件")
+    popupType = 1
+    showPopup("请选择mp4格式视频文件")
   }
   formData.append('token', imgToken);
   formData.append('file', obj);
@@ -116,6 +146,12 @@ function showImg(res,key){
     //res.data +
     //'?vframe/jpg/offset/0' +
     //'"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -164,12 +200,58 @@ function videoUpdate(res){
     }else{
       postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepFive.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+    case 3:
+      window.location.href = "stepOne.html"
+      break;
+    case 4:
+      window.location.href = "stepTwo.html"
+      break;
+    case 5:
+      window.location.href = "stepThree.html"
+      break;
+    case 8:
+      window.location.href = "resumeDetail.html"
+      break;
+    default :
+      hidePopup()
+      return;
+  }
+})
+$(".js_back").click(function(){
+  showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
+})
+$(".popup_suc").click(function(){
+  window.location.href = "stepThree.html"
+})
+$(".popup_err").click(function(){
+  hidePopup()
+})

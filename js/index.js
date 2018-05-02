@@ -1,4 +1,4 @@
-var win = this;
+var popupType;
 getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
 getCallBack({},"/dabai-chaorenjob/banner/indexBanner",initBanner)
 function initBanner(res){
@@ -25,13 +25,17 @@ function initBanner(res){
         }
       });
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
 }
 init();
 function initFuc(res){
-  if(res.code == 10002){
-    window.location.href = "login.html"
-  }else if(res.code == 1){
+  if(res.code == 1){
     var html = '<i></i><div class="head_job_item" data-rtid="">全部</div>';
     for(var i = 0;i<res.data.length;i++){
       html += '<div class="head_job_item" data-rtid="' +
@@ -41,6 +45,12 @@ function initFuc(res){
       '</div>'
     }
     $(".head_job_cont").html(html)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -74,6 +84,12 @@ function initList(res){
       '</div></div></div>'
     }
     $(".job_list").html(html)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -87,4 +103,27 @@ $(".head_job_cont").on("click",".head_job_item",function(){
   $(".head_job_name span").text($(this).text()).attr("data-rtid",$(this).attr("data-rtid"))
   $(".head_job_cont").removeClass("is_show")
   init();
+})
+$(".head_my").click(function(){
+  if(!ticketsSalt || !ticket){
+    showPopup("请先登录！",1)
+  }else{
+    window.location.href = "my.html"
+  }
+})
+$(".popup_err").click(function(){
+  hidePopup()
+})
+$(".popup_suc").click(function(){
+  window.location.href = "login.html"
+})
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
 })

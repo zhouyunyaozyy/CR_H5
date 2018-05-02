@@ -1,8 +1,8 @@
 var popupType;
 $(".code_btn").click(function(){
   var resultData = {};
-  resultData.mobile = $(".js_phone").val() // RSAkey
-  getCallBack(resultData,'/dabai-chaorenjob/seeker/registerVerificationCode',getCode)
+  resultData.mobile = $(".js_phone").val()
+  getCallBack(resultData,'/dabai-chaorenjob/seeker/getForgetPasswordVerificationId',getCode)
 })
 function getCode(res){
   if(res.code == 1){
@@ -76,7 +76,7 @@ $(".js_code").keyup(function(){
     $(".submit_btn").removeClass("is_active")
   }
 })
-$(".js_regist").click(function(){
+$(".js_forget").click(function(){
   if(!blurTest()){
     return;
   }
@@ -86,16 +86,16 @@ $(".js_regist").click(function(){
     verificationId: aesData.validationUid,
     verificationCode: $(".js_code").val()
   }
-  aesData.pageStatus = 'reg';
+  aesData.pageStatus = 'forget';
   jiami(nativeData)
   console.log(aesData)
   var postData = aesData.jiamiData;
-  postCallBack(postData,'/dabai-chaorenjob/seeker/register',regist)
+  postCallBack(postData,'/dabai-chaorenjob/seeker/forgetPassword',forget)
 })
-function regist(res){
+function forget(res){
   if(res.code == 1){
     popupType = 2;
-    showPopup("注册成功，前往登录！")
+    showPopup("修改成功，前往登录！")
   }else{
     popupType = 1;
     showPopup(res.msg)

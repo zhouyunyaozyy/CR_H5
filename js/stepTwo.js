@@ -1,16 +1,18 @@
 var search = url_analysis(window.location.search);
+var popupType;
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
 //var selectedIndex1,selectedIndex2,selectedIndex3,selectedIndex4,selectedIndex5,selectedIndex6,selectedIndex7,selectedIndex8,selectedIndex9,selectedIndex10,selectedIndex11;
 function initResume(res){
   if(res.code == 1){
-    console.log(search.type)
     if(search.type != 1){
       switch (res.data.steps){
         case 100:
-          alert("请先填写第一步")
+          popupType = 3;
+          showPopup("请先填写第一步")
           return;
         case 700:
-          alert("请修改原简历，不能新增简历")
+          popupType = 8;
+          showPopup("请修改原简历，不能新增简历")
           return;
       }
     }else{
@@ -107,8 +109,14 @@ function initResume(res){
     if(res.data.tel) {
       $(".js_tel").val(res.data.tel);
     }
+    initPicker();
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
-  initPicker();
   console.log(res)
 }
 var updateNum = 0;
@@ -366,49 +374,64 @@ $(".js_two").click(function(){
   //电话
   var tel = $(".js_tel").val();
   if(!ethnicity){
-    console.log("民族",ethnicity)
+    popupType = 1;
+    showPopup("请选择民族")
     return;
   }else if(!birthplace){
-    console.log("籍贯")
+    popupType = 1;
+    showPopup("请选择籍贯")
     return;
   }else if(!wedding){
-    console.log("婚姻")
+    popupType = 1;
+    showPopup("请选择婚姻状况")
     return;
   }else if(!politics){
-    console.log("政治")
+    popupType = 1;
+    showPopup("请选择政治面貌")
     return;
   }else if(!/^[12][0-9]{2}$/.test(height)){
-    console.log("身高")
+    popupType = 1;
+    showPopup("请填写身高")
     return;
   }else if(!/^[0-9]{2,3}$/.test(weight)){
-    console.log("体重")
+    popupType = 1;
+    showPopup("请填写体重")
     return;
   }else if(!vision_left){
-    console.log("左眼")
+    popupType = 1;
+    showPopup("请选择左眼视力")
     return;
   }else if(!vision_right){
-    console.log("右眼")
+    popupType = 1;
+    showPopup("请选择右眼视力")
     return;
   }else if(!mandarin){
-    console.log("普通话")
+    popupType = 1;
+    showPopup("请选择普通话等级")
     return;
   }else if(!english){
-    console.log("英语")
+    popupType = 1;
+    showPopup("请选择英语等级")
     return;
   }else if(language.length > 20){
-    console.log("小语种")
+    popupType = 1;
+    showPopup("熟悉小语种内容不能超过20字")
     return;
   }else if(!education){
-    console.log("学历")
+    popupType = 1;
+    showPopup("请选择学历")
     return;
   }else if(!experience){
-    console.log("经历")
+    popupType = 1;
+    showPopup("请选择工作经历")
     return;
   }else if(!employ){
-    console.log("任职")
+    popupType = 1;
+    showPopup("请选择任职状态")
     return;
   }else if(!/^1[34578][0-9]{9}$/.test(tel)){
-    console.log("电话")
+    popupType = 1;
+    showPopup("请填写手机号")
     return;
   }
   var nativePost = {
@@ -440,18 +463,36 @@ $(".js_two").click(function(){
 function nativeInit(res){
   if(res.code == 1){
     updateSuc();
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 function linkInit(res){
   if(res.code == 1){
     updateSuc();
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 function baseInit(res){
   if(res.code == 1){
     updateSuc();
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -468,6 +509,40 @@ function updateSuc(){
 function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepThree.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+    case 3:
+      window.location.href = "stepOne.html"
+      break;
+    case 8:
+      window.location.href = "resumeDetail.html"
+      break;
+    default :
+      hidePopup()
+      return;
+  }
+})
+$(".js_back").click(function(){
+  showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
+})
+$(".popup_suc").click(function(){
+  window.location.href = "stepOne.html"
+})
+$(".popup_err").click(function(){
+  hidePopup()
+})

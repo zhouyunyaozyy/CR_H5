@@ -1,8 +1,14 @@
 getCallBack({},"/dabai-chaorenjob/seeker/getUserSeekerInfo",initMy)
-var verificationId;
+var verificationId,popupType;
 function initMy(res){
   if(res.code == 1){
     $(".phone_show span").text(res.data.mobile)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -16,6 +22,14 @@ $(".code_btn").click(function(){
 function getCode (res){
   if(res.code == 1){
     verificationId = res.data;
+    popupType = 1;
+    showPopup("验证码已发送，请注意查收")
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -24,14 +38,16 @@ $(".js_submit").click(function(){
   var code = $(".js_code").val();
   var phone = $('.js_phone').val();
   if(!changeMobileTickets){
-    alert("请先验证原手机号")
+    popupType = 1;
+    showPopup("请先验证原手机号")
     return;
   }else if(!/^1[34578][0-9]{9}$/.test(phone)){
     return;
   }else if(!/^[0-9]{4}$/.test(code)){
     return;
   }else if(!verificationId){
-    alert("请重新获取验证码")
+    popupType = 1;
+    showPopup("请重新获取验证码")
     return;
   }
   var dataPost = {
@@ -45,6 +61,22 @@ $(".js_submit").click(function(){
 function modifyPhone(res){
   if(res.code == 1){
     window.location.href = "set.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
+})

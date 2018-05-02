@@ -1,4 +1,5 @@
 var search = url_analysis(window.location.search)
+var popupType;
 init();
 function init(){
   var dataPost = {}
@@ -42,9 +43,25 @@ function jobList(res){
       '</div></div></div>'
     }
     $(".job_list").html(html)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 $(".job_list").on("click",".job_item",function(){
   window.location.href = "deliveryDetail.html?rrid=" + $(this).attr("data-rrid")
+})
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
 })

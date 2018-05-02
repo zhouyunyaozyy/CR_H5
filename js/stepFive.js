@@ -1,5 +1,6 @@
 var search = url_analysis(window.location.search)
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
+var popupType;
 var education_num = 1;
 var exp_num = 1;
 var stepName = 0;
@@ -9,19 +10,24 @@ function initResume(res){
     if(search.type != 1 && search.type != 2){
       switch (res.data.steps){
         case 100:
-          alert("请先填写第一步")
+          popupType = 3;
+          showPopup("请先填写第一步")
           return;
         case 200:
-          alert("请先填写第二步")
+          popupType = 4;
+          showPopup("请先填写第二步")
           return;
         case 300:
-          alert("请先填写第三步")
+          popupType = 5;
+          showPopup("请先填写第三步")
           return;
         case 400:
-          alert("请先填写第四步")
+          popupType = 6;
+          showPopup("请先填写第死步")
           return;
-        case 700:
-          alert("请修改原简历，不能新增简历")
+        default :
+          popupType = 8;
+          showPopup("请修改原简历，不能新增简历")
           return;
       }
     }
@@ -99,6 +105,12 @@ function initResume(res){
       $(".title").text("教育经历")
       $(".js_five").text("确认")
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
 }
 var pickerNum;
@@ -401,6 +413,12 @@ function eduInit(res){
     }else{
       updateSuc();
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -411,6 +429,12 @@ function expInit(res){
     }else{
       updateSuc();
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -423,6 +447,49 @@ function updateSuc(){
 function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepSix.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+    case 3:
+      window.location.href = "stepOne.html"
+      break;
+    case 4:
+      window.location.href = "stepTwo.html"
+      break;
+    case 5:
+      window.location.href = "stepThree.html"
+      break;
+    case 6:
+      window.location.href = "stepFour.html"
+      break;
+    case 8:
+      window.location.href = "resumeDetail.html"
+      break;
+    default :
+      hidePopup()
+      return;
+  }
+})
+$(".js_back").click(function(){
+  showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
+})
+$(".popup_suc").click(function(){
+  window.location.href = "stepFour.html"
+})
+$(".popup_err").click(function(){
+  hidePopup()
+})

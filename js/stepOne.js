@@ -1,12 +1,13 @@
 var search = url_analysis(window.location.search)
-var target;
+var target,popupType;
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
 function initResume(res){
   if(res.code == 1){
     if(search.type != 1){
       switch (res.data.steps){
         case 700:
-          alert("请修改原简历，不能新增简历")
+          popupType = 8;
+          showPopup("请修改原简历，不能新增简历")
           return;
       }
     }else{
@@ -16,13 +17,17 @@ function initResume(res){
     }
     target = res.data.target
     getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc,res.data.target)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else {
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 function initFuc(res,target){
-  if(res.code == 10002){
-    window.location.href = "login.html"
-  }else if(res.code == 1){
+  if(res.code == 1){
     var html = '';
     for(var i = 0;i<res.data.length;i++){
       if(res.data[i].rtid == target){
@@ -37,6 +42,12 @@ function initFuc(res,target){
       '</span><span class="one_radio"><i class="iconfont icon-gou"></i></span></div>'
     }
     $(".one_job_cont").html(html)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else {
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -58,12 +69,49 @@ function updateTarget(res){
     }else{
       postCallBack({steps:200},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepTwo.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+    case 8:
+      window.location.href = "resumeDetail.html"
+      break;
+    default :
+      hidePopup()
+      return;
+  }
+})
+$(".js_back").click(function(){
+  showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
+})
+$(".popup_suc").click(function(){
+  window.location.href = "my.html"
+})
+$(".popup_err").click(function(){
+  hidePopup()
+})

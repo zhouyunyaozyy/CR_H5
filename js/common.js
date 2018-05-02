@@ -49,10 +49,12 @@ function isWeiXin(){
     return false;
   }
 }
+var ticket = window.sessionStorage.getItem("ticket");
+var ticketsSalt = window.sessionStorage.getItem("ticketsSalt");
 //加密token
 function token (){
   var resultData = 0
-  if(window.sessionStorage.getItem('ticketsSalt')){
+  if(ticketsSalt){
     var postTime = ''+(Date.parse(new Date()))// 时间戳
     var postVersion = rndRandom(20) // uuid随机数
     var base64DataBefore = {
@@ -63,9 +65,9 @@ function token (){
       platform: window.sessionStorage.getItem('platform')
     }
     // sessionSalt="sessionSalt"&postVersion="UUid 随机数"&postTime="时间戳"&platform="平台名称"&clientUid="机器唯一编码"
-    var hmacDataBefore = 'ticketsSalt=' + window.sessionStorage.getItem('ticketsSalt')+'&postVersion='+postVersion+'&postTime='+postTime+'&platform='+window.sessionStorage.getItem('platform')+'&clientUid='+window.sessionStorage.getItem('clientUid')
+    var hmacDataBefore = 'ticketsSalt=' + ticketsSalt+'&postVersion='+postVersion+'&postTime='+postTime+'&platform='+window.sessionStorage.getItem('platform')+'&clientUid='+window.sessionStorage.getItem('clientUid')
     console.log('hmacDataBefore', hmacDataBefore)
-    var hmacData = CryptoJS.HmacSHA1(hmacDataBefore, window.sessionStorage.getItem('ticketsSalt'))
+    var hmacData = CryptoJS.HmacSHA1(hmacDataBefore, ticketsSalt)
     var base = new Base64();
     var base64Data = base.encode(JSON.stringify(base64DataBefore))
     resultData = base64Data+'.'+hmacData
@@ -342,7 +344,6 @@ function jieMi (msg) { // 解密
       mode: CryptoJS.mode.CBC,
       padding: CryptoJS.pad.Pkcs7
     })
-  console.log(decrypted)
   window.sessionStorage.setItem('ticket', decrypted.toString(CryptoJS.enc.Utf8).split('.')[0])
   window.sessionStorage.setItem('ticketsSalt', decrypted.toString(CryptoJS.enc.Utf8).split('.')[1])
 }
@@ -404,4 +405,23 @@ function formatData(code,type){
       return dataList[i].name;
     }
   }
+}
+//打开弹窗
+function showPopup(msg,type){
+  $(".popup_txt").text(msg);
+  if(type == 1){
+    $(".popup_hide").css("display","none")
+    $(".popup_err").css("display","block")
+    $(".popup_suc").css("display","block")
+  }else{
+    $(".popup_hide").css("display","block")
+    $(".popup_err").css("display","none")
+    $(".popup_suc").css("display","none")
+  }
+  $(".popup_cont").css("display","block")
+}
+//关闭弹窗
+function hidePopup(){
+  $(".popup_txt").text("");
+  $(".popup_cont").css("display","none")
 }

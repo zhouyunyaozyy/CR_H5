@@ -1,4 +1,5 @@
 var search =  url_analysis(window.location.search);
+var popupType;
 $(".back").attr("href","jobDetail.html?jid="+window.sessionStorage.getItem("jid"))
 getCallBack({cid:search.cid},"/dabai-chaorenjob/company/getCompanyInfoAndJobs",init)
 function init(res){
@@ -55,9 +56,25 @@ function init(res){
       '</div></div></div>'
     }
     $(".job_list").html(html)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 $(".job_list").on("click",".job_item",function(){
   window.location.href = "jobDetail.html?jid="+$(this).attr("data-jid")
+})
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
 })

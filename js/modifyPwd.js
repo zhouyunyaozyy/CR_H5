@@ -1,3 +1,4 @@
+var popupType;
 $(".pwd_cont").on("paste","input",function(){
   $(this).blur();
 })
@@ -23,6 +24,22 @@ $(".js_submit").click(function(){
 function pwdResult(res){
   if(res.code == 1){
     window.location.href = "set.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
+})

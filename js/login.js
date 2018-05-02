@@ -1,4 +1,4 @@
-var win = this;
+var popupType;
 function test(el,type){
   var val = $(el).val();
   var reg1 = /^1[34578][0-9]{9}$/;
@@ -52,10 +52,10 @@ $(".js_login").click(function(){
     username: $(".js_phone").val(),
     password: $(".js_pwd").val()
   }
-  win.aesData.pageStatus = 'login';
+  aesData.pageStatus = 'login';
   jiami(nativeData)
   //console.log(nativeData,win.aesData)
-  var postData = win.aesData.jiamiData;
+  var postData = aesData.jiamiData;
   postCallBack(postData,'/dabai-authority/authority/login',login)
 })
 function login(res){
@@ -68,16 +68,38 @@ function login(res){
       }
       postCallBack(postData,'/dabai-chaorenjob/seeker/getUserInfoByTickets',loginTest)
     },0)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 function loginTest(res){
   if(res.code == 1){
     window.location.href = "index.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
-
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
+})
 $(".weixin").click(function(){
-  window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3eb0c5e993c8e592&redirect_uri=http://c-test.chaorenjob.com/completeInfo.html&response_type=code&scope=snsapi_userinfo&connect_redirect=1#wechat_redirect"
+  window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx21adcd1f047e3a45&redirect_uri=http://c-test.chaorenjob.com/completeInfo.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+  //window.location.href = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx21adcd1f047e3a45&secret=b0c5b6e084dc71147365dc87f3b4e11e&code=CODE&grant_type=authorization_code"
 })

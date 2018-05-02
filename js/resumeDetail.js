@@ -1,6 +1,6 @@
 getCallBack({},"/dabai-chaorenjob/resumeAuditSnapshot/getMyResumeAudit",resumeState)
 getCallBack({},"/dabai-chaorenjob/resumeAuditSnapshot/getMyResumeAuditSnapshot",resumeInit)
-var target;
+var target,popupType;
 function resumeState(res){
   if(res.code == 1){
     switch (res.data.status){
@@ -27,6 +27,12 @@ function resumeState(res){
         $(".header .title").after('<a href="modifyResume.html" class="edit"><i class="iconfont icon-xiugaiziliao"></i></a>')
         break;
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -110,6 +116,12 @@ function resumeInit(res){
       }
       $(".cert_list").html(certHtml)
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -121,5 +133,21 @@ function initFuc(res){
         return;
       }
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
+})

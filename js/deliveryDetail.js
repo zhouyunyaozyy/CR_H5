@@ -1,4 +1,5 @@
 var search = url_analysis(window.location.search);
+var popupType;
 getCallBack({rrid:search.rrid},"/dabai-chaorenjob/resumeReceived/getVoteDetail",init)
 function init(res){
   if(res.code == 1){
@@ -38,6 +39,22 @@ function init(res){
       }
       $(".history_title").after(html)
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
+})

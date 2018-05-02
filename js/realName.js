@@ -1,16 +1,24 @@
 var search = url_analysis(window.location.search)
+var popupType;
 getCallBack({},"/dabai-chaorenjob/certification/getCertificationOfMine",initState)
 getCallBack({},"/dabai-chaorenjob/common/qiniu/token",initToken)
 var imgToken;
 function initToken(res){
   if(res.code == 1){
     imgToken = res.data;
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
 function initState(res){
+  console.log(res)
   if(res.code == 1){
-    if(res.data.status){
+    if(res.data){
       switch (res.data.status){
         case 1:
           $(".fail_cont").remove();
@@ -51,8 +59,13 @@ function initState(res){
       $(".suc_cont").remove();
       $(".fail_cont_top").remove();
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
-  console.log(res)
 }
 function update (ipt){
   var formData = new FormData();
@@ -77,10 +90,18 @@ function update (ipt){
   })
 }
 function changeImg(res,obj){
-  $(obj.ipt).siblings("img").attr({
-    "src":res.data,
-    "data-key":obj.key
-  })
+  if(res.code == 1){
+    $(obj.ipt).siblings("img").attr({
+      "src":res.data,
+      "data-key":obj.key
+    })
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
+  }
 }
 $(".cart_cont").on("change",".photo_file",function(){
   update(this)
@@ -91,22 +112,28 @@ $(".submit_btn").click(function(){
   var card_front_url = $(".js_front_photo").attr("data-key");
   var card_back_url = $(".js_back_photo").attr("data-key");
   if(!idno){
-    alert("身份证号不能为空")
+    popupType = 1;
+    showPopup("身份证号不能为空")
     return;
   }else if(!/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(idno)){
-    alert("请输入正确身份证号")
+    popupType = 1;
+    showPopup("请输入正确身份证号")
     return;
   }else if(!name){
-    alert("真实姓名不能为空")
+    popupType = 1;
+    showPopup("真实姓名不能为空")
     return;
   }else if(!/^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]){2,5}$/.test(name)){
-    alert("真实姓名只能是2-5位中文")
+    popupType = 1;
+    showPopup("真实姓名只能是2-5位中文")
     return;
   }else if(!card_front_url){
-    alert("请选择身份证正面照")
+    popupType = 1;
+    showPopup("请选择身份证正面照")
     return;
   }else if(!card_back_url){
-    alert("请选择身份证反面照")
+    popupType = 1;
+    showPopup("请选择身份证反面照")
     return;
   }
   var postData = {
@@ -121,6 +148,22 @@ $(".submit_btn").click(function(){
 function insertAudit(res){
   if(res.code == 1){
     window.location.reload()
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
+})

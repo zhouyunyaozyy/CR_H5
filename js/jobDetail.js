@@ -1,5 +1,5 @@
 var search =  url_analysis(window.location.search);
-var isFavorites;
+var isFavorites,popupType;
 getCallBack({jid:search.jid},"/dabai-chaorenjob/job/getJobEntityAndVoteAndFavoritesInfo",init)
 function init(res){
   if(res.code == 1){
@@ -23,6 +23,12 @@ function init(res){
     }else{
       $(".job_btn").removeClass("is_active").text("投递简历")
     }
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
@@ -32,6 +38,10 @@ $(".see_info").click(function(){
 })
 $('.js_collect').click(function(){
   var url;
+  if(!ticketsSalt || !ticket){
+    showPopup("请先登录！",1)
+    return;
+  }
   if(isFavorites){
     url = '/dabai-chaorenjob/favorites/cancelFavorites'
   }else{
@@ -43,14 +53,47 @@ function collect(res){
   console.log(res)
   if(res.code == 1){
     getCallBack({jid:search.jid},"/dabai-chaorenjob/job/getJobEntityAndVoteAndFavoritesInfo",init)
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
 }
 $(".js_job").click(function(){
+  if(!ticketsSalt || !ticket){
+    showPopup("请先登录！",1)
+    return;
+  }
   postCallBack({jid:search.jid},"/dabai-chaorenjob/resumeReceived/voteResume",job)
 })
 function job(res){
   if(res.code == 1){
+    showPopup("投递成功!")
     $(".job_btn").addClass("is_active").removeClass("js_job").text("已投递")
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
   }
   console.log(res)
 }
+$(".popup_err").click(function(){
+  hidePopup()
+})
+$(".popup_suc").click(function(){
+  window.location.href = "login.html"
+})
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
+})

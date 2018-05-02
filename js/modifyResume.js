@@ -1,5 +1,5 @@
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",resumeInit)
-var target,znConfig;
+var target,znConfig,popupType;
 function resumeInit(res){
   if(res.code == 1){
     $(".title b").text("("+ res.data.percent +"%)")
@@ -85,3 +85,27 @@ function initFuc(res,data){
   }
   console.log(res)
 }
+$(".js_submit").click(function(){
+  postCallBack({},"/dabai-chaorenjob/resumeAuditSnapshot/submitAudit",submitAudit)
+})
+function submitAudit(res){
+  if(res.code == 1){
+    window.location.href = "resumeDetail.html"
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
+  }
+}
+$(".popup_hide").click(function(){
+  switch (popupType){
+    case 1:
+      hidePopup()
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
+})

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>超人招聘--注册</title>
+  <title>超人招聘--忘记密码</title>
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_41v4vjhx37qtzkt9.css"/>
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/login.css"/>
@@ -25,23 +25,36 @@
     <div class="ipt_cont">
       <div class="ipt_item">
         <i class="iconfont icon-gerenzhongxin"></i>
-        <input type="text" placeholder="请输入用户名"/>
+        <input type="text" class="js_phone" placeholder="请输入用户名"/>
       </div>
+      <div class="alert_cont"></div>
       <div class="ipt_item code">
         <i class="iconfont icon-securityCode-b"></i>
-        <input type="text" placeholder="请输入验证码"/>
+        <input type="text" class="js_code" placeholder="请输入验证码"/>
         <span class="code_btn">获取验证码</span>
       </div>
+      <div class="alert_cont"></div>
       <div class="ipt_item">
         <i class="iconfont icon-iconmima"></i>
-        <input type="password" placeholder="请输入密码"/>
+        <input type="password" class="js_pwd" placeholder="请输入密码"/>
       </div>
-      <div class="ipt_item">
-        <i class="iconfont icon-iconmima"></i>
-        <input type="password" placeholder="请再次输入密码"/>
+      <div class="alert_cont"></div>
+    </div>
+    <div class="submit_btn js_forget">完成</div>
+  </div>
+  <div class="popup_cont">
+    <div class="popup_cover"></div>
+    <div class="popup_body">
+      <div class="popup_text">
+        <div class="popup_txt"></div>
+      </div>
+      <div class="popup_btn">
+        <span class="popup_err">取消</span>
+        <span class="popup_suc">确认</span>
+        <span class="popup_hide">确认</span>
       </div>
     </div>
-    <div class="submit_btn regist_btn">完成</div>
   </div>
+  <script src="js/forgetPwd.js"></script>
 </body>
 </html>
