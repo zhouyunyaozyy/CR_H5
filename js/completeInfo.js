@@ -161,7 +161,7 @@ $(".code_btn").click(function(){
   }
   var resultData = {};
   resultData.mobile =  phone;
-  getCallBack(resultData,'/dabai-chaorenjob/externalRegister/getExternalRegisterVerificationId',getCode)
+  postCallBack(resultData,'/dabai-chaorenjob/externalRegister/getExternalRegisterVerificationId',getCode)
 })
 function getCode(res){
   if(res.code == 1){

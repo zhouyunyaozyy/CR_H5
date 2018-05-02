@@ -1,5 +1,6 @@
 window.sessionStorage.removeItem("ticket");
 window.sessionStorage.removeItem("ticketsSalt");
+window.sessionStorage.removeItem("openid");
 var popupType;
 function test(el,type){
   var val = $(el).val();
