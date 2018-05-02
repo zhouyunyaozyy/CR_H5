@@ -1,3 +1,5 @@
+window.sessionStorage.removeItem("ticket");
+window.sessionStorage.removeItem("ticketsSalt");
 var popupType;
 function test(el,type){
   var val = $(el).val();
