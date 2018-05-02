@@ -1,4 +1,4 @@
-var openid = JSON.parse(window.sessionStorage.getItem("openid"))
+var openid = JSON.parse(window.sessionStorage.getItem("openid")) || "";
 var popupType;
 $(function(){
   var url_obj =url_analysis(window.location.search)
@@ -12,7 +12,7 @@ $(function(){
       return;
     }else{
       var nativeData = {
-        username: openid
+        username: openid.openid
       }
       aesData.pageStatus = 'login';
       jiami(nativeData)
@@ -29,6 +29,7 @@ function getOpenId(res){
       var nativeData = {
         username: res.data
       }
+      openid = res.data;
       aesData.pageStatus = 'login';
       jiami(nativeData)
       //console.log(nativeData,win.aesData)
@@ -135,12 +136,13 @@ $(".js_regist").click(function(){
   postCallBack(postData,"dabai-chaorenjob/externalRegister/registerByExternal",setPwd)
 })
 function setPwd(res){
+  console.log(res)
   if(res.code == 1){
     if(res.data){
       window.location.href = "WXpwd.html"
     }else{
       var nativeData = {
-        username: openid
+        username: openid.openid
       }
       aesData.pageStatus = 'login';
       jiami(nativeData)

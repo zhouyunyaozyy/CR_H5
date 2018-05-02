@@ -21,6 +21,7 @@ body{
   margin-right: .3rem;
 }
 .logout_btn{
+  display: block;
   margin: 7.73rem .53rem 0;
   background-color: #fff;
   color:#048adf;
