@@ -1,6 +1,12 @@
 var search =  url_analysis(window.location.search);
 var popupType;
-$(".back").attr("href","jobDetail.html?jid="+window.sessionStorage.getItem("jid"))
+if(search.type == 1){
+  $(".back").attr("href","index.html")
+}else if(window.sessionStorage.getItem("jid")){
+  $(".back").attr("href","jobDetail.html?jid="+window.sessionStorage.getItem("jid"))
+}else{
+  $(".back").attr("href","index.html")
+}
 getCallBack({cid:search.cid},"/dabai-chaorenjob/company/getCompanyInfoAndJobs",init)
 function init(res){
   if(res.code == 1){

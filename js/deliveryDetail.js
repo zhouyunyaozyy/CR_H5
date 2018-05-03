@@ -29,6 +29,18 @@ function init(res){
         $(".delivery_info").remove();
         break;
     }
+    switch (res.data.sure){
+      case 0:
+        break;
+      case 1:
+        $(".interviewer_err").css("display","none")
+        $(".interviewer_suc").addClass("block")
+        break;
+      case 2:
+        $(".interviewer_suc").css("display","none")
+        $(".interviewer_err").addClass("block")
+        break;
+    }
     if(res.data.logs.length > 0){
       var html = '';
       for(var i = 0;i<res.data.logs.length;i++){
@@ -47,6 +59,53 @@ function init(res){
     popupType = 1;
     showPopup(res.msg)
   }
+}
+$(".interviewer_suc").click(function(){
+  postCallBack({rrid:search.rrid},"/dabai-chaorenjob/resumeReceived/acceptResumeReceived",sucConfirm)
+})
+function sucConfirm(res){
+  if(res.code == 1){
+    $(".interviewer_suc").addClass("block")
+    $(".interviewer_err").css("display","none")
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
+  }
+}
+$(".interviewer_err").click(function(){
+  $(".refuse_cont").css("display","block")
+})
+$(".refuse_err").click(function(){
+  $(".refuse_cont").css("display","none")
+})
+$(".refuse_suc").click(function(){
+  var ure_mark = $(".refuse_text textarea").val();
+  if(!ure_mark){
+    popupType = 1;
+    showPopup("请填写拒绝原因")
+    return;
+  }else if(ure_mark.length > 20){
+    popupType = 1;
+    showPopup("拒绝原因不能超过20字")
+    return;
+  }
+  postCallBack({rrid:search.rrid,ure_mark:ure_mark},"/dabai-chaorenjob/resumeReceived/refuseResumeReceived",refuse)
+})
+function refuse(res){
+  if(res.code == 1){
+    $(".interviewer_err").addClass("block")
+    $(".interviewer_suc").css("display","none")
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup("请重新登录")
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
+  }
+  console.log()
 }
 $(".popup_hide").click(function(){
   switch (popupType){

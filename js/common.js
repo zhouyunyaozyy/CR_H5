@@ -77,7 +77,9 @@ function token (){
 }
 //接口公共url
 var locationIp =  'http://192.168.1.115:5020';
-//var locationIp =  'http://api-test.chaorenjob.com';
+//var locationIp =  'http://api.chaorenjob.com';
+//var resourceUrl = "http://h5.chaorenjob.com"
+var resourceUrl = "http://192.168.1.115:5020/dabai-page"
 //ajax
 function getCallBack(data,url,success,isData){
   var resultData = token();

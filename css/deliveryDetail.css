@@ -150,6 +150,12 @@ body{
   border: 1px solid #808080;
   border-radius: .2rem;
 }
+.interviewer_suc.block,.interviewer_err.block{
+  -webkit-flex: 1;
+  flex: 1;
+  background-color: #999;
+  color:#fff;
+}
 .interviewer_btn img{
   position: absolute;
   top: -.5rem;
@@ -206,4 +212,91 @@ body{
   top: .1rem;
   width: .5rem;
   height: .5rem;
+}
+.refuse_cont{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  display: none;
+}
+.refuse_cover{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.3);
+}
+.refuse_body{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 16rem;
+  height: 10.6rem;
+  background-color: #fff;
+  border-radius: .5rem;
+  margin: 8rem auto;
+  box-sizing: border-box;
+  padding: 1.38rem;
+  overflow: hidden;
+}
+.refuse_text{
+  height: 4.33rem;
+  position: relative;
+  border-radius: .3rem;
+  overflow: hidden;
+}
+.refuse_text textarea{
+  height: 100%;
+  width: 100%;
+  background-color: #f0f0f0;
+  color: #999;
+  font-size: .8rem;
+  border:0;
+  outline: none;
+  padding: .53rem .53rem 1rem;
+  box-sizing: border-box;
+}
+.refuse_text span{
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0 .53rem;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: right;
+  background-color: #f0f0f0;
+  font-size: .7rem;
+  color:#999;
+}
+.refuse_btn{
+  margin-top: 1.38rem;
+  height: 2.13rem;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.refuse_btn span{
+  -webkit-flex: 0 0 6.4rem;
+  flex: 0 0 6.4rem;
+  text-align: center;
+  height: 2.13rem;
+  line-height: 2.13rem;
+  box-sizing: border-box;
+  font-size: .8rem;
+  border-radius: .3rem;
+}
+.refuse_err{
+  border:1px solid #d9d9d9;
+}
+.refuse_suc{
+  color: #fff;
+  background-color: #048adf;
 }

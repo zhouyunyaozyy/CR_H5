@@ -81,6 +81,15 @@ function job(res){
   }else if(res.code == 10030){
     popupType = 1;
     showPopup(res.msg,1)
+  }else if(res.code == 10004){
+    popupType = 3;
+    showPopup("请您提交实名认证！审核通过后可投递简历",1)
+  }else if(res.code == 10005){
+    popupType = 4;
+    showPopup("您的实名认证未通过审核，请修改！审核通过后可投递简历",1)
+  }else if(res.code == 10006){
+    popupType = 5;
+    showPopup("您的实名认证正在审核中！审核通过后可投递简历",1)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -97,6 +106,15 @@ $(".popup_suc").click(function(){
       break;
     case 2:
       window.location.href = "login.html"
+      break;
+    case 3:
+      window.location.href = "realName.html"
+      break;
+    case 4:
+      window.location.href = "realName.html"
+      break;
+    case 5:
+      window.location.href = "realName.html"
       break;
   }
 })
