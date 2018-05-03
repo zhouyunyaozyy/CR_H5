@@ -110,6 +110,9 @@ function initResume(res){
       $(".js_tel").val(res.data.tel);
     }
     initPicker();
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -471,6 +474,9 @@ $(".js_two").click(function(){
 function nativeInit(res){
   if(res.code == 1){
     updateSuc();
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -483,6 +489,9 @@ function nativeInit(res){
 function linkInit(res){
   if(res.code == 1){
     updateSuc();
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -495,6 +504,9 @@ function linkInit(res){
 function baseInit(res){
   if(res.code == 1){
     updateSuc();
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -517,6 +529,9 @@ function updateSuc(){
 function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepThree.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

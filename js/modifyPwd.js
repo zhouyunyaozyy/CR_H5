@@ -24,9 +24,18 @@ $(".js_submit").click(function(){
 function pwdResult(res){
   if(res.code == 1){
     window.location.href = "set.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
+    showPopup("请登录后在操作")
+  }else if(res.code == 10001){
+    popupType = 2;
     showPopup("请重新登录")
+  }else if(res.code == 0){
+    popupType = 1;
+    showPopup("原密码错误")
   }else{
     popupType = 1;
     showPopup(res.msg)

@@ -52,6 +52,9 @@ function init(res){
       }
       $(".history_title").after(html)
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -67,6 +70,9 @@ function sucConfirm(res){
   if(res.code == 1){
     $(".interviewer_suc").addClass("block")
     $(".interviewer_err").css("display","none")
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -98,6 +104,9 @@ function refuse(res){
   if(res.code == 1){
     $(".interviewer_err").addClass("block")
     $(".interviewer_suc").css("display","none")
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

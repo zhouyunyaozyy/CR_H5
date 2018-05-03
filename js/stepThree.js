@@ -10,6 +10,9 @@ var imgType;
 function initToken(res) {
   if (res.code == 1) {
     imgToken = res.data;
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -100,6 +103,9 @@ function initFuc(res) {
       }
       console.log(target, res.data[i].rtid, target == res.data[i].rtid)
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -142,6 +148,9 @@ function changeImg(res, obj) {
       "src": res.data,
       "data-key": obj.key
     })
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -171,6 +180,9 @@ function showImg(res, key) {
         $(".three_photo_img .three_img_add").css('display', "none")
       }
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -249,6 +261,9 @@ function headerInit(res) {
     } else {
       updateSuc();
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -265,6 +280,9 @@ function imgInit(res) {
     } else {
       updateSuc();
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -283,6 +301,9 @@ function updateSuc() {
 function updateSteps(res) {
   if (res.code == 1) {
     window.location.href = "stepFour.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

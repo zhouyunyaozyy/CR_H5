@@ -39,6 +39,9 @@ function getOpenId(res){
       popupType = 2;
       showPopup("微信授权失败")
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -63,6 +66,9 @@ function login(res){
 function loginTest(res){
   if(res.code == 1){
     window.location.href = "index.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

@@ -23,6 +23,9 @@ function init(res){
     }else{
       $(".job_btn").removeClass("is_active").text("投递简历")
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -54,6 +57,9 @@ function collect(res){
   console.log(res)
   if(res.code == 1){
     getCallBack({jid:search.jid},"/dabai-chaorenjob/job/getJobEntityAndVoteAndFavoritesInfo",init)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -75,6 +81,9 @@ function job(res){
     popupType = 1;
     showPopup("投递成功!")
     $(".job_btn").addClass("is_active").removeClass("js_job").text("已投递")
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

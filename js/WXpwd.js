@@ -34,6 +34,9 @@ function setPwd(res){
     //console.log(nativeData,win.aesData)
     var postData = aesData.jiamiData;
     postCallBack(postData,'/dabai-authority/externalPlatformLogin/weChatLogin',login)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -57,6 +60,9 @@ function login(res){
 function loginTest(res){
   if(res.code == 1){
     window.location.href = "index.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

@@ -7,6 +7,9 @@ var imgToken,videoKey;
 function initToken(res){
   if(res.code == 1){
     imgToken = res.data;
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -21,6 +24,9 @@ function videoInfo(res){
     var obj = JSON.parse(res.data)
     $(".four_video_item").text(obj.rule);
     //$(".yourself_cont").text(obj.howIntroduce);
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -68,6 +74,9 @@ function initResume(res){
       $(".three_edit .icon-bianji").after('<input type="file" accept="video/mp4" class="btn_file"/>')
       $(".four_video_btn").css("display","flex")
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -90,6 +99,9 @@ function initFuc(res){
         return;
       }
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -146,6 +158,9 @@ function showImg(res,key){
     //res.data +
     //'?vframe/jpg/offset/0' +
     //'"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -209,6 +224,9 @@ function videoUpdate(res){
     }else{
       postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -221,6 +239,9 @@ function videoUpdate(res){
 function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepFive.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

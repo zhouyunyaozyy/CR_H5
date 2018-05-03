@@ -111,6 +111,9 @@ function initResume(res){
       $(".title").text("教育经历")
       $(".js_five").text("确认")
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -439,6 +442,9 @@ function eduInit(res){
     }else{
       updateSuc();
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -455,6 +461,9 @@ function expInit(res){
     }else{
       updateSuc();
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -473,6 +482,9 @@ function updateSuc(){
 function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepSix.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

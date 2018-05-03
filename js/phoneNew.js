@@ -3,6 +3,9 @@ var verificationId,popupType;
 function initMy(res){
   if(res.code == 1){
     $(".phone_show span").text(res.data.mobile)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -24,6 +27,9 @@ function getCode (res){
     verificationId = res.data;
     popupType = 1;
     showPopup("验证码已发送，请注意查收")
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -61,6 +67,9 @@ $(".js_submit").click(function(){
 function modifyPhone(res){
   if(res.code == 1){
     window.location.href = "set.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

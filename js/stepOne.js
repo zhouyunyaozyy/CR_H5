@@ -17,6 +17,9 @@ function initResume(res){
     }
     target = res.data.target
     getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc,res.data.target)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -42,6 +45,9 @@ function initFuc(res,target){
       '</span><span class="one_radio"><i class="iconfont icon-gou"></i></span></div>'
     }
     $(".one_job_cont").html(html)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -79,6 +85,9 @@ function updateTarget(res){
     }else{
       postCallBack({steps:200},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -91,6 +100,9 @@ function updateTarget(res){
 function updateSteps(res){
   if(res.code == 1){
     window.location.href = "stepTwo.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

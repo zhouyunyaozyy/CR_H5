@@ -6,6 +6,9 @@ var imgToken;
 function initToken(res){
   if(res.code == 1){
     imgToken = res.data;
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -59,6 +62,9 @@ function initState(res){
       $(".suc_cont").remove();
       $(".fail_cont_top").remove();
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -95,6 +101,9 @@ function changeImg(res,obj){
       "src":res.data,
       "data-key":obj.key
     })
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -148,6 +157,9 @@ $(".submit_btn").click(function(){
 function insertAudit(res){
   if(res.code == 1){
     window.location.reload()
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

@@ -7,6 +7,9 @@ var imgNum = 1;
 function initToken(res){
   if(res.code == 1){
     imgToken = res.data;
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -78,6 +81,9 @@ function initResume(res){
       $(".title").text("自我描述")
       $(".js_six").text("确认")
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -157,6 +163,9 @@ function showImg(res,obj){
         "data-key":obj.key
       })
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -243,6 +252,9 @@ function updateInfo (res){
     }else{
       updateSuc();
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -259,6 +271,9 @@ function updateZs (res){
     }else{
       updateSuc();
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -277,6 +292,9 @@ function updateSuc(){
 function updateSteps(res){
   if(res.code == 1){
     postCallBack({},"/dabai-chaorenjob/resumeAuditSnapshot/submitAudit",submitAudit)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -289,6 +307,9 @@ function updateSteps(res){
 function submitAudit(res){
   if(res.code == 1){
     window.location.href = "resumeDetail.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

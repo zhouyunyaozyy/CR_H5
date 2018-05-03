@@ -11,6 +11,9 @@ function initMy(res){
       $(".user_phone").before('<div class="user_name">' + res.data.name + '</div>')
     }
     getCallBack({uid:res.data.uid},"/dabai-chaorenjob/certification/queryCheckStatus",userState)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -29,6 +32,9 @@ function userState(res){
       html = '<a href="realName.html" class="auth_state auth_ok"><i class="iconfont icon-v"></i>认证</a>'
     }
     $(".top_avatar").after(html)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -63,6 +69,9 @@ function initState(res){
         $(".resume_scale").attr("href","resumeFill.html")
         break;
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

@@ -25,6 +25,9 @@ function initResume(res){
         $(".resume_btn").attr("href","stepOne.html")
         break;
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

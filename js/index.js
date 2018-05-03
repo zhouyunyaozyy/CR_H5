@@ -38,6 +38,9 @@ function initBanner(res){
         }
       });
     }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -57,6 +60,9 @@ function initFuc(res){
       '</div>'
     }
     $(".head_job_cont").html(html)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
@@ -94,6 +100,9 @@ function initList(res){
       html = '<div class="no_data"><img src="img/no_data_1.jpg" alt=""/></div>'
     }
     $(".job_list").html(html)
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")

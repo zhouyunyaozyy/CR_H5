@@ -91,6 +91,9 @@ $(".js_submit").click(function(){
 function submitAudit(res){
   if(res.code == 1){
     window.location.href = "resumeDetail.html"
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
