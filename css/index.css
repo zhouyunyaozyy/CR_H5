@@ -6,16 +6,21 @@ body{
     box-sizing: border-box;
     background-color: #fff;
     border-bottom: 1px solid #f5f5f5;
+    display: -webkit-flex;
     display: flex;
     padding: 0 .53rem;
+    -webkit-align-items: center;
     align-items: center;
     position: relative;
 }
 .head_job_name{
+    -webkit-flex: 0 0 3.33rem;
     flex: 0 0 3.33rem;
     color:#048adf;
     font-size: .8rem;
+    display: -webkit-flex;
     display: flex;
+    -webkit-align-items: center;
     align-items: center;
     overflow: hidden;
 }
@@ -24,22 +29,28 @@ body{
     margin-left: .25rem;
 }
 .head_ipt{
+    -webkit-flex: 1;
     flex: 1;
     background-color: #e6e6e6;
     height: 1.6rem;
     border-radius: .8rem;
+    display:  -webkit-flex;
     display: flex;
+    -webkit-align-items: center;
     align-items: center;
     padding: 0 .8rem;
 }
 .head_ipt i{
+    -webkit-flex: 0 0 1.6rem;
     flex: 0 0 1.6rem;
     font-size: .85rem;
     text-align: right;
     color:#808080;
 }
 .head_ipt input{
+    -webkit-flex: 1;
     flex: 1;
+    width: 100%;
     border:0;
     outline: none;
     background-color: transparent;
@@ -47,10 +58,14 @@ body{
     margin-left: .3rem;
 }
 .head_my{
+    -webkit-flex: 0 0 3.33rem;
     flex: 0 0 3.33rem;
     color:#fff;
+    display:  -webkit-flex;
     display: flex;
+    -webkit-align-items: center;
     align-items: center;
+    -webkit-justify-content: flex-end;
     justify-content: flex-end;
 }
 .head_my span{
@@ -58,8 +73,11 @@ body{
     height: 1.6rem;
     background-color: #048adf;
     border-radius: 50%;
+    display:  -webkit-flex;
     display: flex;
+    -webkit-align-items: flex-end;
     align-items: flex-end;
+    -webkit-justify-content: center;
     justify-content: center;
 }
 .head_my i{
@@ -100,6 +118,9 @@ body{
     box-sizing: border-box;
     border-bottom: 1px solid #fff;
 }
+.head_job_item.is_active{
+    color:#048adf;
+}
 .head_job_item:last-child{
     border-bottom: 0;
 }
@@ -134,7 +155,9 @@ body{
 .job_label{
     color:#666;
     font-size: .64rem;
+    -webkit-display: flex;
     display: flex;
+    -webkit-align-items: center;
     align-items: center;
     margin-top: .5rem;
     margin-bottom: .5rem;
@@ -150,18 +173,25 @@ body{
     color:#ff8955;
 }
 .job_company{
+    display:-webkit-flex;
     display: flex;
+    -webkit-justify-content: center;
     justify-content: center;
+    -webkit-align-items: center;
     align-items: center;
 }
 .company_info{
+    -webkit-flex:1;
     flex: 1;
+    display: -webkit-flex;
     display: flex;
+    -webkit-align-items: center;
     align-items: center;
     overflow: hidden;
     margin-right: .5rem;
 }
 .company_logo{
+    -webkit-flex: 0 0 1.33rem;
     flex: 0 0 1.33rem;
     height: 1.33rem;
     /*box-sizing: border-box;*/
@@ -179,10 +209,14 @@ body{
     margin-right: .3rem;
 }
 .company_state{
+    -webkit-flex: 0 0 3.2rem;
     flex: 0 0 3.2rem;
     height: 1rem;
+    display: -webkit-flex;
     display: flex;
+    -webkit-align-items: center;
     align-items: center;
+    -webkit-justify-content: center;
     justify-content: center;
     font-size: .53rem;
     box-sizing: border-box;
@@ -223,8 +257,11 @@ body{
     right: 0;
     bottom: 0;
     background-color: #fafafa;
+    display:  -webkit-flex;
     display: flex;
+    -webkit-align-items: center;
     align-items: center;
+    -webkit-justify-content: center;
     justify-content: center;
     padding: 3rem 0;
 }

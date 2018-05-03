@@ -11,18 +11,24 @@ body{
   -webkit-overflow-scrolling:touch;
 }
 .job_info{
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   padding: .8rem .53rem;
   background-color: #fff;
   margin-bottom: .53rem;
 }
 .logo{
+  -webkit-flex: 0 0 3.46rem;
   flex: 0 0 3.46rem;
   height: 3.46rem;
   border: 1px solid #e6e6e6;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   margin-right: .53rem;
 }
@@ -31,6 +37,7 @@ body{
   max-height: 100%;
 }
 .job_cont{
+  -webkit-flex: 1;
   flex: 1;
   overflow: hidden;
 }
@@ -39,6 +46,7 @@ body{
   font-weight: 600;
 }
 .job_company{
+  display: -webkit-flex;
   display: flex;
   padding: .2rem 0;
 }
@@ -48,10 +56,14 @@ body{
   margin-right: .3rem;
 }
 .company_state{
+  -webkit-flex: 0 0 3.2rem;
   flex: 0 0 3.2rem;
   height: 1rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   font-size: .53rem;
   box-sizing: border-box;
@@ -61,7 +73,9 @@ body{
 .job_label{
   color:#666;
   font-size: .64rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
 }
 .job_label i{
@@ -75,6 +89,7 @@ body{
   color:#ff8955;
 }
 .right_arrow{
+  -webkit-flex: 0 0 1rem;
   flex: 0 0 1rem;
   text-align: right;
 }
@@ -106,13 +121,17 @@ body{
   color:#4c4c4c;
 }
 .interviewer_btn{
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   padding: 0 .53rem 1.2rem;
   position: relative;
 }
 .interviewer_suc{
+  -webkit-flex: 0 0 9.17rem;
   flex: 0 0 9.17rem;
   line-height: 2.13rem;
   background-color: #048adf;
@@ -122,6 +141,7 @@ body{
   text-align: center;
 }
 .interviewer_err{
+  -webkit-flex: 0 0 9.17rem;
   flex: 0 0 9.17rem;
   line-height: 2.13rem;
   box-sizing: border-box;
@@ -156,7 +176,9 @@ body{
   line-height: 2.66rem;
 }
 .history_item{
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   position: relative;
   padding-left: .2rem;

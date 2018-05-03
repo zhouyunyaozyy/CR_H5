@@ -7,9 +7,11 @@ body{
   height: 3.2rem;
   border-bottom: 1px solid #e6e6e6;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   padding: 0 .53rem;
   font-size: .8rem;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 .set_label i{
@@ -38,20 +40,26 @@ body{
   margin: .8rem 0;
   background-color: #fff;
   height: 2.4rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   padding: 0 .53rem;
 }
 .pwd_item span{
+  -webkit-flex: 0 0 2.3rem;
   flex: 0 0 2.3rem;
   box-sizing: border-box;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   color:#999;
   font-size: .8rem;
 }
 .pwd_item input{
+  -webkit-flex: 1;
   flex: 1;
   width: 100%;
   font-size: .8rem;
@@ -73,6 +81,7 @@ body{
   font-size: .9rem;
 }
 .code_item{
+  display: -webkit-flex;
   display: flex;
 }
 .code_item .pwd_item{
@@ -81,6 +90,7 @@ body{
   border-right: 0;
 }
 .code_btn{
+  -webkit-flex: 0 0 4.8rem;
   flex: 0 0 4.8rem;
   font-size: .8rem;
   color:#048adf;

@@ -277,7 +277,7 @@ function jiami ( msg) {
       data.client = 'Opera'
       data.clientVersion = ver
     } else if (explorer.indexOf('safari') >= 0) { // Safari
-      var ver = explorer.match(/version\/([\d.]+)/)[1]
+      var ver = explorer.match(/safari\/([\d.]+)/)[1]
       data.client = 'Safari'
       data.clientVersion = ver
     } else if (explorer.indexOf('micromessenger') >= 0) { // Safari

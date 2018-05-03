@@ -9,6 +9,15 @@ body{
   box-sizing: border-box;
   text-align: center;
   color: #fff;
+  position: relative;
+}
+.index_btn{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: .8rem;
+  padding: .53rem;
+  color:#fff;
 }
 .logo{
   width: 3.33rem;
@@ -27,13 +36,15 @@ body{
 }
 /*g_container*/
 .g_container{
-  padding: 1.6rem 1.6rem 0;
+  padding: 1.6rem 1.6rem;
   background-color: #f5f5f5;
 }
 /*ipt_cont*/
 .ipt_item{
   height: 2.4rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   padding: 0 1.2rem;
   background-color: #fff;
@@ -50,12 +61,14 @@ body{
   color:#999;
 }
 .ipt_item input{
+  -webkit-flex: 1;
   flex: 1;
   width: 100%;
   border: 0;
   outline: none;
 }
 .code_btn{
+  -webkit-flex: 0 0 4.8rem;
   flex: 0 0 4.8rem;
   height: 2.4rem;
   line-height: 2.4rem;
@@ -92,7 +105,9 @@ body{
 }
 /*other_btn*/
 .other_btn{
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   font-size: .75rem;
   margin: 1.06rem 0 2rem;
@@ -102,11 +117,15 @@ body{
 }
 /*division*/
 .division{
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 .division i{
+  -webkit-flex: 0 0 6.4rem;
   flex: 0 0 6.4rem;
   border-top: 1px solid #ccc;
 }
@@ -116,19 +135,26 @@ body{
 }
 /*logo_way*/
 .logo_way{
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   margin-top: 1.6rem;
 }
 .weixin{
+  -webkit-flex: 0 0 2.26rem;
   flex: 0 0 2.26rem;
   width: 2.26rem;
   height: 2.26rem;
   background-color: #fff;
   border-radius: 50%;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
 }
 .weixin i{

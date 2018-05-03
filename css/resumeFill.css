@@ -66,8 +66,11 @@
 .step_item{
   height: 2.66rem;
   padding: 0 .53rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: center;
   align-items: center;
   box-sizing: border-box;
   border-bottom: 1px solid #e6e6e6;
@@ -75,8 +78,11 @@
 }
 .step_item_txt{
   height: 100%;
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: flex-end;
   justify-content: flex-end;
+  -webkit-align-items: center;
   align-items: center;
   color:#048adf;
 }
@@ -88,6 +94,7 @@
   font-size: .8rem;
 }
 .step_item_txt i{
+  -webkit-flex: 0 0 1rem;
   flex: 0 0 1rem;
   margin-left: .2rem;
 }
@@ -100,8 +107,11 @@
   height: 2.72rem;
   box-sizing: border-box;
   border-bottom: 1px solid #e6e6e6;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   font-size: .8rem;
 }
@@ -110,8 +120,11 @@
   height: 1.06rem;
   width: 1.06rem;
   color:#fff;
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-align-items: center;
   align-items: center;
 }
 .is_checked .one_radio{
@@ -145,10 +158,13 @@
 }
 .three_img_item{
   padding-bottom: .53rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
 }
 .three_edit{
+  -webkit-flex: 0 0 1.3rem;
   flex: 0 0 1.3rem;
   color:#048adf;
   margin-left: 3.2rem;
@@ -160,6 +176,7 @@
   font-size: 1.3rem;
 }
 .three_delete{
+  -webkit-flex: 0 0 1.1rem;
   flex: 0 0 1.1rem;
   color:#4d4d4d;
 }
@@ -187,8 +204,11 @@
   height: 10.66rem;
   overflow: hidden;
   background-color: #e6e6e6;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   position: relative;
 }
@@ -208,6 +228,7 @@
   font-size: .9rem;
 }
 .four_video_item{
+  display: -webkit-flex;
   display: flex;
   overflow: hidden;
   font-size: .8rem;
@@ -220,8 +241,11 @@
 }
 .four_video_btn{
   padding-right: 1rem;
+  display: -webkit-flex;
   display: none;
+  -webkit-justify-content: flex-end;
   justify-content: flex-end;
+  -webkit-align-items: center;
   align-items: center;
   height: 2rem;
   margin-bottom: 1.5rem;
@@ -294,8 +318,11 @@
   font-size: .9rem;
   background-color: #fff;
   height: 2.74rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
 }
 /*sixStep*/
@@ -351,10 +378,13 @@
   border-bottom: 1px solid #e6e6e6;
   font-size: .8rem;
   height: 2.66rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
 }
 .cert_item_name input{
+  -webkit-flex: 1;
   flex: 1;
   width: 100%;
   margin-left: .5rem;
@@ -395,8 +425,11 @@
 }
 .state_img{
   height: 2.77rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   margin-top: 1.06rem;
 }
@@ -443,8 +476,11 @@
 .resume_item{
   padding: 0 .53rem;
   height: 1.55rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   font-size: .8rem;
 }
@@ -458,6 +494,7 @@
   color:#666;
 }
 .resume_text{
+  -webkit-flex: 1;
   flex: 1;
   text-align: right;
 }
@@ -466,12 +503,16 @@
 }
 /*id_photo_cont*/
 .id_photo_cont{
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   padding: 0 .215rem;
 }
 .id_photo_cont img{
+  -webkit-flex: 0 0 4.26rem;
   flex: 0 0 4.26rem;
   width: 4.26rem;
   height: 4.26rem;
@@ -503,12 +544,15 @@
 }
 /*cert_box*/
 .cert_item{
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   padding: 0 .53rem .53rem;
   overflow: hidden;
 }
 .cert_img{
+  -webkit-flex: 0 0 4.26rem;
   flex: 0 0 4.26rem;
   height: 4.26rem;
   border-radius: .2rem;
@@ -519,6 +563,7 @@
   height: 100%;
 }
 .cert_name{
+  -webkit-flex: 1;
   flex: 1;
   color:#4c4c4c;
   font-size: .8rem;

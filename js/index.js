@@ -1,13 +1,26 @@
 var popupType;
 getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
 getCallBack({},"/dabai-chaorenjob/banner/indexBanner",initBanner)
+init();
+function init(){
+  var postData = {
+    rtid: $(".head_job_name span").attr("data-rtid")
+  }
+  getCallBack(postData,'/dabai-chaorenjob/job/queryIndexJobList',initList)
+}
 function initBanner(res){
   console.log(res)
   if(res.code == 1){
     if(res.data.length > 0){
       var img_html = "";
       for(var i = 0; i<res.data.length;i++){
-        img_html+= '<img src="' +
+        img_html+= '<img data-type="' +
+        res.data[i].type +
+        '" data-args="' +
+        res.data[i].args +
+        '" data-title="' +
+        res.data[i].title +
+        '" src="' +
         res.data[i].imagesUrl+
         '" alt="" class="swiper-slide"/>'
       }
@@ -33,10 +46,9 @@ function initBanner(res){
     showPopup(res.msg)
   }
 }
-init();
 function initFuc(res){
   if(res.code == 1){
-    var html = '<i></i><div class="head_job_item" data-rtid="">全部</div>';
+    var html = '<i></i><div class="head_job_item is_active" data-rtid="">全部</div>';
     for(var i = 0;i<res.data.length;i++){
       html += '<div class="head_job_item" data-rtid="' +
       res.data[i].rtid +
@@ -53,12 +65,6 @@ function initFuc(res){
     showPopup(res.msg)
   }
   console.log(res)
-}
-function init(){
-  var postData = {
-    rtid: $(".head_job_name span").attr("data-rtid")
-  }
-  getCallBack(postData,'/dabai-chaorenjob/job/queryIndexJobList',initList)
 }
 function initList(res){
   if(res.code == 1){
@@ -97,6 +103,33 @@ function initList(res){
   }
   console.log(res)
 }
+$(".swiper-wrapper").on("click",".swiper-slide",function(){
+  var type = parseInt($(this).attr("data-type"));
+  var args = $(this).attr("data-args");
+  switch (type){
+    case 1:
+      window.location.href = args;
+      break;
+    case 2:
+      window.location.href = args;
+      break;
+    case 3:
+      window.location.href = "jobDetail.html?jid=" + args;
+      break;
+    case 4:
+      window.location.href = "companyInfo.html?cid=" + args;
+      break;
+    case 5:
+      var title = $(this).attr("data-title");
+      window.sessionStorage.setItem("args",args)
+      window.sessionStorage.setItem("title",title)
+      window.location.href = "textHtml.html"
+      break;
+    case 6:
+      window.location.href = locationIp + "/dabai-page/news/detail/" + args;
+      break;
+  }
+})
 $(".job_list").on("click",".job_item",function(){
   window.location.href = "jobDetail.html?jid="+$(this).attr("data-jid")
 })
@@ -104,6 +137,7 @@ $(".head_job_name").click(function(){
   $(".head_job_cont").toggleClass("is_show")
 })
 $(".head_job_cont").on("click",".head_job_item",function(){
+  $(this).addClass("is_active").siblings(".is_active").removeClass("is_active")
   $(".head_job_name span").text($(this).text()).attr("data-rtid",$(this).attr("data-rtid"))
   $(".head_job_cont").removeClass("is_show")
   init();

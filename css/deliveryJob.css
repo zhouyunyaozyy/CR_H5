@@ -8,16 +8,23 @@ body{
   border-bottom: 1px solid #e6e6e6;
   box-sizing: border-box;
   padding: 0 .25rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   font-size: .9rem;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 .tab_item{
+  -webkit-flex: 0 0 20%;
   flex: 0 0 20%;
   height: 100%;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   box-sizing: border-box;
   border-bottom: .2rem solid transparent;
@@ -42,8 +49,11 @@ body{
   margin-bottom: .53rem;
 }
 .job_title{
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: center;
   align-items: center;
   padding-left: .53rem;
   overflow: hidden;
@@ -56,6 +66,7 @@ body{
   padding-bottom: .4rem;
 }
 .job_state_bg{
+  -webkit-flex: 0 0 4.8rem;
   flex: 0 0 4.8rem;
   height: 1.4rem;
   border-top-left-radius: .6rem;
@@ -68,8 +79,11 @@ body{
   right: 0;
   width: 4.8rem;
   height: 1.2rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   color:#fff;
   font-size: .75rem;
@@ -80,7 +94,9 @@ body{
 .job_label{
   color:#666;
   font-size: .64rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   margin-top: .5rem;
   margin-bottom: .5rem;
@@ -97,19 +113,26 @@ body{
   color:#ff8955;
 }
 .job_company{
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-align-items: center;
   align-items: center;
   padding: 0 .53rem;
 }
 .company_info{
+  -webkit-flex: 1;
   flex: 1;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   overflow: hidden;
   margin-right: .5rem;
 }
 .company_logo{
+  -webkit-flex: 0 0 1.33rem;
   flex: 0 0 1.33rem;
   height: 1.33rem;
   /*box-sizing: border-box;*/
@@ -127,10 +150,14 @@ body{
   margin-right: .3rem;
 }
 .company_state{
+  -webkit-flex: 0 0 3.2rem;
   flex: 0 0 3.2rem;
   height: 1rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   font-size: .53rem;
   box-sizing: border-box;
@@ -148,12 +175,16 @@ body{
   right: 0;
   bottom: 0;
   background-color: #fff;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   padding: 3rem 0;
 }
 .no_data img{
+  -webkit-flex: 1;
   flex: 1;
   width: 100%;
 }

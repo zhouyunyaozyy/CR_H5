@@ -1,8 +1,15 @@
 var popupType;
 $(".code_btn").click(function(){
-  var resultData = {};
-  resultData.mobile = $(".js_phone").val()
-  getCallBack(resultData,'/dabai-chaorenjob/seeker/getForgetPasswordVerificationId',getCode)
+  var phone = $(".js_phone").val();
+  if(!/^1[34578][0-9]{9}$/.test(phone)){
+    popupType = 1;
+    showPopup("请填写正确手机号")
+    return;
+  }
+  var resultData = {
+    mobile: phone
+  };
+  postCallBack(resultData,'/dabai-chaorenjob/seeker/getForgetPasswordVerificationId',getCode)
 })
 function getCode(res){
   if(res.code == 1){
@@ -80,16 +87,18 @@ $(".js_forget").click(function(){
   if(!blurTest()){
     return;
   }
-  var nativeData = {
+  // RSA加密
+  var encrypt = new JSEncrypt()
+  var publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdIIlQzv3fb9ktUGphZ/4l0qQ87iMxLjn1Rc3yhWL0KlnTSY/tziRi0XRyoSCBovZe1hhWGXnfwSvgJRvkzBWRHrnGor0+6I18DnY1lnrckp6bmjirX0BvdqFWxmXgIoz985YjLnPGNqBzt58EBdC5YqUYYnATRgKMA4g0N0Cd6QIDAQAB'
+  encrypt.setPublicKey(publicKey)
+  var pwd = encrypt.encrypt($(".js_pwd").val())
+  var postData = {
     mobile: $(".js_phone").val(),
-    password: $(".js_pwd").val(),
+    password: pwd,
     verificationId: aesData.validationUid,
     verificationCode: $(".js_code").val()
   }
   aesData.pageStatus = 'forget';
-  jiami(nativeData)
-  console.log(aesData)
-  var postData = aesData.jiamiData;
   postCallBack(postData,'/dabai-chaorenjob/seeker/forgetPassword',forget)
 })
 function forget(res){

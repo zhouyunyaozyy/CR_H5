@@ -8,7 +8,9 @@ body{
 }
 .back_index{
   height: 1.6rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: flex-end;
   align-items: flex-end;
   color:#fff;
   padding: 0 .53rem;
@@ -26,8 +28,11 @@ body{
 }
 .auth_state{
   width: 3.2rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   height: 1rem;
   border-radius: .5rem;
@@ -55,10 +60,13 @@ body{
   height: 4.26rem;
   padding: 1.2rem .53rem 0;
   margin-bottom: .53rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: flex-start;
   align-items: flex-start;
 }
 .tab_item{
+  -webkit-flex: 0 0 50%;
   flex: 0 0 50%;
   text-align: center;
 }
@@ -71,8 +79,11 @@ body{
 .tab_txt{
   font-size: .7rem;
   margin-top: .4rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-align-items: center;
   align-items: center;
 }
 .tab_scale{
@@ -85,8 +96,11 @@ body{
   background-color: #ff8955;
   color:#fff;
   font-size: .65rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
   margin-left: .3rem;
 }
@@ -94,8 +108,11 @@ body{
 .my_item{
   height: 3.2rem;
   padding: 0 .53rem;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   background-color: #fff;
   border-bottom: 1px solid #e6e6e6;

@@ -2,6 +2,7 @@ var search = url_analysis(window.location.search);
 var popupType;
 getCallBack({rrid:search.rrid},"/dabai-chaorenjob/resumeReceived/getVoteDetail",init)
 function init(res){
+  console.log(res)
   if(res.code == 1){
     $(".logo img").attr("src",res.data.logoUrl)
     $(".job_name").text(res.data.name)
@@ -26,7 +27,7 @@ function init(res){
         break;
       default:
         $(".delivery_info").remove();
-        return;
+        break;
     }
     if(res.data.logs.length > 0){
       var html = '';
@@ -46,7 +47,6 @@ function init(res){
     popupType = 1;
     showPopup(res.msg)
   }
-  console.log(res)
 }
 $(".popup_hide").click(function(){
   switch (popupType){
