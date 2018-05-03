@@ -211,7 +211,15 @@ $(".three_photo_img").on("click", ".js_delete", function () {
   }
   $(this).parent().remove();
 })
+var updateState = 0;
 $(".js_three").click(function () {
+  if(updateState === 0){
+    updateState = 1;
+  }else{
+    popupType = 1;
+    showPopup("信息验证中请耐心等待。。。")
+    return;
+  }
   var imgUrl = $(".three_standard_img .three_img_cont img").attr("data-key")
   var imgArr = [];
   var imgNum = $(".three_photo_img .three_img_cont img");
@@ -219,8 +227,12 @@ $(".js_three").click(function () {
     imgArr.push($(imgNum[i]).attr("data-key"))
   }
   if (!imgUrl && search.type != 2) {
+    popupType = 1;
+    showPopup("请上传标准照")
     return;
   } else if (znConfig.images && imgArr.length < 1 && search.type != 1) {
+    popupType = 1;
+    showPopup("请上传图片形象")
     return;
   }
   if (search.type != 1) {

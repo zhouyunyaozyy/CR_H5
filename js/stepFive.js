@@ -25,7 +25,7 @@ function initResume(res){
           popupType = 6;
           showPopup("请先填写第死步")
           return;
-        default :
+        case 700:
           popupType = 8;
           showPopup("请修改原简历，不能新增简历")
           return;
@@ -94,8 +94,10 @@ function initResume(res){
               .val(year2 + "-" + month2)
               .attr("data-val",year2-1970 + "-" + month2);
             $(".five_exp_list .step_cont .js_profile")
-              .val(experience_item[i].profile)
-            $(".step_area .text_size").text(experience_item[i].profile.length + "/500")
+              .val(experience_item[i].profile);
+            if(experience_item[i].profile){
+              $(".text_size").text(experience_item[i].profile.length + "/500")
+            }
           }else{
             expText += expHtml(experience_item[i])
           }
@@ -315,9 +317,17 @@ $(".five_exp_list").on("click",".delete_btn",function(){
 })
 $(".five_education_list").on("click",".delete_btn",function(){
   education_num = education_num - 1
-  $(this).parent(".step_cont").remove();
+  $(this).parent(".step_cont").prev(".step_cont").remove();
 })
+var updateState = 0;
 $(".js_five").click(function(){
+  if(updateState === 0){
+    updateState = 1;
+  }else{
+    popupType = 1;
+    showPopup("信息验证中请耐心等待。。。")
+    return;
+  }
   var experience_item = [];
   var education_item = [];
   if(search.type != 2){
@@ -330,22 +340,28 @@ $(".js_five").click(function(){
       graduation_time = new Date(graduation_time).getTime();
       var education = $(".five_education_list .step_cont").eq(i).find(".js_education").attr("data-val");
       if(!sname){
-        console.log(1,sname)
+        popupType = 1;
+        showPopup("请填写学校名称")
         return;
       }else if(!majors){
-        console.log(2,majors)
+        popupType = 1;
+        showPopup("请填写所学专业")
         return;
       }else if(!admission_time){
-        console.log(3,admission_time)
+        popupType = 1;
+        showPopup("请选择入学年份")
         return;
       }else if(!graduation_time){
-        console.log(4,graduation_time)
+        popupType = 1;
+        showPopup("请选择毕业年份")
         return;
       }else if(admission_time > graduation_time){
-        console.log(5,admission_time,graduation_time)
+        popupType = 1;
+        showPopup("毕业年份不能小于入学年份")
         return;
       }else if(!education){
-        console.log(6,education)
+        popupType = 1;
+        showPopup("请选择学历")
         return;
       }
       education_item.push({
@@ -375,22 +391,28 @@ $(".js_five").click(function(){
         endtime = new Date(endtime).getTime();
         var profile = $(".five_exp_list .step_cont").eq(i).find(".js_profile").val();
         if(!starttime){
-          console.log(7,starttime)
+          popupType = 1;
+          showPopup("请选择入职时间")
           return;
         }else if(!endtime){
-          console.log(8,endtime)
+          popupType = 1;
+          showPopup("请选择离职时间")
           return;
         }else if(starttime > endtime){
-          console.log(9,starttime,endtime)
+          popupType = 1;
+          showPopup("离职时间不能小于入职时间")
           return;
         }else if(!cname){
-          console.log(10,cname)
+          popupType = 1;
+          showPopup("请填写公司名称")
           return;
         }else if(!job){
-          console.log(11,job)
+          popupType = 1;
+          showPopup("请填写职位")
           return;
         }else if(!profile){
-          console.log(12,profile)
+          popupType = 1;
+          showPopup("请填写工作内容")
           return;
         }
         experience_item.push({

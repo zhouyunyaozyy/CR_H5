@@ -55,8 +55,18 @@ $(".one_job_cont").on("click",".one_radio",function(){
   target = $(this).parent(".one_job_item").attr("data-rtid");
   $(this).parent(".one_job_item").addClass("is_checked").siblings(".is_checked").removeClass("is_checked");
 })
+var updateState = 0;
 $(".js_one").click(function(){
+  if(updateState === 0){
+    updateState = 1;
+  }else{
+    popupType = 1;
+    showPopup("信息验证中请耐心等待。。。")
+    return;
+  }
   if(!target){
+    popupType = 1;
+    showPopup("请选择求职意向")
     return;
   }else{
     postCallBack({"target":target},"/dabai-chaorenjob/resume/updateTargetResume",updateTarget)

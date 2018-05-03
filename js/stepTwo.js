@@ -337,7 +337,15 @@ $(".gray").on("click",".picker-mask",function(){
       break;
   }
 })
+var updateState = 0;
 $(".js_two").click(function(){
+  if(updateState === 0){
+    updateState = 1;
+  }else{
+    popupType = 1;
+    showPopup("信息验证中请耐心等待。。。")
+    return;
+  }
   /*籍贯信息 /dabai-chaorenjob/resume/updateNativeResume*/
   //民族
   var ethnicity = $(".js_nation").attr("data-val");

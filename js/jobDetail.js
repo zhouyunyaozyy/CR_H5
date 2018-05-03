@@ -39,6 +39,7 @@ $(".see_info").click(function(){
 $('.js_collect').click(function(){
   var url;
   if(!ticketsSalt || !ticket){
+    popupType = 2;
     showPopup("请先登录！",1)
     return;
   }
@@ -63,6 +64,7 @@ function collect(res){
 }
 $(".js_job").click(function(){
   if(!ticketsSalt || !ticket){
+    popupType = 2;
     showPopup("请先登录！",1)
     return;
   }
@@ -70,11 +72,15 @@ $(".js_job").click(function(){
 })
 function job(res){
   if(res.code == 1){
+    popupType = 1;
     showPopup("投递成功!")
     $(".job_btn").addClass("is_active").removeClass("js_job").text("已投递")
   }else if(res.code == 10002){
     popupType = 2;
     showPopup("请重新登录")
+  }else if(res.code == 10030){
+    popupType = 1;
+    showPopup(res.msg,1)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -85,7 +91,14 @@ $(".popup_err").click(function(){
   hidePopup()
 })
 $(".popup_suc").click(function(){
-  window.location.href = "login.html"
+  switch (popupType){
+    case 1:
+      window.location.href = "stepOne.html?type=1"
+      break;
+    case 2:
+      window.location.href = "login.html"
+      break;
+  }
 })
 $(".popup_hide").click(function(){
   switch (popupType){

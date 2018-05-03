@@ -52,7 +52,9 @@ function initResume(res){
     }
     if(search.type != 2){
       $(".profile_cont textarea").val(res.data.profile);
-      $(".profile_cont .text_size").text(res.data.profile.length + "/200");
+      if(res.data.profile){
+        $(".profile_cont .text_size").text(res.data.profile.length + "/200");
+      }
     }else{
       $(".disc_title").remove();
       $(".profile_cont").remove();
@@ -188,13 +190,22 @@ $(".six_certificate").on("click",".three_delete",function(){
   }).after('<input class="btn_file add_img_btn" accept="image/png, image/jpeg" type="file"/>')
     .parents(".six_cert_item").addClass("is_hide");
 })
+var updateState = 0;
 $(".js_six").click(function(){
+  if(updateState === 0){
+    updateState = 1;
+  }else{
+    popupType = 1;
+    showPopup("信息验证中请耐心等待。。。")
+    return;
+  }
   var skill = [];
   var profile = $(".profile_cont textarea").val();
   if(!profile && search.type != 2){
+    popupType = 1;
+    showPopup("请填写自我描述")
     return;
   }
-  console.log(imgNum)
   if(search.type != 1){
     var key1 = $(".six_cert_item:eq(0)").find(".three_img_cont img").attr("data-key");
     var zName1 = $(".six_cert_item:eq(0)").find(".cert_item_name input").val();
@@ -203,10 +214,12 @@ $(".js_six").click(function(){
         var key = $(".six_cert_item").eq(i).find(".three_img_cont img").attr("data-key");
         var zName = $(".six_cert_item").eq(i).find(".cert_item_name input").val();
         if(!key){
-          console.log(i,key)
+          popupType = 1;
+          showPopup("请上传证书照")
           return;
         }else if(!zName){
-          console.log(i,zName)
+          popupType = 1;
+          showPopup("请填写证书名称")
           return;
         }
         skill.push({

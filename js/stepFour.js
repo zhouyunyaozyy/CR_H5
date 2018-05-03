@@ -31,6 +31,7 @@ function videoInfo(res){
   console.log(res)
 }
 function initResume(res){
+  console.log(res)
   if(res.code == 1){
     if(search.type != 1){
       switch (res.data.steps){
@@ -46,7 +47,7 @@ function initResume(res){
           popupType = 5;
           showPopup("请先填写第三步")
           return;
-        default :
+        case 700:
           popupType = 8;
           showPopup("请修改原简历，不能新增简历")
           return;
@@ -74,7 +75,6 @@ function initResume(res){
     popupType = 1;
     showPopup(res.msg)
   }
-  console.log(res)
 }
 function initFuc(res){
   if(res.code == 1){
@@ -183,9 +183,18 @@ $(".js_delete").click(function(){
   $(".three_edit .btn_file").remove();
   $(".four_video_btn").css("display","none")
 })
+var updateState = 0;
 $(".js_four").click(function(){
-  console.log(znConfig)
+  if(updateState === 0){
+    updateState = 1;
+  }else{
+    popupType = 1;
+    showPopup("信息验证中请耐心等待。。。")
+    return;
+  }
   if(znConfig.video && !videoKey){
+    popupType = 1;
+    showPopup("请上传视频形象")
     return;
   }else if(!znConfig.video){
     postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
