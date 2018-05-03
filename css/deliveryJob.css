@@ -153,16 +153,15 @@ body{
   -webkit-flex: 0 0 3.2rem;
   flex: 0 0 3.2rem;
   height: 1rem;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
+  line-height: 1rem;
+  text-align: center;
   font-size: .53rem;
   box-sizing: border-box;
   border:1px solid #50af5b;
   color:#50af5b;
+}
+.company_state i{
+  font-size: .53rem;
 }
 .job_time{
   color:#808080;

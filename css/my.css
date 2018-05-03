@@ -27,18 +27,18 @@ body{
   border-radius: 50%;
 }
 .auth_state{
+  display: block;
   width: 3.2rem;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
   height: 1rem;
+  line-height: 1rem;
+  text-align: center;
   border-radius: .5rem;
   background-color: #fff;
   margin: .53rem auto .4rem;
   color:#999;
+  font-size: .7rem;
+}
+.auth_state i{
   font-size: .7rem;
 }
 .auth_ok{
