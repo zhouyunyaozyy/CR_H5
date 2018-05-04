@@ -10,6 +10,7 @@ body{
   overflow: auto;
   -webkit-overflow-scrolling:touch;
 }
+.swiper-slide{height: auto;}
 /*banner*/
 .banner{
   height: 9.06rem;
@@ -185,11 +186,11 @@ body{
   font-size: .64rem;
 }
 /*轮播*/
-.swiper-container {
+.banner .swiper-container {
   width: 100%;
   height: 100%;
 }
-.swiper-slide {
+.banner .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -206,4 +207,16 @@ body{
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+.init-loading{
+  text-align: center;
+  position: relative;
+  display: block;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  font-size: .8rem;
+  color:#048adf;
 }

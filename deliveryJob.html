@@ -7,9 +7,11 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>超人招聘--已投职位</title>
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_41v4vjhx37qtzkt9.css"/>
+  <link rel="stylesheet" href="css/swiper-3.3.1.min.css"/>
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/deliveryJob.css"/>
   <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/swiper.jquery.min.js"></script>
   <script src="data/area.js"></script>
   <script src="data/formData.js"></script>
   <script src="js/aes/crypto-js.js"></script>
@@ -29,31 +31,16 @@
     <a href="deliveryJob.html?type=2" class="tab_item">面试邀请</a>
     <a href="deliveryJob.html?type=3" class="tab_item">不合适</a>
   </div>
-  <div class="g_container">
-    <div class="job_list">
-      <!--<div class="job_item">-->
-        <!--<div class="job_title">-->
-          <!--<span class="title_txt wrap">空姐招聘青岛航空</span>-->
-          <!--<span class="job_state_bg"></span>-->
-          <!--<span class="job_state">已查看</span>-->
-        <!--</div>-->
-        <!--<div class="job_label">-->
-          <!--<span class="label_address"><i class="iconfont icon-dizhi"></i>青岛</span>-->
-          <!--<span class="label_exp"><i class="iconfont icon-gongzuojingyan"></i>无需经验</span>-->
-          <!--<span class="label_money"><i class="iconfont icon-icon-test1"></i>10-20K</span>-->
-        <!--</div>-->
-        <!--<div class="job_company">-->
-          <!--<div class="company_info">-->
-            <!--<div class="company_logo">-->
-              <!--<img src="img/company_logo.png" alt=""/>-->
-            <!--</div>-->
-            <!--<div class="company_name wrap">山东航空有限公司</div>-->
-            <!--<div class="company_state"><i class="iconfont icon-v"></i>已授权</div>-->
-          <!--</div>-->
-          <!--<div class="job_time">2017/03/31</div>-->
-        <!--</div>-->
-      <!--</div>-->
+  <div class="swiper-container g_container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="init-loading" style="display: none;"></div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide job_list"></div>
+        </div>
+      </div>
     </div>
+    <div class="swiper-scrollbar"></div>
   </div>
   <div class="popup_cont">
     <div class="popup_cover"></div>

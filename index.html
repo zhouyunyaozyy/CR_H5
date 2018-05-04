@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>超人招聘--首页</title>
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_41v4vjhx37qtzkt9.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="css/swiper-3.3.1.min.css"/>
     <link rel="stylesheet" href="css/common.css"/>
     <link rel="stylesheet" href="css/index.css"/>
-    <link rel="stylesheet" href="css/swiper.min.css"/>
     <script src="data/area.js"></script>
     <script src="data/formData.js"></script>
-    <script src="js/swiper.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/swiper.jquery.min.js"></script>
     <script src="js/aes/crypto-js.js"></script>
     <script src="js/aes/jsencrypt.js"></script>
     <script src="js/aes/guid.js"></script>
@@ -35,16 +37,46 @@
         </div>
         <div class="head_job_cont"></div>
     </div>
-    <div class="g_container">
-        <div class="banner">
-            <div class="swiper-container">
+    <!--<div class="g_container">-->
+        <!--<div class="banner">-->
+            <!--<div class="swiper-container">-->
+                <!--<div class="swiper-wrapper"></div>-->
+                <!--<div class="swiper-pagination"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="split"></div>-->
+        <!--<div class="job_list"></div>-->
+    <!--</div>-->
+    <div class="swiper-container g_container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="init-loading" style="display: none;"></div>
                 <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="banner">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <div class="split"></div>
+                        <div class="job_list"></div>
+                    </div>
                 </div>
-                <div class="swiper-pagination"></div>
             </div>
         </div>
-        <div class="split"></div>
-        <div class="job_list"></div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+    <div class="download_cont">
+        <div class="download_logo">
+            <img src="img/logo_2.png" alt=""/>
+        </div>
+        <div class="download_txt">
+            <div class="download_title">超人招聘</div>
+            <div class="download_desc">更多航空职位，尽在超人招聘。</div>
+        </div>
+        <div class="download_btn">下载APP</div>
+        <div class="download_close">×</div>
     </div>
     <div class="popup_cont">
         <div class="popup_cover"></div>

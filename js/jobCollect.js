@@ -1,5 +1,14 @@
 var popupType;
-getCallBack({},'/dabai-chaorenjob/favorites/getJobFavoritesList',initList)
+var loadFlag = true;
+var _start = 1;
+init();
+function init(){
+  var dataPost = {
+    _limit: 15,
+    _start:_start
+  }
+  getCallBack(dataPost,'/dabai-chaorenjob/favorites/getJobFavoritesList',initList)
+}
 function initList(res){
   if(res.code == 1){
     var dataList = res.data.data;
@@ -24,10 +33,19 @@ function initList(res){
         formatDate(dataList[i].issue_time,1) +
         '</div></div></div>'
       }
-    }else{
+      if(dataList.length < 15){
+        loadFlag = false;
+      }
+      if(_start > 1){
+        $(".job_list").append(html)
+      }else{
+        $(".job_list").html(html)
+      }
+      mySwiper.update(); // 重新计算高度;
+    }else if(_start == 1){
       html = '<div class="no_data"><img src="img/no_data_3.jpg" alt=""/></div>'
+      $(".job_list").html(html)
     }
-    $(".job_list").html(html)
   }else if(res.code == 10001){
     popupType = 2;
     showPopup("请先登录")
@@ -53,3 +71,48 @@ $(".popup_hide").click(function(){
       break;
   }
 })
+var mySwiper = new SwiperScroll('.g_container',{
+  direction: 'vertical',
+  scrollbar: '.swiper-scrollbar',
+  slidesPerView: 'auto',
+  mousewheelControl: true,
+  freeMode: true,
+  onTouchMove: function(swiper){		//手动滑动中触发
+    var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+    var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+    if(mySwiper.translate < 50 && mySwiper.translate > 0) {
+      $(".init-loading").html('下拉刷新...').show();
+    }else if(mySwiper.translate > 50 ){
+      $(".init-loading").html('释放刷新...').show();
+    }
+  },
+  onTouchEnd: function(swiper) {
+    var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+    var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+    // 上拉加载
+    if(mySwiper.translate <= _viewHeight - _contentHeight - 50 && mySwiper.translate < 0) {
+      if(loadFlag){
+        _start = _start + 1
+        init();
+      }else{
+        mySwiper.update(); // 重新计算高度;
+        popupType = 1;
+        showPopup("已无更多数据")
+      }
+    }
+    // 下拉刷新
+    if(mySwiper.translate >= 50) {
+      loadFlag = true;
+      _start = 1;
+      console.log(loadFlag,_start)
+      init();
+      $(".init-loading").html('刷新成功！');
+      setTimeout(function(){
+        $(".init-loading").html('').hide();
+      },800);
+    }else if(mySwiper.translate >= 0 && mySwiper.translate < 50){
+      $(".init-loading").html('').hide();
+    }
+    return false;
+  }
+});

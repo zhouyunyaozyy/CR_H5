@@ -1,6 +1,16 @@
 .fail_cont{
   background-color: #f5f5f5;
 }
+/*g_container*/
+.g_container{
+  position: absolute;
+  top: 2.4rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling:touch;
+}
 /*fail_cont_top*/
 .fail_cont_top{
   background: #fff;

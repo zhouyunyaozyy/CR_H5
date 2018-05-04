@@ -1,5 +1,7 @@
 var search =  url_analysis(window.location.search);
 var popupType;
+var loadFlag = true;
+var _start = 1;
 if(search.type == 1){
   $(".back").attr("href","index.html")
 }else if(window.sessionStorage.getItem("jid")){
@@ -7,39 +9,49 @@ if(search.type == 1){
 }else{
   $(".back").attr("href","index.html")
 }
-getCallBack({cid:search.cid},"/dabai-chaorenjob/company/getCompanyInfoAndJobs",init)
-function init(res){
+init();
+function init(){
+  var postData = {
+    cid:search.cid,
+    _limit: 15,
+    _start:_start
+  }
+  getCallBack(postData,"/dabai-chaorenjob/company/getCompanyInfoAndJobs",initInfo)
+}
+function initInfo(res){
   if(res.code == 1){
-    if(res.data.imagesUrl.length > 0){
-      var img_html = "";
-      for(var i = 0; i<res.data.imagesUrl.length;i++){
-        img_html+= '<img src="' +
-        res.data.imagesUrl[i] +
-        '" alt="" class="swiper-slide"/>'
-      }
-      $(".swiper-wrapper").html(img_html)
-      var swiper = new Swiper('.swiper-container', {
-        centeredSlides: true,
-        loop: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
+    if(_start == 1){
+      if(res.data.imagesUrl.length > 0){
+        var img_html = "";
+        for(var i = 0; i<res.data.imagesUrl.length;i++){
+          img_html+= '<img src="' +
+          res.data.imagesUrl[i] +
+          '" alt="" class="swiper-slide"/>'
         }
-      });
+        $(".banner .swiper-wrapper").html(img_html)
+        var swiper = new Swiper('.banner .swiper-container', {
+          centeredSlides: true,
+          loop: true,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          }
+        });
+      }
+      $(".job_info_name").text(res.data.name_full)
+      $(".job_info_logo img").attr("src",res.data.logoUrl)
+      $(".js_abbr").text(res.data.name_short)
+      $(".js_nature").text(formatData(res.data.character,"character"))
+      $(".js_scale").text(formatData(res.data.fleet_size,"fleet_size"))
+      $(".js_web").text(res.data.website)
+      $(".js_address").text(res.data.address)
+      $(".js_phone").text(res.data.tel)
+      $(".company_introduce").text(res.data.profile)
     }
-    $(".job_info_name").text(res.data.name_full)
-    $(".job_info_logo img").attr("src",res.data.logoUrl)
-    $(".js_abbr").text(res.data.name_short)
-    $(".js_nature").text(formatData(res.data.character,"character"))
-    $(".js_scale").text(formatData(res.data.fleet_size,"fleet_size"))
-    $(".js_web").text(res.data.website)
-    $(".js_address").text(res.data.address)
-    $(".js_phone").text(res.data.tel)
-    $(".company_introduce").text(res.data.profile)
     var dataList = res.data.jobs.data;
     var html = '';
     for(var i = 0;i<dataList.length;i++){
@@ -61,7 +73,15 @@ function init(res){
       formatDate(dataList[i].issue_time,1) +
       '</div></div></div>'
     }
-    $(".job_list").html(html)
+    if(dataList.length < 15){
+      loadFlag = false;
+    }
+    if(_start > 1){
+      $(".job_list").append(html)
+    }else{
+      $(".job_list").html(html)
+    }
+    mySwiper.update(); // 重新计算高度;
   }else if(res.code == 10001){
     popupType = 2;
     showPopup("请先登录")
@@ -77,6 +97,11 @@ function init(res){
 $(".job_list").on("click",".job_item",function(){
   window.location.href = "jobDetail.html?jid="+$(this).attr("data-jid")
 })
+$(".download_close").click(function(){
+  $(".download_cont").animate({
+    width: "0px"
+  })
+})
 $(".popup_hide").click(function(){
   switch (popupType){
     case 1:
@@ -87,3 +112,48 @@ $(".popup_hide").click(function(){
       break;
   }
 })
+var mySwiper = new SwiperScroll('.g_container',{
+  direction: 'vertical',
+  scrollbar: '.swiper-scrollbar',
+  slidesPerView: 'auto',
+  mousewheelControl: true,
+  freeMode: true,
+  onTouchMove: function(swiper){		//手动滑动中触发
+    var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+    var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+    if(mySwiper.translate < 50 && mySwiper.translate > 0) {
+      $(".init-loading").html('下拉刷新...').show();
+    }else if(mySwiper.translate > 50 ){
+      $(".init-loading").html('释放刷新...').show();
+    }
+  },
+  onTouchEnd: function(swiper) {
+    var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+    var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+    // 上拉加载
+    if(mySwiper.translate <= _viewHeight - _contentHeight - 50 && mySwiper.translate < 0) {
+      if(loadFlag){
+        _start = _start + 1
+        console.log(loadFlag,_start)
+        init();
+      }else{
+        popupType = 1;
+        showPopup("已无更多数据")
+      }
+    }
+    // 下拉刷新
+    if(mySwiper.translate >= 50) {
+      loadFlag = true;
+      _start = 1;
+      console.log(loadFlag,_start)
+      init();
+      $(".init-loading").html('刷新成功！');
+      setTimeout(function(){
+        $(".init-loading").html('').hide();
+      },800);
+    }else if(mySwiper.translate >= 0 && mySwiper.translate < 50){
+      $(".init-loading").html('').hide();
+    }
+    return false;
+  }
+});

@@ -91,3 +91,8 @@ $(".popup_hide").click(function(){
       break;
   }
 })
+$(".download_close").click(function(){
+  $(".download_cont").animate({
+    width: "0px"
+  })
+})
