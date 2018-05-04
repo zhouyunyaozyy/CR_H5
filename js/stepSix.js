@@ -12,7 +12,7 @@ function initToken(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -86,7 +86,7 @@ function initResume(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -168,7 +168,7 @@ function showImg(res,obj){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -257,7 +257,7 @@ function updateInfo (res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -276,7 +276,7 @@ function updateZs (res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -297,7 +297,7 @@ function updateSteps(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -312,7 +312,7 @@ function submitAudit(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)

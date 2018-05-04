@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/search.css"/>
   <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="data/area.js"></script>
+  <script src="data/formData.js"></script>
   <script src="js/aes/crypto-js.js"></script>
   <script src="js/aes/jsencrypt.js"></script>
   <script src="js/aes/guid.js"></script>
@@ -19,8 +21,39 @@
 <body>
   <div class="search_header">
     <a href="index.html" class="search_back"><i class="iconfont icon-fanhui"></i>首页</a>
-    <input type="text" class="search_txt"/>
+    <input type="text" class="search_txt" placeholder="请输入想要查找的职位/企业名称"/>
     <span class="search_btn">搜索</span>
   </div>
+  <div class="g_container">
+    <div class="history_cont">
+      <div class="history_title">
+        <span class="history_label">搜索历史</span>
+        <span class="history_clear">清空</span>
+      </div>
+      <div class="history_list"></div>
+    </div>
+    <div class="search_cont is_hide">
+      <div class="search_total">共<span></span>条记录</div>
+      <div class="search_type">航企</div>
+      <div class="company_list"></div>
+      <div class="search_type top">职位</div>
+      <div class="job_list">
+      </div>
+    </div>
+  </div>
+  <div class="popup_cont">
+    <div class="popup_cover"></div>
+    <div class="popup_body">
+      <div class="popup_text">
+        <div class="popup_txt"></div>
+      </div>
+      <div class="popup_btn">
+        <span class="popup_err">取消</span>
+        <span class="popup_suc">确认</span>
+        <span class="popup_hide">确认</span>
+      </div>
+    </div>
+  </div>
+  <script src="js/search.js"></script>
 </body>
 </html>

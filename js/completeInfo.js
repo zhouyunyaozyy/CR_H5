@@ -1,4 +1,3 @@
-var openid = JSON.parse(window.sessionStorage.getItem("openid")) || "";
 var popupType;
 $(function(){
   var url_obj =url_analysis(window.location.search)
@@ -6,13 +5,14 @@ $(function(){
     getCallBack({code:url_obj.code},"/dabai-chaorenjob/seeker/getWeChatOpenId",getOpenId)
     return;
   }else{
-    if(!openid.openid){
+    var openid = window.sessionStorage.getItem("openid");
+    if(!openid){
       popupType = 1;
       showPopup("微信授权失败")
       return;
     }else{
       var nativeData = {
-        username: openid.openid
+        username: openid
       }
       aesData.pageStatus = 'login';
       jiami(nativeData)
@@ -25,11 +25,11 @@ $(function(){
 function getOpenId(res){
   if(res.code == 1){
     if(res.data){
-      window.sessionStorage.setItem("openid",res.data);
+      var openid = JSON.parse(res.data).openid;
+      window.sessionStorage.setItem("openid",openid);
       var nativeData = {
-        username: res.data
+        username: openid
       }
-      openid = JSON.parse(res.data);
       aesData.pageStatus = 'login';
       jiami(nativeData)
       //console.log(nativeData,win.aesData)
@@ -44,7 +44,7 @@ function getOpenId(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -71,7 +71,7 @@ function loginTest(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -131,7 +131,8 @@ $(".js_regist").click(function(){
   var publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdIIlQzv3fb9ktUGphZ/4l0qQ87iMxLjn1Rc3yhWL0KlnTSY/tziRi0XRyoSCBovZe1hhWGXnfwSvgJRvkzBWRHrnGor0+6I18DnY1lnrckp6bmjirX0BvdqFWxmXgIoz985YjLnPGNqBzt58EBdC5YqUYYnATRgKMA4g0N0Cd6QIDAQAB'
   encrypt.setPublicKey(publicKey)
   var phone = encrypt.encrypt($(".js_phone").val())
-  var eid =  encrypt.encrypt(openid.openid)
+  var openid = window.sessionStorage.getItem("openid")
+  var eid =  encrypt.encrypt(openid)
   var postData = {
     mobile: phone,
     eid: eid,
@@ -147,8 +148,9 @@ function setPwd(res){
     if(res.data){
       window.location.href = "WXpwd.html"
     }else{
+      var openid = window.sessionStorage.getItem("openid")
       var nativeData = {
-        username: openid.openid
+        username: openid
       }
       aesData.pageStatus = 'login';
       jiami(nativeData)

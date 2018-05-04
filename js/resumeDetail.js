@@ -32,7 +32,7 @@ function resumeState(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -124,7 +124,7 @@ function resumeInit(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -144,7 +144,7 @@ function initFuc(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)

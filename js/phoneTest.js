@@ -8,7 +8,7 @@ function initMy(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -32,7 +32,7 @@ function getCode (res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -63,7 +63,7 @@ function nextStep(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)

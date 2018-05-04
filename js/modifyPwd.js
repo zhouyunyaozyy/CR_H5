@@ -29,10 +29,7 @@ function pwdResult(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请登录后在操作")
-  }else if(res.code == 10001){
-    popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else if(res.code == 0){
     popupType = 1;
     showPopup("原密码错误")

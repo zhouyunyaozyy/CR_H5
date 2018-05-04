@@ -115,7 +115,7 @@ function initResume(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -479,7 +479,7 @@ function nativeInit(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -494,7 +494,7 @@ function linkInit(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -509,7 +509,7 @@ function baseInit(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -534,7 +534,7 @@ function updateSteps(res){
     showPopup("请先登录")
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)

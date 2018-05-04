@@ -67,7 +67,7 @@ function login(res){
     postCallBack({},'/dabai-chaorenjob/seeker/getUserInfoByTickets',loginTest)
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -79,7 +79,7 @@ function loginTest(res){
     window.location.href = "index.html"
   }else if(res.code == 10002){
     popupType = 2;
-    showPopup("请重新登录")
+    showPopup(res.msg)
   }else{
     popupType = 1;
     showPopup(res.msg)
@@ -97,6 +97,6 @@ $(".popup_hide").click(function(){
   }
 })
 $(".weixin").click(function(){
-  window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx21adcd1f047e3a45&redirect_uri=http://c.chaorenjob.com/completeInfo.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+  window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx21adcd1f047e3a45&redirect_uri=http://c-test.chaorenjob.com/completeInfo.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
   //window.location.href = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx21adcd1f047e3a45&secret=b0c5b6e084dc71147365dc87f3b4e11e&code=CODE&grant_type=authorization_code"
 })
