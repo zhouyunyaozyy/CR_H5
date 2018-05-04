@@ -53,7 +53,7 @@ var ticket = window.sessionStorage.getItem("ticket");
 var ticketsSalt = window.sessionStorage.getItem("ticketsSalt");
 //加密token
 function token (){
-  var resultData = 0
+  var resultData = ""
   if(ticketsSalt){
     var postTime = ''+(Date.parse(new Date()))// 时间戳
     var postVersion = rndRandom(20) // uuid随机数
@@ -76,20 +76,24 @@ function token (){
   return resultData;
 }
 //接口公共url
-//var locationIp =  'http://192.168.1.115:5020';
-var locationIp =  'http://api.chaorenjob.com';
-var resourceUrl = "http://h5.chaorenjob.com"
-//var resourceUrl = "http://192.168.1.115:5020/dabai-page"
+var locationIp =  'http://192.168.1.115:5020';
+//var locationIp =  'http://api.chaorenjob.com';
+//var resourceUrl = "http://h5.chaorenjob.com"
+var resourceUrl = "http://192.168.1.115:5020/dabai-page"
 //ajax
 function getCallBack(data,url,success,isData){
   var resultData = token();
   var all_url = locationIp + url;
+  var headers = {
+    "Content-Type": "application/json ",
+    "Accept" : "*/*"
+  }
+  if(resultData){
+    headers["CR-token"] = resultData
+  }
   $.ajax({
     type:'get',
-    headers: {
-      "Content-Type": "application/json ",
-      "Accept" : "*/*",
-      'CR-token': resultData},
+    headers: headers,
     url:all_url,
     dataType: "json",
     data:data,
@@ -101,14 +105,17 @@ function getCallBack(data,url,success,isData){
 function postCallBack(data,url,success,isData){
   var resultData = token();
   var all_url = locationIp + url;
-  console.log(resultData)
+  var headers = {
+    "Accept" : "*/*"
+  }
+  if(resultData){
+    headers["CR-token"] = resultData
+  }
   $.ajax({
     type:'post',
     contentType: "application/json;charset=UTF-8",
     dataType:"json",
-    headers: {
-      "Accept" : "*/*",
-      'CR-token': resultData},
+    headers: headers,
     url:all_url,
     data:JSON.stringify(data),
     success:function(data){

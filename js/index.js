@@ -135,7 +135,7 @@ $(".swiper-wrapper").on("click",".swiper-slide",function(){
       window.location.href = "textHtml.html"
       break;
     case 6:
-      window.location.href = resourceUrl + "/news/detail/" + args;
+      window.location.href = resourceUrl + "/news/share/" + args;
       break;
   }
 })
