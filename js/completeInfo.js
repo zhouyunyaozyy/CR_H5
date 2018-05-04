@@ -24,8 +24,8 @@ $(function(){
 })
 function getOpenId(res){
   if(res.code == 1){
-    if(res.data){
-      var openid = JSON.parse(res.data).openid;
+    var openid = JSON.parse(res.data).openid;
+    if(openid){
       window.sessionStorage.setItem("openid",openid);
       var nativeData = {
         username: openid
