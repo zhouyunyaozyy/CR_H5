@@ -179,8 +179,8 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   -webkit-flex: 0 0 1.81rem;
   flex: 0 0 1.81rem;
   height: 1.81rem;
-  margin-right: .3rem;
   margin-left: .53rem;
+  margin-right: .3rem;
 }
 .download_logo img{
   width: 100%;
@@ -206,7 +206,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   border-radius: .75rem;
   font-size: .7rem;
   text-align: center;
-  margin: 0 1.15rem;
+  margin: 0 .5rem;
 }
 .download_close{
   -webkit-flex: 0 0 1.2rem;

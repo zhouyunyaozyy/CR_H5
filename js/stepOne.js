@@ -11,7 +11,6 @@ function initResume(res){
           return;
       }
     }else{
-      $(".back").attr("href","modifyResume.html")
       $(".title").text("求职意向")
       $(".js_one").text("确认")
     }
@@ -132,7 +131,11 @@ $(".js_back").click(function(){
   showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
 })
 $(".popup_suc").click(function(){
-  window.location.href = "my.html"
+  if(!search.type){
+    window.location.href = "my.html"
+  }else{
+    window.location.href = "modifyResume.html"
+  }
 })
 $(".popup_err").click(function(){
   hidePopup()

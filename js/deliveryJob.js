@@ -60,7 +60,7 @@ function jobList(res){
       mySwiper.update(); // 重新计算高度;
     }else if(_start == 1){
       html = '<div class="no_data"><img src="img/no_data_2.jpg" alt=""/></div>'
-      $(".job_list").html(html)
+      $("body").append(html)
     }
   }else if(res.code == 10001){
     popupType = 2;

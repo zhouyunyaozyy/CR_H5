@@ -16,7 +16,6 @@ function initResume(res){
           return;
       }
     }else{
-      $(".back").attr("href","modifyResume.html")
       $(".title").text("基本信息")
       $(".js_two").text("确认")
     }
@@ -564,7 +563,11 @@ $(".js_back").click(function(){
   showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
 })
 $(".popup_suc").click(function(){
-  window.location.href = "stepOne.html"
+  if(!search.type){
+    window.location.href = "stepOne.html"
+  }else{
+    window.location.href = "modifyResume.html"
+  }
 })
 $(".popup_err").click(function(){
   hidePopup()

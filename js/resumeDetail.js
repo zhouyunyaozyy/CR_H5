@@ -89,7 +89,7 @@ function resumeInit(res){
       }
       $(".education_box .resume_title").after(educationHtml)
     }
-    var experience_item = JSON.parse(res.data.experience_item);
+    var experience_item = JSON.parse(res.data.experience_item) || [];
     if(experience_item.length > 0){
       var expHtml = "";
       for(var b = 0;b <experience_item.length; b++){

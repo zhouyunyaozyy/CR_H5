@@ -31,7 +31,6 @@ function initResume(res){
           return;
       }
     }else{
-      $(".back").attr("href","modifyResume.html")
       $(".title").text("基本信息")
       $(".js_two").text("确认")
     }
@@ -68,7 +67,6 @@ function initResume(res){
     }else{
       $(".edu_title").remove();
       $(".five_education_list").remove();
-      $(".back").attr("href","modifyResume.html")
       $(".title").text("工作经历")
       $(".js_five").text("确认")
     }
@@ -107,7 +105,6 @@ function initResume(res){
     }else{
       $(".exp_title").remove();
       $(".five_exp_list").remove();
-      $(".back").attr("href","modifyResume.html")
       $(".title").text("教育经历")
       $(".js_five").text("确认")
     }
@@ -526,7 +523,11 @@ $(".js_back").click(function(){
   showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
 })
 $(".popup_suc").click(function(){
-  window.location.href = "stepFour.html"
+  if(!search.type){
+    window.location.href = "stepFour.html"
+  }else{
+    window.location.href = "modifyResume.html"
+  }
 })
 $(".popup_err").click(function(){
   hidePopup()

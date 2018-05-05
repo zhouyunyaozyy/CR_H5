@@ -40,7 +40,6 @@ function initResume(res) {
           return;
       }
     }else{
-      $(".back").attr("href","modifyResume.html")
       $(".title").text("基本信息")
       $(".js_two").text("确认")
     }
@@ -75,13 +74,11 @@ function initResume(res) {
     if (search.type == 1) {
       $(".photo_title").remove();
       $(".three_photo_img").remove();
-      $(".back").attr("href", "modifyResume.html")
       $(".title").text("标准照")
       $(".js_three").text("确认")
     } else if (search.type == 2) {
       $(".header_title").remove();
       $(".three_standard_img").remove();
-      $(".back").attr("href", "modifyResume.html")
       $(".title").text("图片形象")
       $(".js_three").text("确认")
     }
@@ -339,7 +336,11 @@ $(".js_back").click(function(){
   showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
 })
 $(".popup_suc").click(function(){
-  window.location.href = "stepTwo.html"
+  if(!search.type){
+    window.location.href = "stepTwo.html"
+  }else{
+    window.location.href = "modifyResume.html"
+  }
 })
 $(".popup_err").click(function(){
   hidePopup()
