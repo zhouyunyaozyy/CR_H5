@@ -303,7 +303,8 @@ function updateSteps(res){
 }
 function submitAudit(res){
   if(res.code == 1){
-    window.location.href = "resumeDetail.html"
+    popupType = 3;
+    showPopup("前往实名认证",1)
   }else if(res.code == 10001){
     popupType = 2;
     showPopup("请先登录")
@@ -315,6 +316,12 @@ function submitAudit(res){
     showPopup(res.msg)
   }
 }
+$(".popup_err").click(function(){
+  window.location.href = "resumeDetail.html"
+})
+$(".popup_suc").click(function(){
+  window.location.href = "realName.html"
+})
 $(".popup_hide").click(function(){
   switch (popupType){
     case 1:

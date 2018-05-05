@@ -41,9 +41,11 @@ function jobList(res){
         formatData(data[i].work_experience,"jobExperience") +
         '</span><span class="label_money"><i class="iconfont icon-icon-test1"></i>' +
         formatData(data[i].wages,"wages") +
-        '</span></div><div class="job_company"><div class="company_info"><div class="company_logo"><img src="' +
+        '</span></div><div class="job_company"><div class="company_info"><a href="companyInfo.html?type=3&cid=' +
+        data[i].cid +
+        '" class="company_logo"><img src="' +
         data[i].logoUrl +
-        '" alt=""/></div><div class="company_name wrap">' +
+        '" alt=""/></a><div class="company_name wrap">' +
         data[i].name_short +
         '</div><div class="company_state"><i class="iconfont icon-v"></i>已授权</div></div><div class="job_time">' +
         formatDate(data[i].issue_time,1) +

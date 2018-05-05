@@ -4,6 +4,9 @@ getCallBack({rrid:search.rrid},"/dabai-chaorenjob/resumeReceived/getVoteDetail",
 function init(res){
   console.log(res)
   if(res.code == 1){
+    $(".logo").attr("href","companyInfo.html?type=4&rrid=" +
+    search.rrid +
+    "&cid=" + res.data.cid)
     $(".logo img").attr("src",res.data.logoUrl)
     $(".job_name").text(res.data.name)
     $(".company_name").text(res.data.name_short)
@@ -15,7 +18,11 @@ function init(res){
         $(".state_img").html('<img src="img/state_m.png" alt=""/>')
         $(".interviewer_time").text(formatDate(res.data.agreedtime,2))
         $(".interviewer_address").text(res.data.agreedpath)
-        $(".leave_msg").text(res.data.agreednote)
+        if(res.data.agreednote){
+          $(".leave_msg").text(res.data.agreednote)
+        }else{
+          $(".interviewer_title").css("display","none")
+        }
         var msg = "您好，您已被我司选中参加线下面试。作为该面试的候选人，请认真查阅通知信息，并做好相应准备。"
         $(".state_msg").text(msg)
         break;
@@ -40,6 +47,9 @@ function init(res){
         $(".interviewer_suc").css("display","none")
         $(".interviewer_err").addClass("block")
         break;
+      case 3:
+        $(".interviewer_btn").addClass("is_overdue")
+        break;
     }
     if(res.data.logs.length > 0){
       var html = '';
@@ -51,6 +61,8 @@ function init(res){
         '</span></div>'
       }
       $(".history_title").after(html)
+    }else{
+      $(".history_title").after("<span class='no_delivery'>暂无处理记录</span>")
     }
   }else if(res.code == 10001){
     popupType = 2;
@@ -85,9 +97,15 @@ $(".interviewer_err").click(function(){
   $(".refuse_cont").css("display","block")
 })
 $(".refuse_err").click(function(){
+  if($(".interviewer_btn").hasClass("is_overdue")){
+    return;
+  }
   $(".refuse_cont").css("display","none")
 })
 $(".refuse_suc").click(function(){
+  if($(".interviewer_btn").hasClass("is_overdue")){
+    return;
+  }
   var ure_mark = $(".refuse_text textarea").val();
   if(!ure_mark){
     popupType = 1;

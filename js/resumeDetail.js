@@ -60,7 +60,11 @@ function resumeInit(res){
     $(".js_offer_state").text(formatData(res.data.employ,"offerState"))
     $(".js_tel").text(res.data.tel)
     $(".js_header").attr("src",res.data.headerUrl);
-    $(".js_video").attr("src",res.data.videoUrl);
+    if(res.data.videoUrl){
+      $(".js_video").attr("src",res.data.videoUrl);
+    }else{
+      $(".video_cont").html("<span class='no_data_txt'>暂无内容</span>")
+    }
     $(".js_profile").text(res.data.profile)
     if(res.data.imagesUrl.length > 0){
       var imgHtml = ""
@@ -70,13 +74,15 @@ function resumeInit(res){
         '" alt=""/>'
       }
       $(".img_box .id_photo_cont").html(imgHtml)
+    }else{
+      $(".img_box .id_photo_cont").html("<span class='no_data_txt'>暂无内容</span>")
     }
     var education_item = JSON.parse(res.data.education_item);
     if(education_item.length > 0){
       var educationHtml = "";
       for(var a = 0;a <education_item.length; a++){
-        var startTime = new Date(education_item[a].admission_time)
-        var endTime = new Date(education_item[a].graduation_time)
+        var startTime = new Date(parseInt(education_item[a].admission_time))
+        var endTime = new Date(parseInt(education_item[a].graduation_time))
         educationHtml += '<div class="education_item"><div class="resume_item"><span class="resume_label">学校名称</span><span class="resume_text">' +
         education_item[a].sname +
         '</span></div><div class="resume_item"><span class="resume_label">所学专业</span><span class="resume_text">' +
@@ -88,13 +94,15 @@ function resumeInit(res){
         '</span></div></div>'
       }
       $(".education_box .resume_title").after(educationHtml)
+    }else{
+      $(".education_box .resume_title").after("<span class='no_data_txt'>暂无内容</span>")
     }
     var experience_item = JSON.parse(res.data.experience_item) || [];
     if(experience_item.length > 0){
       var expHtml = "";
       for(var b = 0;b <experience_item.length; b++){
-        var startTime = new Date(experience_item[b].starttime)
-        var endTime = new Date(experience_item[b].endtime)
+        var startTime = new Date(parseInt(experience_item[b].starttime))
+        var endTime = new Date(parseInt(experience_item[b].endtime))
         expHtml += '<div class="exp_item"><div class="resume_item"><span class="resume_label">工作时间</span>' +
         '<span class="resume_text">' +
         startTime.getFullYear() + "." + (startTime.getMonth()+1) + "-" + endTime.getFullYear() + "." + (endTime.getMonth()+1) +
@@ -107,6 +115,8 @@ function resumeInit(res){
         '</div></div></div>'
       }
       $(".exp_box .resume_title").after(expHtml)
+    }else{
+      $(".exp_box .resume_title").after("<span class='no_data_txt'>暂无内容</span>")
     }
     if(res.data.skillUrl.length > 0){
       var certHtml = ""
@@ -118,6 +128,8 @@ function resumeInit(res){
         '</div></div>'
       }
       $(".cert_list").html(certHtml)
+    }else{
+      $(".cert_list").html("<span class='no_data_txt'>暂无内容</span>")
     }
   }else if(res.code == 10001){
     popupType = 2;

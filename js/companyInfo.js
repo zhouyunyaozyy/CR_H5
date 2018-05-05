@@ -4,6 +4,12 @@ var loadFlag = true;
 var _start = 1;
 if(search.type == 1){
   $(".back").attr("href","index.html")
+}else if(search.type == 2){
+  $(".back").attr("href","jobCollect.html")
+}else if(search.type == 3){
+  $(".back").attr("href","deliveryJob.html")
+}else if(search.type == 4){
+  $(".back").attr("href","deliveryDetail.html?rrid="+search.rrid)
 }else if(window.sessionStorage.getItem("jid")){
   $(".back").attr("href","jobDetail.html?jid="+window.sessionStorage.getItem("jid"))
 }else{

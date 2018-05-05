@@ -7,7 +7,7 @@ $(function(){
   }else{
     var openid = window.sessionStorage.getItem("openid");
     if(!openid){
-      popupType = 1;
+      popupType = 2;
       showPopup("微信授权失败")
       return;
     }else{
