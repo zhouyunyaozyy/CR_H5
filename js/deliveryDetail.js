@@ -47,9 +47,9 @@ function init(res){
         $(".interviewer_suc").css("display","none")
         $(".interviewer_err").addClass("block")
         break;
-      case 3:
-        $(".interviewer_btn").addClass("is_overdue")
-        break;
+    }
+    if(res.data.timeOut == 1){
+      $(".interviewer_btn").addClass("is_overdue")
     }
     if(res.data.logs.length > 0){
       var html = '';
@@ -76,6 +76,9 @@ function init(res){
   }
 }
 $(".interviewer_suc").click(function(){
+  if($(".interviewer_btn").hasClass("is_overdue")){
+    return;
+  }
   postCallBack({rrid:search.rrid},"/dabai-chaorenjob/resumeReceived/acceptResumeReceived",sucConfirm)
 })
 function sucConfirm(res){
@@ -94,18 +97,15 @@ function sucConfirm(res){
   }
 }
 $(".interviewer_err").click(function(){
+  if($(".interviewer_btn").hasClass("is_overdue")){
+    return;
+  }
   $(".refuse_cont").css("display","block")
 })
 $(".refuse_err").click(function(){
-  if($(".interviewer_btn").hasClass("is_overdue")){
-    return;
-  }
   $(".refuse_cont").css("display","none")
 })
 $(".refuse_suc").click(function(){
-  if($(".interviewer_btn").hasClass("is_overdue")){
-    return;
-  }
   var ure_mark = $(".refuse_text textarea").val();
   if(!ure_mark){
     popupType = 1;

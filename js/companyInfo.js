@@ -47,6 +47,8 @@ function initInfo(res){
             clickable: true
           }
         });
+      }else{
+        $(".banner").css("display","none")
       }
       $(".job_info_name").text(res.data.name_full)
       $(".job_info_logo img").attr("src",res.data.logoUrl)

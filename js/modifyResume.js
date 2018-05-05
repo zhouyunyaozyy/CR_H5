@@ -18,8 +18,6 @@ function initFuc(res,data){
         var noPerfectModify = "";
         perfectModify += '<div class="modul_item"><div class="modul_label">求职意向<span>(必填)</span></div><a href="stepOne.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>' +
         '<div class="modul_item"><div class="modul_label">基本信息<span>(必填)</span></div><a href="stepTwo.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>' +
-        '<div class="modul_item"><div class="modul_label">标准照<span>(必填)</span></div><a href="stepThree.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>' +
-        '<div class="modul_item"><div class="modul_label">教育经历<span>(必填)</span></div><a href="stepFive.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>' +
         '<div class="modul_item"><div class="modul_label">自我描述<span>(必填)</span></div><a href="stepSix.html?type=1"class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
         if(znConfig.video){
           var video_state = "必填"
@@ -35,9 +33,23 @@ function initFuc(res,data){
           var images_state = "选填"
           var images_calss = "blue"
         }
-        console.log(342,data)
+        if(data.headerUrl){
+          perfectModify += '<div class="modul_item"><div class="modul_label">标准照<span>(必填)</span></div><a href="stepThree.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
+        }else{
+          noPerfectModify += '<div class="modul_item"><div class="modul_label">标准照<span>(必填)</span></div><a href="stepThree.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
+        }
+        if(data.headerUrl){
+          perfectModify += '<div class="modul_item"><div class="modul_label">标准照<span>(必填)</span></div><a href="stepThree.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
+        }else{
+          noPerfectModify += '<div class="modul_item"><div class="modul_label">标准照<span>(必填)</span></div><a href="stepThree.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
+        }
+        var education_item = JSON.parse(data.education_item) || [];
+        if(education_item.length > 0){
+          perfectModify += '<div class="modul_item"><div class="modul_label">教育经历<span>(必填)</span></div><a href="stepFive.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
+        }else{
+          noPerfectModify += '<div class="modul_item"><div class="modul_label">教育经历<span>(必填)</span></div><a href="stepFive.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
+        }
         if(data.imagesUrl.length > 0){
-          console.log(3)
           perfectModify += '<div class="modul_item"><div class="modul_label ' +
           images_calss +
           '">图片形象<span>(' +
@@ -63,7 +75,7 @@ function initFuc(res,data){
           video_state +
           ')</span></div><a href="stepFour.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
         }
-        var experience_item = JSON.parse(data.experience_item);
+        var experience_item = JSON.parse(data.experience_item) || [];
         if(experience_item.length > 0){
           perfectModify += '<div class="modul_item"><div class="modul_label blue">工作经历<span>(选填)</span></div><a  href="stepFive.html?type=2" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
         }else{

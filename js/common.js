@@ -66,13 +66,13 @@ function token (){
     }
     // sessionSalt="sessionSalt"&postVersion="UUid 随机数"&postTime="时间戳"&platform="平台名称"&clientUid="机器唯一编码"
     var hmacDataBefore = 'ticketsSalt=' + ticketsSalt+'&postVersion='+postVersion+'&postTime='+postTime+'&platform='+window.sessionStorage.getItem('platform')+'&clientUid='+window.sessionStorage.getItem('clientUid')
-    console.log('hmacDataBefore', hmacDataBefore)
+    //console.log('hmacDataBefore', hmacDataBefore)
     var hmacData = CryptoJS.HmacSHA1(hmacDataBefore, ticketsSalt)
     var base = new Base64();
     var base64Data = base.encode(JSON.stringify(base64DataBefore))
     resultData = base64Data+'.'+hmacData
   }
-  console.log(resultData)
+  //console.log(resultData)
   return resultData;
 }
 //接口公共url
