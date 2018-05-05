@@ -12,7 +12,8 @@ $(function(){
       return;
     }else{
       var nativeData = {
-        username: openid
+        username: openid,
+        password: openid
       }
       aesData.pageStatus = 'login';
       jiami(nativeData)
@@ -28,7 +29,8 @@ function getOpenId(res){
     if(openid){
       window.sessionStorage.setItem("openid",openid);
       var nativeData = {
-        username: openid
+        username: openid,
+        password: openid
       }
       aesData.pageStatus = 'login';
       jiami(nativeData)

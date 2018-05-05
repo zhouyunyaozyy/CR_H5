@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>超人招聘--下载APP</title>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_dvftu580atf0f6r.css"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/downloadApp.css"/>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/aes/crypto-js.js"></script>
+  <script src="js/aes/jsencrypt.js"></script>
+  <script src="js/aes/guid.js"></script>
+  <script src="js/common.js"></script>
+</head>
+<body>
+  <div class="header">
+    <a href="index.html" class="back"><i class="iconfont icon-fanhui"></i>返回</a>
+    <span class="title">下载APP</span>
+  </div>
+  <div class="g_container">
+    <div class="top">
+      <img src="img/app_bg.png" alt=""/>
+    </div>
+    <div class="bottom">
+      <div class="bottom_cont">
+        <div class="logo_info">
+          <div class="logo">
+            <img src="img/logo_2.png" alt=""/>
+          </div>
+          <div class="logo_txt">
+            <div class="logo_title">超人招聘</div>
+            <div class="logo_disc">更多航空职位，尽在超人招聘。</div>
+          </div>
+        </div>
+        <div class="down_btn">
+          <a href="https://itunes.apple.com/cn/app/超人招聘/id1290658493?mt=8" class="ios_btn"><i class="iconfont icon-iphone"></i>iPhone下载</a>
+          <a href="http://www.chaorenjob.com/chaorenjob.apk" download="chaorenjob" class="android_btn"><i class="iconfont icon-andorid"></i>Android下载</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="point_cont">
+    <div class="point_cover"></div>
+    <div class="point_body">
+      <div class="point_txt">
+        <div>请点击右上角"更多"</div>
+        <div>选择浏览器打开下载</div>
+      </div>
+      <div class="point_img">
+        <img src="img/point.png" alt=""/>
+      </div>
+    </div>
+  </div>
+  <script>
+    var is_wx = isWeiXin();
+    if(!is_wx){
+      $(".point_cont").css("display","none")
+    }
+    $(".point_cont").click(function(){
+      $(".point_cont").css("display","none")
+    })
+  </script>
+</body>
+</html>
