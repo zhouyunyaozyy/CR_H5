@@ -6,7 +6,8 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>超人招聘--用户中心</title>
-  <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_dvftu580atf0f6r.css"/>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_631465_t9o2btyn1h8h0k9.css"/>
+  <link rel="stylesheet" href="css/cropper.css"/>
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/my.css"/>
   <script src="js/jquery-3.3.1.min.js"></script>
@@ -20,7 +21,8 @@
   <div class="top">
     <a href="index.html" class="back_index"><i class="iconfont icon-fanhui"></i>首页</a>
     <div class="top_avatar">
-      <img src="img/avatar.png" alt=""/>
+      <img class="avatar_img" src="img/avatar.png" alt=""/>
+      <input class="avatar_file" type="file"/>
     </div>
     <div class="user_phone"></div>
   </div>
@@ -65,6 +67,13 @@
       <i class="iconfont icon-tiaozhuan"></i>
     </a>
   </div>
+  <div class="img-container">
+    <div class="cut_btn">
+      <div class="close" >取消</div>
+      <div class="saveBtn">确定</div>
+    </div>
+    <img class="cutImg" id="cutImg"  src="">
+  </div>
   <div class="download_cont">
     <div class="download_logo">
       <img src="img/logo_2.png" alt=""/>
@@ -89,6 +98,14 @@
       </div>
     </div>
   </div>
+  <div class="floating_cont">
+    <div class="floating_text">
+      <i class="iconfont icon-cuowu"></i>
+      <i class="iconfont icon-tongguo"></i>
+      <span class="floating_txt"></span>
+    </div>
+  </div>
+  <script src="js/cropper.js"></script>
   <script src="js/my.js"></script>
 </body>
 </html>

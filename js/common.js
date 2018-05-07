@@ -437,3 +437,25 @@ function hidePopup(){
   $(".popup_txt").text("");
   $(".popup_cont").css("display","none")
 }
+//显示浮窗
+function showFloat(msg,type){
+  $(".floating_txt").text(msg);
+  switch (type){
+    case 1:
+      $(".icon-cuowu").css('display',"none")
+      $(".icon-tongguo").css('display',"inline")
+      break;
+    case 2:
+      $(".icon-tongguo").css('display',"none")
+      $(".icon-cuowu").css('display',"inline")
+      break;
+  }
+  $(".floating_cont").animate({
+    top:"5rem"
+  })
+  setTimeout(function(){
+    $(".floating_cont").css({
+      top: "-2rem"
+    })
+  },1000)
+}

@@ -3,7 +3,8 @@ getCallBack({},"/dabai-chaorenjob/common/qiniu/token",initToken)
 getCallBack({},"/dabai-chaorenjob/resume/getVideoProfile",videoInfo)
 getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
 var target,znConfig,popupType;
-var imgToken,videoKey;
+var imgToken,videoKey,videoCover;
+var poster;
 function initToken(res){
   if(res.code == 1){
     imgToken = res.data;
@@ -66,7 +67,9 @@ function initResume(res){
     getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
     if(res.data.video){
       videoKey = res.data.video;
-      var html = '<video src="' +
+      var html = '<video poster="' +
+        res.data.videoCoverUrl +
+        '" src="' +
         res.data.videoUrl +
         '" controls="controls"></video>'
       $(".four_video_show").html(html)
@@ -116,19 +119,48 @@ $('.four_video_cont').on("change",".btn_file",function(){
   if (val == '.mp4' || val== '.MP4') {
     this.select();
     var obj = this.files[0];
-    //file = obj;
-    //var fr = new FileReader();
-    //fr.onload = function () {
-    //  $(ipt).prev("img").attr("src",this.result);
-    //};
-    //fr.readAsDataURL(obj);
+    console.log(obj)
+    var fr = new FileReader();
+    fr.onload = function () {
+      var video = document.createElement("video");
+      video.src = this.result;
+      var video2 = $(".four_video_show");
+      var scale = 0.8;
+      var canvas = document.createElement("canvas");
+      canvas.width = video2.width() * scale;
+      //canvas.width = video2.videoWidth * scale;
+      //canvas.height = video2.videoHeight * scale;
+      canvas.height = video2.height() * scale;
+      console.log(canvas.width,canvas.height)
+      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+      var img = document.createElement("img");
+      poster = canvas.toDataURL("image/png");
+      var str = canvas.toDataURL("image/png").substring(22);
+      console.log(canvas.toDataURL("image/png"))
+      $.ajax({
+        type: "POST",
+        url: "http://upload-z2.qiniu.com/putb64/-1",
+        headers:{
+          "Content-Type": "application/octet-stream",
+          "Authorization": "UpToken "+imgToken
+        },
+        data: str,
+        success: function (res) {
+          if(res.key){
+            $(".four_video_show video").attr("poster",poster)
+            videoCover = res.key
+          }
+          console.log(res)
+        }
+      })
+    };
+    fr.readAsDataURL(obj);
   } else {
     popupType = 1
     showPopup("请选择mp4格式视频文件")
   }
   formData.append('token', imgToken);
   formData.append('file', obj);
-  formData.append('persistentOps', "vframe/jpg/offset/7/w/480/h/360");
   $.ajax({
     type: "POST",
     url:"http://upload-z2.qiniu.com",
@@ -144,19 +176,20 @@ $('.four_video_cont').on("change",".btn_file",function(){
 function showImg(res,key){
   if(res.code == 1){
     videoKey = key;
-    var html = '<video src="' +
-      res.data +
-      '" controls="controls"></video>'
+    if(poster){
+      var html = '<video poster="' +
+        poster +
+        '" src="' +
+        res.data +
+        '" controls="controls"></video>'
+    }else{
+      var html = '<video src="' +
+        res.data +
+        '" controls="controls"></video>'
+    }
     $(".four_video_show").html(html)
     $(".three_edit .icon-bianji").after('<input type="file" accept="video/mp4" class="btn_file"/>')
     $(".four_video_btn").css("display","flex")
-    //var video, output;
-    //video = $(".four_video_show video")[0];
-    //video.addEventListener('loadeddata',captureImage(video));
-    //poster="' +
-    //res.data +
-    //'?vframe/jpg/offset/0' +
-    //'"
   }else if(res.code == 10001){
     popupType = 2;
     showPopup("请先登录")
@@ -169,28 +202,6 @@ function showImg(res,key){
   }
   console.log(res)
 }
-setTimeout(captureImage,5000)
-function captureImage () {
-  var video = $(".four_video_show video")[0];
-  var output = $(".g_container")[0]
-  console.log(video)
-  var scale = 0.8;
-  var imga = document.createElement("img");
-  var canvas = document.createElement("canvas");
-  canvas.width = video.videoWidth * scale;
-  canvas.height = video.videoHeight * scale;
-  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-
-  // 设置动态添加的元素的样式
-  //imga.className='all';
-  imga.setAttribute('crossOrigin', 'anonymous');
-   //alert(canvas.toDataURL("image/png"));
-  imga.src = canvas.toDataURL("image/png");
-  console.log(canvas.toDataURL("image/png"))
-  video.poster=imga.src;
-  output.appendChild(imga);
-  output.appendChild(canvas);
-};
 $(".js_delete").click(function(){
   var html = '<i class="iconfont icon-tianjia1"></i><input type="file" accept="video/mp4" class="btn_file"/>'
   $(".four_video_show").html(html)
@@ -210,10 +221,16 @@ $(".js_four").click(function(){
     popupType = 1;
     showPopup("请上传视频形象")
     return;
+  }else if(znConfig.video && !videoCover){
+    popupType = 1;
+    showPopup("请重新上传视频形象")
+    return;
   }else if(!znConfig.video){
+    console.log(13)
     postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
   }else{
-    postCallBack({video:videoKey},"/dabai-chaorenjob/resume/updateVideoResume",videoUpdate)
+    console.log(12313)
+    postCallBack({video:videoKey,video_cover :videoCover},"/dabai-chaorenjob/resume/updateVideoResume",videoUpdate)
   }
 })
 function videoUpdate(res){

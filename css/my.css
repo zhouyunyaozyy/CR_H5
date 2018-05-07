@@ -20,11 +20,23 @@ body{
   width: 3.86rem;
   height: 3.86rem;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 .top_avatar img{
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+.avatar_file{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 .auth_state{
   display: block;
@@ -137,4 +149,42 @@ body{
 .my_set .item_label i{
   color:#666767;
   margin-right: .53rem;
+}
+/*cut_cont*/
+.img-container{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: #fff;
+  display: none;
+}
+.img-container{
+  background-color: #f7f7f7;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+}
+.cut_btn{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  font-size: .8rem;
+}
+.close{
+  flex: 0 0 4rem;
+  line-height: 2.4rem;
+  color:#fff;
+  background-color: #048adf;
+  text-align: center;
+}
+.saveBtn{
+  flex: 0 0 4rem;
+  line-height: 2.4rem;
+  color:#fff;
+  background-color: #048adf;
+  text-align: center;
 }

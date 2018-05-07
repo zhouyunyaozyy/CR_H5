@@ -219,3 +219,33 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   color:#666;
   margin-right: .53rem;
 }
+/*浮窗*/
+.floating_cont{
+  position: absolute;
+  top: -2rem;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.floating_text{
+  font-size: .7rem;
+  min-width: 4rem;
+  padding: 0 1rem;
+  line-height: 1.5rem;
+  border-radius: .3rem;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #e6e6e6;
+}
+.floating_text i{
+  font-size: .7rem;
+}
+.floating_text .icon-cuowu{
+  color:red;
+}
+.floating_text .icon-tongguo{
+  color: #46d859;
+}

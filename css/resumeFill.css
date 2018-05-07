@@ -574,3 +574,10 @@
   padding: 0 .53rem;
 }
 
+
+
+.hide_video{
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}

@@ -63,6 +63,8 @@ body{
 .ipt_item input{
   -webkit-flex: 1;
   flex: 1;
+  height: 2.4rem;
+  line-height: 2.4rem;
   width: 100%;
   border: 0;
   outline: none;

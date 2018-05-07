@@ -48,7 +48,6 @@ function getOpenId(res){
     popupType = 2;
     showPopup(res.msg)
   }else{
-    $(".loading_cont").css("display","none")
     popupType = 1;
     showPopup(res.msg)
   }
@@ -59,7 +58,7 @@ function login(res){
     jieMi(res.data)
     postCallBack({},'/dabai-chaorenjob/seeker/getUserInfoByTickets',loginTest)
   }else if(res.code == 10010){
-
+    $(".loading_cont").css("display","none")
   }else{
     popupType = 1;
     showPopup(res.msg)
