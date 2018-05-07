@@ -16,7 +16,7 @@ function historyinit(){
     historyList = [];
   }
   var historyHtml = "";
-  for(var i = 0;i<historyList.length;i++){
+  for(var i = historyList.length - 1 ; i >= 0;i--){
     historyHtml += '<div class="history_item">' +
     historyList[i] +
     '</div>'
@@ -93,7 +93,7 @@ function getSearch(res){
         formatData(companyList[c].character,"character") +
         '</span>|<span class="company_scale">' +
         formatData(companyList[c].fleet_size,"fleet_size") +
-        '架</span> </div></div></div>'
+        '</span> </div></div></div>'
       }
       $(".company_list").html(companyHTml)
     }else{
@@ -117,6 +117,12 @@ function getSearch(res){
   $(".history_cont").removeClass("is_hide")
   console.log(res)
 }
+$(".job_list").on("click",".job_item",function(){
+  window.location.href = "jobDetail.html?jid=" + $(this).attr("data-jid")
+})
+$(".company_list").on("click",".company_item",function(){
+  window.location.href = "companyInfo.html?cid=" + $(this).attr("data-cid")
+})
 $(".history_list").on("click",".history_item",function(){
   var keyword = $(this).text();
   $(".search_txt").val(keyword);

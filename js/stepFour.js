@@ -119,42 +119,44 @@ $('.four_video_cont').on("change",".btn_file",function(){
   if (val == '.mp4' || val== '.MP4') {
     this.select();
     var obj = this.files[0];
-    console.log(obj)
-    var fr = new FileReader();
-    fr.onload = function () {
-      var video = document.createElement("video");
-      video.src = this.result;
-      var video2 = $(".four_video_show");
-      var scale = 0.8;
-      var canvas = document.createElement("canvas");
-      canvas.width = video2.width() * scale;
-      //canvas.width = video2.videoWidth * scale;
-      //canvas.height = video2.videoHeight * scale;
-      canvas.height = video2.height() * scale;
-      console.log(canvas.width,canvas.height)
-      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-      var img = document.createElement("img");
-      poster = canvas.toDataURL("image/png");
-      var str = canvas.toDataURL("image/png").substring(22);
-      console.log(canvas.toDataURL("image/png"))
-      $.ajax({
-        type: "POST",
-        url: "http://upload-z2.qiniu.com/putb64/-1",
-        headers:{
-          "Content-Type": "application/octet-stream",
-          "Authorization": "UpToken "+imgToken
-        },
-        data: str,
-        success: function (res) {
-          if(res.key){
-            $(".four_video_show video").attr("poster",poster)
-            videoCover = res.key
-          }
-          console.log(res)
-        }
-      })
-    };
-    fr.readAsDataURL(obj);
+    //console.log(obj)
+    //var fr = new FileReader();
+    //fr.onload = function () {
+    //  //$(".hide_video video").attr("src",this.result)
+    //  //var video = $(".hide_video video")[0];
+    //  var video = document.createElement("video");
+    //  video.src = this.result;
+    //  var video2 = $(".four_video_show");
+    //  var scale = 0.8;
+    //  var canvas = $("#c1")[0];
+    //  canvas.width = video2.width() * scale;
+    //  //canvas.width = video2.videoWidth * scale;
+    //  //canvas.height = video2.videoHeight * scale;
+    //  canvas.height = video2.height() * scale;
+    //  console.log(canvas.width,canvas.height)
+    //  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+    //  var img = document.createElement("img");
+    //  poster = canvas.toDataURL("image/png");
+    //  var str = canvas.toDataURL("image/png").substring(22);
+    //  console.log(canvas.toDataURL("image/png"))
+    //  $.ajax({
+    //    type: "POST",
+    //    url: "http://upload-z2.qiniu.com/putb64/-1",
+    //    headers:{
+    //      "Content-Type": "application/octet-stream",
+    //      "Authorization": "UpToken "+imgToken
+    //    },
+    //    data: str,
+    //    success: function (res) {
+    //      if(res.key){
+    //        $(".four_video_show video").attr("poster",poster)
+    //        videoCover = res.key
+    //      }
+    //      console.log(res)
+    //    }
+    //  })
+    //};
+    //fr.readAsDataURL(obj);
   } else {
     popupType = 1
     showPopup("请选择mp4格式视频文件")
@@ -217,20 +219,19 @@ $(".js_four").click(function(){
     showPopup("信息验证中请耐心等待。。。")
     return;
   }
+  //else if(znConfig.video && !videoCover){
+  //  popupType = 1;
+  //  showPopup("请重新上传视频形象")
+  //  return;
+  //}
   if(znConfig.video && !videoKey){
     popupType = 1;
     showPopup("请上传视频形象")
     return;
-  }else if(znConfig.video && !videoCover){
-    popupType = 1;
-    showPopup("请重新上传视频形象")
-    return;
   }else if(!znConfig.video){
-    console.log(13)
     postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
   }else{
-    console.log(12313)
-    postCallBack({video:videoKey,video_cover :videoCover},"/dabai-chaorenjob/resume/updateVideoResume",videoUpdate)
+    postCallBack({video:videoKey},"/dabai-chaorenjob/resume/updateVideoResume",videoUpdate)
   }
 })
 function videoUpdate(res){

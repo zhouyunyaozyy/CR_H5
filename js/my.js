@@ -3,6 +3,29 @@ var imgToken;
 getCallBack({}, "/dabai-chaorenjob/common/qiniu/token", initToken)
 getCallBack({},"/dabai-chaorenjob/seeker/getUserSeekerInfo",initMy)
 getCallBack({},"/dabai-chaorenjob/resume/getResumeSteps",initState)
+function isReal(res){
+  if(res.code == 1){
+    if(!res.data){
+      popupType = 1;
+      showPopup("请先填写简历并提交审核")
+    }else{
+      window.location.href = "realName.html"
+    }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup(res.msg)
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
+  }
+  console.log(res)
+}
+$(".top").on("click",".auth_state",function(){
+  getCallBack({},"/dabai-chaorenjob/resumeAuditSnapshot/getMyResumeAudit",isReal)
+})
 function initToken(res) {
   if (res.code == 1) {
     imgToken = res.data;
@@ -44,9 +67,9 @@ function userState(res){
   if(res.code == 1){
     var html = '';
     if(!res.data || res.data != 4){
-      html = '<a href="realName.html" class="auth_state">未认证</a>'
+      html = '<div class="auth_state">未认证</div>'
     }else if(res.data == 4){
-      html = '<a href="realName.html" class="auth_state auth_ok"><i class="iconfont icon-v"></i>认证</a>'
+      html = '<div class="auth_state auth_ok"><i class="iconfont icon-v"></i>认证</div>'
     }
     $(".top_avatar").after(html)
   }else if(res.code == 10001){
