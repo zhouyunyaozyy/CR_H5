@@ -4,7 +4,7 @@ var _start = 1;
 init();
 function init(){
   var dataPost = {
-    _limit: 15,
+    _limit: pageSize,
     _start:_start
   }
   getCallBack(dataPost,'/dabai-chaorenjob/favorites/getJobFavoritesList',initList)
@@ -46,7 +46,8 @@ function initList(res){
       mySwiper.update(); // 重新计算高度;
     }else if(_start == 1){
       html = '<div class="no_data"><img src="img/no_data_3.jpg" alt=""/></div>'
-      $("body").append(html)
+      $(".g_container").append(html)
+      $(".job_list").html("")
     }
   }else if(res.code == 10001){
     popupType = 2;
@@ -61,7 +62,7 @@ function initList(res){
   console.log(res)
 }
 $(".job_list").on("click",".job_item",function(){
-  window.location.href = "jobDetail.html?jid="+$(this).attr("data-jid")
+  window.location.href = "jobDetail.html?type=2&jid="+$(this).attr("data-jid")
 })
 $(".popup_hide").click(function(){
   switch (popupType){

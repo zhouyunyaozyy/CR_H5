@@ -7,7 +7,7 @@ init();
 function init(){
   var postData = {
     rtid: $(".head_job_name span").attr("data-rtid"),
-    _limit: 15,
+    _limit: pageSize,
     _start:_start
   }
   getCallBack(postData,'/dabai-chaorenjob/job/queryIndexJobList',initList)
@@ -115,7 +115,8 @@ function initList(res){
       mySwiper.update(); // 重新计算高度;
     }else if(_start == 1){
       html = '<div class="no_data"><img src="img/no_data_1.jpg" alt=""/></div>'
-      $("body").append(html)
+      $(".g_container").append(html)
+      $(".job_list").html("")
     }
   }else if(res.code == 10001){
     popupType = 2;

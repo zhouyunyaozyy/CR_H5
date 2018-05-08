@@ -1,6 +1,21 @@
 var search =  url_analysis(window.location.search);
 var isFavorites,popupType;
 getCallBack({jid:search.jid},"/dabai-chaorenjob/job/getJobEntityAndVoteAndFavoritesInfo",init)
+$(function(){
+  switch (parseInt(search.type)){
+    case 1:
+      break;
+    case 2:
+      $(".back").attr("href","jobCollect.html")
+      break;
+    case 3:
+      break;
+    case 4:
+      break;
+    case 5:
+      break;
+  }
+})
 function init(res){
   if(res.code == 1){
     $(".job_name").text(res.data.name)

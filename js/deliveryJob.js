@@ -5,7 +5,7 @@ var _start = 1;
 init();
 function init(){
   var dataPost = {
-    _limit: 15,
+    _limit: pageSize,
     _start:_start
   }
   if(search.type == 1){
@@ -62,7 +62,8 @@ function jobList(res){
       mySwiper.update(); // 重新计算高度;
     }else if(_start == 1){
       html = '<div class="no_data"><img src="img/no_data_2.jpg" alt=""/></div>'
-      $("body").append(html)
+      $(".g_container").append(html)
+      $(".job_list").html("")
     }
   }else if(res.code == 10001){
     popupType = 2;

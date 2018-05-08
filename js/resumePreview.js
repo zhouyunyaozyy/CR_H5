@@ -1,9 +1,8 @@
 var popupType;
 getCallBack({},"/dabai-chaorenjob/resumeAuditSnapshot/getMyResumeAuditSnapshot",resumeInit)
-var target;
 function resumeInit(res){
   if(res.code == 1){
-    target = res.data.target;
+    $(".js_target").text(res.data.target_name)
     $(".js_ethnicity").text(formatData(res.data.ethnicity,"ethnicity"))
     $(".js_address").text(address(res.data.birthplace,4))
     $(".js_wedding").text(formatData(res.data.wedding,"wedding"))
@@ -79,7 +78,6 @@ function resumeInit(res){
       }
       $(".cert_list").html(certHtml)
     }
-    getCallBack({},'/dabai-chaorenjob/resumeTarget/getActiveResumeTarget',initFuc)
   }else if(res.code == 10001){
     popupType = 2;
     showPopup("请先登录")
@@ -91,25 +89,6 @@ function resumeInit(res){
     showPopup(res.msg)
   }
   console.log(res)
-}
-function initFuc(res){
-  if(res.code == 1){
-    for(var i = 0;i<res.data.length;i++){
-      if(res.data[i].rtid == target){
-        $(".js_target").text(res.data[i].name)
-        return;
-      }
-    }
-  }else if(res.code == 10001){
-    popupType = 2;
-    showPopup("请先登录")
-  }else if(res.code == 10002){
-    popupType = 2;
-    showPopup(res.msg)
-  }else{
-    popupType = 1;
-    showPopup(res.msg)
-  }
 }
 $(".popup_hide").click(function(){
   switch (popupType){
