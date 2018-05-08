@@ -51,7 +51,7 @@ function jobList(res){
         formatDate(data[i].issue_time,1) +
         '</div></div></div>'
       }
-      if(data.length < 15){
+      if(data.length < pageSize){
         loadFlag = false;
       }
       if(_start > 1){

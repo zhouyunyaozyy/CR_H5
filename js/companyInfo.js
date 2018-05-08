@@ -19,7 +19,7 @@ init();
 function init(){
   var postData = {
     cid:search.cid,
-    _limit: 15,
+    _limit: pageSize,
     _start:_start
   }
   getCallBack(postData,"/dabai-chaorenjob/company/getCompanyInfoAndJobs",initInfo)
@@ -81,7 +81,7 @@ function initInfo(res){
       formatDate(dataList[i].issue_time,1) +
       '</div></div></div>'
     }
-    if(dataList.length < 15){
+    if(dataList.length < pageSize){
       loadFlag = false;
     }
     if(_start > 1){

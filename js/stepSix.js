@@ -177,6 +177,9 @@ $(".five_add_btn").click(function(){
     var html = certText();
     imgNum = imgNum + 1;
     $(this).before(html)
+  }else{
+    popupType = 1;
+    showPopup("最多添加6张证书")
   }
 })
 $(".six_certificate").on("change",".add_img_btn",function(){

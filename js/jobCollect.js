@@ -35,7 +35,7 @@ function initList(res){
         formatDate(dataList[i].issue_time,1) +
         '</div></div></div>'
       }
-      if(dataList.length < 15){
+      if(dataList.length < pageSize){
         loadFlag = false;
       }
       if(_start > 1){

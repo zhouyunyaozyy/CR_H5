@@ -55,6 +55,30 @@
     </div>
   </div>
   <script>
+    var search = url_analysis(window.location.search)
+    $(function(){
+      switch (parseInt(search.type)){
+        case 1:
+          $(".back").attr("href","index.html")
+          break;
+        case 2:
+          $(".back").attr("href","jobDetail.html")
+          break;
+        case 3:
+          $(".back").attr("href","companyInfo.html")
+          break;
+        case 4:
+          if(!ticket || !ticketsSalt){
+            $(".back").attr("href","index.html")
+          }else{
+            $(".back").attr("href","my.html")
+          }
+          break;
+        default:
+          $(".back").attr("href","index.html")
+          break;
+      }
+    })
     var is_wx = isWeiXin();
     if(!is_wx){
       $(".point_cont").css("display","none")
