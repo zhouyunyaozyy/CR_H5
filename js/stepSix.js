@@ -43,10 +43,6 @@ function initResume(res){
           popupType = 7;
           showPopup("请先填写第五步")
           return;
-        case 700:
-          popupType = 8;
-          showPopup("请修改原简历，不能新增简历")
-          return;
       }
     }else{
       $(".title").text("基本信息")
@@ -306,7 +302,7 @@ function updateSteps(res){
 }
 function submitAudit(res){
   if(res.code == 1){
-    popupType = 3;
+    popupType = 9;
     showPopup("前往实名认证",1)
   }else if(res.code == 10001){
     popupType = 2;
@@ -319,12 +315,6 @@ function submitAudit(res){
     showPopup(res.msg)
   }
 }
-$(".popup_err").click(function(){
-  window.location.href = "resumeDetail.html"
-})
-$(".popup_suc").click(function(){
-  window.location.href = "realName.html"
-})
 $(".popup_hide").click(function(){
   switch (popupType){
     case 1:
@@ -348,24 +338,36 @@ $(".popup_hide").click(function(){
     case 7:
       window.location.href = "stepFive.html"
       break;
-    case 8:
-      window.location.href = "resumeDetail.html"
-      break;
     default :
       hidePopup()
       return;
   }
 })
 $(".js_back").click(function(){
+  popupType = 8;
   showPopup("内容未保存,返回将导致内容丢失，是否确认返回？",1)
 })
 $(".popup_suc").click(function(){
-  if(!search.type){
-    window.location.href = "stepFive.html"
-  }else{
-    window.location.href = "modifyResume.html"
+  switch (popupType){
+    case 8:
+      if(!search.type){
+        window.location.href = "stepFive.html"
+      }else{
+        window.location.href = "modifyResume.html"
+      }
+      break;
+    case 9:
+      window.location.href = "realName.html"
+      break;
   }
 })
 $(".popup_err").click(function(){
-  hidePopup()
+  switch (popupType){
+    case 8:
+      hidePopup()
+      break;
+    case 9:
+      window.location.href = "resumeDetail.html"
+      break;
+  }
 })

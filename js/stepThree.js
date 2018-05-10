@@ -34,10 +34,10 @@ function initResume(res) {
           popupType = 4;
           showPopup("请先填写第二步")
           return;
-        case 700:
-          popupType = 8;
-          showPopup("请修改原简历，不能新增简历")
-          return;
+        //case 700:
+        //  popupType = 8;
+        //  showPopup("请修改原简历，不能新增简历")
+        //  return;
       }
     }else{
       $(".title").text("基本信息")
@@ -70,6 +70,9 @@ function initResume(res) {
         '<span class="three_delete js_delete"><i class="iconfont icon-shanchu"></i></span></div>'
       }
       $(".three_photo_img .three_img_add").before(imagesHtml)
+      if(imgNum == 6){
+        $(".three_photo_img .three_img_add").css("display","none")
+      }
     }
     if (search.type == 1) {
       $(".photo_title").remove();

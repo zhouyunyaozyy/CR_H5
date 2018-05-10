@@ -4,15 +4,18 @@ getCallBack({jid:search.jid},"/dabai-chaorenjob/job/getJobEntityAndVoteAndFavori
 $(function(){
   switch (parseInt(search.type)){
     case 1:
+      $(".back").attr("href","index.html")
       break;
     case 2:
       $(".back").attr("href","jobCollect.html")
       break;
     case 3:
+      $(".back").attr("href","deliveryDetail.html?rrid=" + search.rrid)
       break;
     case 4:
       break;
-    case 5:
+    default:
+      $(".back").attr("href","index.html")
       break;
   }
 })
@@ -132,13 +135,13 @@ $(".popup_suc").click(function(){
       window.location.href = "login.html"
       break;
     case 3:
-      window.location.href = "realName.html"
+      window.location.href = "realName.html?jid=" + search.jid
       break;
     case 4:
-      window.location.href = "realName.html"
+      window.location.href = "realName.html?jid=" + search.jid
       break;
     case 5:
-      window.location.href = "realName.html"
+      window.location.href = "realName.html?jid=" + search.jid
       break;
   }
 })

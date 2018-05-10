@@ -103,10 +103,38 @@ function initState(res){
         $(".resume_scale").attr("href","stepSix.html")
         break;
       case 700:
-        $(".resume_scale").attr("href","resumeDetail.html")
+        getCallBack({},"/dabai-chaorenjob/resumeAuditSnapshot/getMyResumeAudit",isAudit)
         break;
       default:
         $(".resume_scale").attr("href","resumeFill.html")
+        break;
+    }
+  }else if(res.code == 10001){
+    popupType = 2;
+    showPopup("请先登录")
+  }else if(res.code == 10002){
+    popupType = 2;
+    showPopup(res.msg)
+  }else{
+    popupType = 1;
+    showPopup(res.msg)
+  }
+  console.log(res)
+}
+function isAudit(res){
+  if(res.code == 1){
+    switch (res.data.status){
+      case 1:
+        $(".resume_scale").attr("href","resumeDetail.html")
+        break;
+      case 4:
+        $(".resume_scale").attr("href","resumeDetail.html")
+        break;
+      case 8:
+        $(".resume_scale").attr("href","resumeDetail.html")
+        break;
+      default:
+        $(".resume_scale").attr("href","stepSix.html")
         break;
     }
   }else if(res.code == 10001){

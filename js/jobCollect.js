@@ -38,6 +38,7 @@ function initList(res){
       if(dataList.length < pageSize){
         loadFlag = false;
       }
+      $(".no_data").remove();
       if(_start > 1){
         $(".job_list").append(html)
       }else{

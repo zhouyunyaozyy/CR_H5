@@ -10,10 +10,10 @@ function initResume(res){
           popupType = 3;
           showPopup("请先填写第一步")
           return;
-        case 700:
-          popupType = 8;
-          showPopup("请修改原简历，不能新增简历")
-          return;
+        //case 700:
+        //  popupType = 8;
+        //  showPopup("请修改原简历，不能新增简历")
+        //  return;
       }
     }else{
       $(".title").text("基本信息")

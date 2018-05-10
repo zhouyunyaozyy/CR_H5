@@ -107,6 +107,7 @@ function initList(res){
       if(dataList.length < pageSize){
         loadFlag = false;
       }
+      $(".no_data").remove();
       if(_start > 1){
         $(".job_list").append(html)
       }else{
@@ -141,7 +142,7 @@ $(".banner").on("click",".swiper-slide",function(){
       window.location.href = args;
       break;
     case 3:
-      window.location.href = "jobDetail.html?jid=" + args;
+      window.location.href = "jobDetail.html?type=1jid=" + args;
       break;
     case 4:
       window.location.href = "companyInfo.html?type=1&cid=" + args;

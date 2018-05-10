@@ -5,10 +5,13 @@ $(".pwd_cont").on("paste","input",function(){
 $(".js_submit").click(function(){
   var pwd1 = $('.js_pwd1').val();
   var pwd2 = $('.js_pwd2').val();
-  console.log(pwd1,pwd2,pwd1.length,pwd2.length)
   if(pwd1.length < 6 || pwd1.length > 12){
+    popupType = 1;
+    showPopup("请填写6-12位原密码")
     return;
   }else if(pwd2.length < 6 || pwd2.length > 12){
+    popupType = 1;
+    showPopup("请填写6-12位新密码")
     return;
   }else if(pwd1 == pwd2){
     return;

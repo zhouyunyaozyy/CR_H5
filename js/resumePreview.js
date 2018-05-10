@@ -19,7 +19,12 @@ function resumeInit(res){
     $(".js_offer_state").text(formatData(res.data.employ,"offerState"))
     $(".js_tel").text(res.data.tel)
     $(".js_header").attr("src",res.data.headerUrl);
-    $(".js_video").attr("src",res.data.videoUrl);
+    if(res.data.videoUrl){
+      $(".js_video").attr("src",res.data.videoUrl);
+    }else{
+      $(".video_cont").remove();
+      $(".video_box .resume_title").after("<span class='no_data_txt'>暂无内容</span>")
+    }
     $(".js_profile").text(res.data.profile)
     if(res.data.imagesUrl.length > 0){
       var imgHtml = ""
@@ -29,6 +34,8 @@ function resumeInit(res){
         '" alt=""/>'
       }
       $(".img_box .id_photo_cont").html(imgHtml)
+    }else{
+      $(".img_box .id_photo_cont").html("<span class='no_data_txt'>暂无内容</span>")
     }
     var education_item = JSON.parse(res.data.education_item);
     if(education_item.length > 0){
@@ -47,6 +54,8 @@ function resumeInit(res){
         '</span></div></div>'
       }
       $(".education_box .resume_title").after(educationHtml)
+    }else{
+      $(".education_box .resume_title").after("<span class='no_data_txt'>暂无内容</span>")
     }
     var experience_item = JSON.parse(res.data.experience_item);
     if(experience_item.length > 0){
@@ -66,6 +75,8 @@ function resumeInit(res){
         '</div></div></div>'
       }
       $(".exp_box .resume_title").after(expHtml)
+    }else{
+      $(".exp_box .resume_title").after("<span class='no_data_txt'>暂无内容</span>")
     }
     if(res.data.skillUrl.length > 0){
       var certHtml = ""
@@ -77,6 +88,8 @@ function resumeInit(res){
         '</div></div>'
       }
       $(".cert_list").html(certHtml)
+    }else{
+      $(".cert_list").html("<span class='no_data_txt'>暂无内容</span>")
     }
   }else if(res.code == 10001){
     popupType = 2;

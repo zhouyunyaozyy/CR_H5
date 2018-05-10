@@ -18,6 +18,11 @@ function initToken(res){
   }
   console.log(res)
 }
+$(function(){
+  if(search.jid){
+    $(".back").attr("href","jobDetail.html?jid=" + search.jid)
+  }
+})
 function initState(res){
   console.log(res)
   if(res.code == 1){

@@ -38,11 +38,6 @@ function initFuc(res,data){
         }else{
           noPerfectModify += '<div class="modul_item"><div class="modul_label">标准照<span>(必填)</span></div><a href="stepThree.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
         }
-        if(data.headerUrl){
-          perfectModify += '<div class="modul_item"><div class="modul_label">标准照<span>(必填)</span></div><a href="stepThree.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
-        }else{
-          noPerfectModify += '<div class="modul_item"><div class="modul_label">标准照<span>(必填)</span></div><a href="stepThree.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'
-        }
         var education_item = JSON.parse(data.education_item) || [];
         if(education_item.length > 0){
           perfectModify += '<div class="modul_item"><div class="modul_label">教育经历<span>(必填)</span></div><a href="stepFive.html?type=1" class="modul_edit">编辑<i class="iconfont icon-tiaozhuan"></i></a></div>'

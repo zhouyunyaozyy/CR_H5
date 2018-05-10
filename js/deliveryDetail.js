@@ -7,6 +7,9 @@ function init(res){
     $(".logo").attr("href","companyInfo.html?type=4&rrid=" +
     search.rrid +
     "&cid=" + res.data.cid)
+    $(".job_info").attr({
+      "data-jid": res.data.jid
+    })
     $(".logo img").attr("src",res.data.logoUrl)
     $(".job_name").text(res.data.name)
     $(".company_name").text(res.data.name_short)
@@ -21,7 +24,7 @@ function init(res){
         if(res.data.agreednote){
           $(".leave_msg").text(res.data.agreednote)
         }else{
-          $(".interviewer_title").css("display","none")
+          $(".js_agreednote").css("display","none")
         }
         var msg = "您好，您已被我司选中参加线下面试。作为该面试的候选人，请认真查阅通知信息，并做好相应准备。"
         $(".state_msg").text(msg)
@@ -96,11 +99,17 @@ function sucConfirm(res){
     showPopup(res.msg)
   }
 }
+$(".job_info").click(function(){
+  window.location.href = "jobDetail.html?type=3&rrid=" + search.rrid + "&jid=" + $(this).attr("data-jid")
+})
 $(".interviewer_err").click(function(){
   if($(".interviewer_btn").hasClass("is_overdue")){
     return;
   }
   $(".refuse_cont").css("display","block")
+})
+$(".refuse_text textarea").keyup(function(){
+  $(this).next(".text_size").text(this.value.length + "/20")
 })
 $(".refuse_err").click(function(){
   $(".refuse_cont").css("display","none")
@@ -122,6 +131,7 @@ function refuse(res){
   if(res.code == 1){
     $(".interviewer_err").addClass("block")
     $(".interviewer_suc").css("display","none")
+    $(".refuse_cont").css("display","none")
   }else if(res.code == 10001){
     popupType = 2;
     showPopup("请先登录")

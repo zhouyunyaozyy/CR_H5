@@ -4,12 +4,12 @@ getCallBack({},"/dabai-chaorenjob/resume/getMyResumeVo",initResume)
 function initResume(res){
   if(res.code == 1){
     if(search.type != 1){
-      switch (res.data.steps){
-        case 700:
-          popupType = 8;
-          showPopup("请修改原简历，不能新增简历")
-          return;
-      }
+      //switch (res.data.steps){
+      //  case 700:
+      //    popupType = 8;
+      //    showPopup("请修改原简历，不能新增简历")
+      //    return;
+      //}
     }else{
       $(".title").text("求职意向")
       $(".js_one").text("确认")

@@ -398,11 +398,28 @@ function address (code,type){
 }
 function formatDate(time,type){
   var date = new Date(parseInt(time));
+  var year = date.getFullYear();
+  var month = date.getMonth()+1;
+  if(month < 10){
+    month = "0" + month;
+  }
+  var day = date.getDate();
+  if(day < 10){
+    day = "0" + day;
+  }
+  var hours = date.getHours();
+  if(hours < 10){
+    hours = "0" + hours;
+  }
+  var m = date.getMinutes();
+  if(m < 10){
+    m = "0" + m;
+  }
   switch (type){
     case 1:
-      return date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate()
+      return year + "/" + month + "/" + day
     case 2:
-      return date.getFullYear() + "年" + (date.getMonth()+1) + "月" + date.getDate() + "日 " + date.getHours() + ":" + date.getMinutes()
+      return year + "年" + month + "月" + day + "日 " + hours + ":" + m
   }
 }
 function formatData(code,type){

@@ -54,10 +54,10 @@ function initResume(res){
           popupType = 5;
           showPopup("请先填写第三步")
           return;
-        case 700:
-          popupType = 8;
-          showPopup("请修改原简历，不能新增简历")
-          return;
+        //case 700:
+        //  popupType = 8;
+        //  showPopup("请修改原简历，不能新增简历")
+        //  return;
       }
     }else{
       $(".title").text("视频形象")
@@ -219,17 +219,16 @@ $(".js_four").click(function(){
     showPopup("信息验证中请耐心等待。。。")
     return;
   }
-  //else if(znConfig.video && !videoCover){
-  //  popupType = 1;
-  //  showPopup("请重新上传视频形象")
-  //  return;
-  //}
-  if(znConfig.video && !videoKey){
+  if(!znConfig.video){
+    if(search.type == 1){
+      window.location.href = "modifyResume.html"
+    }else{
+      postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
+    }
+  }else if(!videoKey){
     popupType = 1;
     showPopup("请上传视频形象")
     return;
-  }else if(!znConfig.video){
-    postCallBack({steps:500},"/dabai-chaorenjob/resume/updateResumeSteps",updateSteps)
   }else{
     postCallBack({video:videoKey},"/dabai-chaorenjob/resume/updateVideoResume",videoUpdate)
   }

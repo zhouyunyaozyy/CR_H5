@@ -62,7 +62,8 @@ function resumeInit(res){
     if(res.data.videoUrl){
       $(".js_video").attr("src",res.data.videoUrl);
     }else{
-      $(".video_cont").html("<span class='no_data_txt'>暂无内容</span>")
+      $(".video_cont").remove();
+      $(".video_box .resume_title").after("<span class='no_data_txt'>暂无内容</span>")
     }
     $(".js_profile").text(res.data.profile)
     if(res.data.imagesUrl.length > 0){
@@ -82,9 +83,9 @@ function resumeInit(res){
       for(var a = 0;a <education_item.length; a++){
         var startTime = new Date(parseInt(education_item[a].admission_time))
         var endTime = new Date(parseInt(education_item[a].graduation_time))
-        educationHtml += '<div class="education_item"><div class="resume_item"><span class="resume_label">学校名称</span><span class="resume_text">' +
+        educationHtml += '<div class="education_item"><div class="resume_item"><span class="resume_label">学校名称</span><span class="resume_text wrap">' +
         education_item[a].sname +
-        '</span></div><div class="resume_item"><span class="resume_label">所学专业</span><span class="resume_text">' +
+        '</span></div><div class="resume_item"><span class="resume_label">所学专业</span><span class="resume_text wrap">' +
         education_item[a].majors  +
         '</span></div><div class="resume_item"><span class="resume_label">在校时间</span><span class="resume_text">' +
         startTime.getFullYear() + "." + (startTime.getMonth()+1) + "-" + endTime.getFullYear() + "." + (endTime.getMonth()+1) +
@@ -105,9 +106,9 @@ function resumeInit(res){
         expHtml += '<div class="exp_item"><div class="resume_item"><span class="resume_label">工作时间</span>' +
         '<span class="resume_text">' +
         startTime.getFullYear() + "." + (startTime.getMonth()+1) + "-" + endTime.getFullYear() + "." + (endTime.getMonth()+1) +
-        '</span></div><div class="resume_item"><span class="resume_label">公司</span><span class="resume_text">' +
+        '</span></div><div class="resume_item"><span class="resume_label">公司</span><span class="resume_text wrap">' +
         experience_item[b].cname +
-        '</span></div><div class="resume_item"><span class="resume_label">职位</span><span class="resume_text">' +
+        '</span></div><div class="resume_item"><span class="resume_label">职位</span><span class="resume_text wrap">' +
         experience_item[b].job +
         '</span></div><div class="resume_exp"><div class="resume_exp_label">工作内容</div><div class="resume_exp_text ">' +
         experience_item[b].profile +
